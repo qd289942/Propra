@@ -2,15 +2,21 @@ package de.fernuni.kurs01584.ss23.modell;
 
 public class Schlangenglied {
 	// TODO: Attribute
-	private int index;
 	private Feld feld;
 	// TODO: Konstruktoren
-	
+    public Schlangenglied(Feld feld) {
+        this.feld = feld;
+    }
+    
+    public Schlangenglied() {
+ 
+    }
 	// TODO: Methoden
-	public int getIndex() {
-	    return index;
-	}
     public Feld getFeld() {
         return feld;
     }
+    public void setFeld(Feld feld) {
+        this.feld = feld;
+    }
+
 }

@@ -1,16 +1,19 @@
 package de.fernuni.kurs01584.ss23.modell;
 
 public class Feld {
+    private String id;
     private int zeile;
     private int spalte;
     // Set default value of verwendbarkeit and punkt
     private int verwendbarkeit = 1;
-    private int punkt = 1;
-    private char zeichen;
+    private int punkte = 1;
+    private String zeichen;
 
 
     // TODO: (weitere) Attribute
-
+    public Feld() {
+        
+    }
     public Feld(int zeile, int spalte) {
         super();
         if (zeile < 0 || spalte < 0) {
@@ -21,11 +24,22 @@ public class Feld {
         this.spalte = spalte;
     }
 
-
-
     // TODO: (weitere) Konstruktoren
-    public Feld(int zeile, int spalte, char zeichen) {
-        super();
+    
+    public Feld(String id, int zeile, int spalte, int verwendbarkeit, int punkte, String zeichen) {
+        if (zeile < 0 || spalte < 0) {
+            throw new IllegalArgumentException(
+                    "Fuer die Klasse 'Feld' duerfen die Attribute 'zeile' und 'spalte' keine negativen Werte annehmen.");
+        }  
+        this.id = id;
+        this.zeile = zeile;
+        this.spalte = spalte;
+        this.verwendbarkeit = verwendbarkeit;
+        this.punkte = punkte;
+        this.zeichen = zeichen;
+    }
+    
+    public Feld(int zeile, int spalte, String zeichen) {
         if (zeile < 0 || spalte < 0) {
             throw new IllegalArgumentException(
                     "Fuer die Klasse 'Feld' duerfen die Attribute 'zeile' und 'spalte' keine negativen Werte annehmen.");
@@ -37,40 +51,41 @@ public class Feld {
 
     // TODO: (weitere) Methoden
 
-    // Add getter and setter for the class Feld
+    // Füge getters und setters hinzu
     public String getId() {
-        char prefix = 'F';
-        int spalteAnzahl = this.spalte + 1;
-        int indexNummer = this.zeile * spalteAnzahl + this.spalte;
-        return prefix + indexNummer + "";
+        return id;
     }
-
+    public void setId(String id) {
+        this.id = id;
+    }
     public int getZeile() {
         return zeile;
     }
-
+    public void setZeile(int zeile) {
+        this.zeile = zeile;
+    }
     public int getSpalte() {
         return spalte;
     }
-
+    public void setSpalte(int spalte) {
+        this.spalte = spalte;
+    }
     public int getVerwendbarkeit() {
         return verwendbarkeit;
     }
-
     public void setVerwendbarkeit(int verwendbarkeit) {
         this.verwendbarkeit = verwendbarkeit;
     }
-
-    public int getPunkt() {
-        return punkt;
+    public int getPunkte() {
+        return punkte;
     }
-
-    public void setPunkt(int punkt) {
-        this.punkt = punkt;
+    public void setPunkte(int punkte) {
+        this.punkte = punkte;
     }
-
-    public char getZeichen() {
+    public String getZeichen() {
         return zeichen;
     }
-
+    public void setZeichen(String zeichen) {
+        this.zeichen = zeichen;
+    }
 }
