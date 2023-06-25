@@ -7,9 +7,11 @@ public class Schlangenart {
 	private int punkt = 1;
 	private int anzahl;
 	private String zeichenkette;
+	private Nachbarschaftsstruktur nachStr;
+	
 	// TODO: Konstruktoren
 	
-	public Schlangenart (String id, int punkt, int anzahl, String zeichenkette) {
+	public Schlangenart (String id, int punkt, int anzahl, String zeichenkette, Nachbarschaftsstruktur nachStr) {
         if (punkt < 0 || anzahl < 0) {
             throw new IllegalArgumentException(
                     "Fuer die Klasse 'Schlangenart' duerfen die Attribute 'punkt' und 'anzahl' keine negativen Werte annehmen.");
@@ -18,10 +20,11 @@ public class Schlangenart {
         this.punkt = punkt;
         this.anzahl = anzahl;
         this.zeichenkette = zeichenkette;
+        this.nachStr = nachStr;
 	}
 	
 	// Second constructor with default value of punkt
-	public Schlangenart (String id, int anzahl, String zeichenkette) {
+	public Schlangenart (String id, int anzahl, String zeichenkette, Nachbarschaftsstruktur nachStr) {
         if (punkt < 0 || anzahl < 0) {
             throw new IllegalArgumentException(
                     "Fuer die Klasse 'Schlangenart' duerfen die Attribute 'punkt' und 'anzahl' keine negativen Werte annehmen.");
@@ -29,6 +32,7 @@ public class Schlangenart {
         this.id = id;
         this.anzahl = anzahl;
         this.zeichenkette = zeichenkette;
+        this.nachStr = nachStr;
     }
 	
 	// TODO: Methoden
@@ -45,5 +49,8 @@ public class Schlangenart {
     }
     public String getZeichenkette() {
         return zeichenkette;
+    }
+    public Nachbarschaftsstruktur getNachStr() {
+        return nachStr;
     }
 }
