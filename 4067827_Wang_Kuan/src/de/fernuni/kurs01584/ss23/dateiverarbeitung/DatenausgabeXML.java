@@ -8,7 +8,7 @@ import org.jdom2.output.XMLOutputter;
 
 import java.io.FileWriter;
 
-
+// Ergebnisse in XML zurück schreiben
 public class DatenausgabeXML {
     public static void writeXML(Schlangenjagd schlangenjagd, String filePath) throws Exception {
             // Root Element Schlangenjagd erstellen
@@ -18,7 +18,7 @@ public class DatenausgabeXML {
             Element schlangenElement = new Element("Schlangen");
             
             // Schlange Element erstellen und Attribute zuweisen
-            for (Schlange schlange : schlangenjagd.getSchlangen().getSchlangen()) {
+            for (Schlange schlange : schlangenjagd.getSchlangen()) {
                 Element schlangeElement = new Element("Schlange");
                 schlangeElement.setAttribute("art", schlange.getSchlangenart().getId());
                 // Schlangenglied Element erstellen und Attribute zuweisen

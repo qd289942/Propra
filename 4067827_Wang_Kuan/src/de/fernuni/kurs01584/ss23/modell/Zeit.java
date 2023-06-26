@@ -3,14 +3,14 @@ package de.fernuni.kurs01584.ss23.modell;
 public class Zeit {
     // Attribute
     private String einheit;
-    private int vorgabe;
-    private int abgabe;
+    private double vorgabe;
+    private double abgabe;
     
     // Konstruktor
     public Zeit() {
         
     }
-    public Zeit(String einheit, int vorgabe, int abgabe) {
+    public Zeit(String einheit, double vorgabe, double abgabe) {
         this.einheit = einheit;
         this.vorgabe = vorgabe;
         this.abgabe = abgabe;
@@ -26,19 +26,19 @@ public class Zeit {
         this.einheit = einheit;
     }
 
-    public int getVorgabe() {
+    public double getVorgabe() {
         return vorgabe;
     }
 
-    public void setVorgabe(int vorgabe) {
+    public void setVorgabe(double vorgabe) {
         this.vorgabe = vorgabe;
     }
 
-    public int getAbgabe() {
+    public double getAbgabe() {
         return abgabe;
     }
 
-    public void setAbgabe(int abgabe) {
+    public void setAbgabe(double abgabe) {
         this.abgabe = abgabe;
     }
     

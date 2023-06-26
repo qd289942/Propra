@@ -1,16 +1,18 @@
 package de.fernuni.kurs01584.ss23.dateiverarbeitung;
-import de.fernuni.kurs01584.ss23.modell.*;
 
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.input.SAXBuilder;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-// Dateneingabe nur aus Probleminstanz
-public class DateneingabeXML {
-    public static Schlangenjagd parseXML(String filePath) throws Exception {
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.input.SAXBuilder;
+
+import de.fernuni.kurs01584.ss23.modell.*;
+
+// Dateneinlesen mit Schlangen (Ergebnisse)
+public class DateneinlesenmitSchlangen extends DateneingabeXML{
+    public static Schlangenjagd parseXMLmitSchlangen(String filePath) throws Exception {
         SAXBuilder builder = new SAXBuilder();
         Document document = builder.build(new File(filePath));
         // RootElment
@@ -103,6 +105,52 @@ public class DateneingabeXML {
         }
         schlangenjagd.setSchlangenarten(schlangenartList);
         
+        // Parse Schlangen Element
+        Element schlangenElement = rootElement.getChild("Schlangen");
+        // List für Schlange erstellen
+        List<Schlange> schlangenList = new ArrayList<>();
+        
+        List<Element> schlangenElements = schlangenElement.getChildren("Schlange");
+        
+        for (Element schlangeElement : schlangenElements) {
+            Schlange schlange = new Schlange();
+            String artId = schlangeElement.getAttributeValue("art");
+            
+            // Sucht Schlangenart anhand id
+            Schlangenart suchendeSchlangenart = new Schlangenart();
+            for (Schlangenart schlangenart : schlangenjagd.getSchlangenarten()) {
+                if (schlangenart.getId().equals(artId)) {
+                    suchendeSchlangenart = schlangenart;
+                    break;
+                }
+            }
+            schlange.setSchlangenart(suchendeSchlangenart);
+            
+            // List für Schlangenglied erstellen
+            List<Element> schlangengliedElements = schlangenElement.getChildren("Schlangenglied");
+            List<Schlangenglied> SchlangengliedList = new ArrayList<>();
+            for (Element schlangegliedElement: schlangengliedElements) {
+                Schlangenglied schlangenglied = new Schlangenglied();
+                String FeldId = schlangegliedElement.getAttributeValue("feld");
+                // Sucht Feld anhand id
+                Feld suchendeFeld = new Feld();
+                for (Feld feld : schlangenjagd.getDschungel().getFelder()) {
+                    if (feld.getId().equals(FeldId)) {
+                        suchendeFeld = feld;
+                        break;
+                    }
+                }
+                schlangenglied.setFeld(suchendeFeld); 
+                // füge Schlangenglied in SchlangengliedList hinzu
+                SchlangengliedList.add(schlangenglied);
+            }
+            schlange.setSchlangengliedmenge(SchlangengliedList);
+            // füge Schlange in SchlangenList hinzu
+            schlangenList.add(schlange);
+        }
+        
+        // Schlangen Attribute in Schlangenjagd zuordnen
+        schlangenjagd.setSchlangen(schlangenList);
 
         return schlangenjagd;
     }

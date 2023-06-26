@@ -6,14 +6,14 @@ public class Schlangenjagd {
     // Attribute
     private Zeit zeit;
     private Dschungel dschungel;
-    private Schlangenarten schlangenarten;
-    private Schlangen schlangen;
+    private List<Schlangenart> schlangenarten;
+    private List<Schlange> schlangen;
     
     // Konstruktor
     public Schlangenjagd() {
         
     }
-    public Schlangenjagd(Zeit zeit, Dschungel dschungel, Schlangenarten schlangenarten, Schlangen schlangen) {
+    public Schlangenjagd(Zeit zeit, Dschungel dschungel, List<Schlangenart> schlangenarten, List<Schlange> schlangen) {
         this.zeit = zeit;
         this.dschungel = dschungel;
         this.schlangenarten = schlangenarten;
@@ -37,19 +37,19 @@ public class Schlangenjagd {
         this.dschungel = dschungel;
     }
 
-    public Schlangenarten getSchlangenarten() {
+    public List<Schlangenart> getSchlangenarten() {
         return schlangenarten;
     }
 
-    public void setSchlangenarten(Schlangenarten schlangenarten) {
+    public void setSchlangenarten(List<Schlangenart> schlangenarten) {
         this.schlangenarten = schlangenarten;
     }
 
-    public Schlangen getSchlangen() {
+    public List<Schlange> getSchlangen() {
         return schlangen;
     }
 
-    public void setSchlangen(Schlangen schlangen) {
+    public void setSchlangen(List<Schlange> schlangen) {
         this.schlangen = schlangen;
     }
     
