@@ -33,12 +33,13 @@ public class DarstellungLoesungen {
             }
             schlangengliedfelderIdList.add(gliedfelderIdList);
         }
+       
         
         System.out.println("");
         System.out.println("Zeichendschungel: ");
         Dschungel dschungel = schlangenjagd.getDschungel();
         List<Feld> felder = dschungel.getFelder();
-        String highlightEscapeSequence = "\u001B[1m";
+        String highlightEscapeSequence = "\u001B[31m";
         String resetStyleEscapeSequence = "\u001B[0m";
         
         // weist the Zeilenummer von erstem Feld zu aktuelleZeile zu
@@ -49,15 +50,20 @@ public class DarstellungLoesungen {
                     System.out.print(".");
                 }
                 else {
+                    boolean flag = false;
                     for (List<String> gliedfelderIdList : schlangengliedfelderIdList) {
                         if (gliedfelderIdList.contains(feld.getId())) {
-                            System.out.print(highlightEscapeSequence + feld.getZeichen() + resetStyleEscapeSequence);
+                            flag = true;
                             break;
                         }
                     }
+                    if (flag == true) {
+                        System.out.print(highlightEscapeSequence + feld.getZeichen() + resetStyleEscapeSequence);
+                    }
+                    else {
                         System.out.print(feld.getZeichen());
+                    }
                 }
-
             }
             else {
                 System.out.println();
@@ -65,19 +71,36 @@ public class DarstellungLoesungen {
                     System.out.println(".");
                 }
                 else {
+                    boolean flag = false;
                     for (List<String> gliedfelderIdList : schlangengliedfelderIdList) {
                         if (gliedfelderIdList.contains(feld.getId())) {
-                            System.out.print(highlightEscapeSequence + feld.getZeichen() + resetStyleEscapeSequence);
+                            flag = true;
                             break;
                         }
                     }
+                    if (flag == true) {
+                        System.out.print(highlightEscapeSequence + feld.getZeichen() + resetStyleEscapeSequence);
+                    }
+                    else {
                         System.out.print(feld.getZeichen());
+                    }
                 }
                 aktuelleZeile++;
             }
 
         }
-
+        //Zeile und Spalte der aufeinanderfolgenden Schlangenglieder
+        System.out.println("");
+        System.out.println("");
+        System.out.println("Schlangenglieder (Zeile, Spalte): ");
         
+        int schlangecount = 1;
+        for (Schlange schlange :  schlangen) {
+            System.out.print("Schlange_" + schlangecount +" : ");
+            for (Schlangenglied schlangeglied : schlange.getSchlangengliedmenge()) {
+                System.out.print("(" + schlangeglied.getFeld().getZeile() + "," + schlangeglied.getFeld().getSpalte() + "); ");
+            }
+            schlangecount++;
+        }
     }
 }

@@ -127,7 +127,8 @@ public class DateneinlesenmitSchlangen extends DateneingabeXML{
             schlange.setSchlangenart(suchendeSchlangenart);
             
             // List für Schlangenglied erstellen
-            List<Element> schlangengliedElements = schlangenElement.getChildren("Schlangenglied");
+            
+            List<Element> schlangengliedElements = schlangeElement.getChildren("Schlangenglied");
             List<Schlangenglied> SchlangengliedList = new ArrayList<>();
             for (Element schlangegliedElement: schlangengliedElements) {
                 Schlangenglied schlangenglied = new Schlangenglied();
