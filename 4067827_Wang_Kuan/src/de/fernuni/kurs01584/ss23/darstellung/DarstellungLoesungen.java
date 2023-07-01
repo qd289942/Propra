@@ -8,7 +8,8 @@ import de.fernuni.kurs01584.ss23.modell.*;
 
 public class DarstellungLoesungen {
     public static void main(String[] args) throws Exception {
-        String filePath = "C:\\Users\\Kuan\\Desktop\\Practice\\programming_practice\\dataoutput.xml";
+        String filePath = "C:\\Users\\Kuan\\Desktop\\Probleminstanzen2\\sj_p6_loesung.xml";
+        // String filePath = "C:\\Users\\Kuan\\Desktop\\Practice\\programming_practice\\dataoutput.xml";
         Schlangenjagd schlangenjagd = DateneinlesenmitSchlangen.parseXMLmitSchlangen(filePath);
         
         //System.out.println("ÄÖÜ");
@@ -35,8 +36,7 @@ public class DarstellungLoesungen {
         }
        
         
-        System.out.println("");
-        System.out.println("Zeichendschungel: ");
+        System.out.println("\nZeichendschungel: ");
         Dschungel dschungel = schlangenjagd.getDschungel();
         List<Feld> felder = dschungel.getFelder();
         String highlightEscapeSequence = "\u001B[31m";
@@ -90,13 +90,12 @@ public class DarstellungLoesungen {
 
         }
         //Zeile und Spalte der aufeinanderfolgenden Schlangenglieder
-        System.out.println("");
-        System.out.println("");
-        System.out.println("Schlangenglieder (Zeile, Spalte): ");
+
+        System.out.println("\n\nSchlangenglieder (Zeile, Spalte): ");
         
         int schlangecount = 1;
         for (Schlange schlange :  schlangen) {
-            System.out.print("Schlange_" + schlangecount +" : ");
+            System.out.print("\nSchlange_" + schlangecount +" : ");
             for (Schlangenglied schlangeglied : schlange.getSchlangengliedmenge()) {
                 System.out.print("(" + schlangeglied.getFeld().getZeile() + "," + schlangeglied.getFeld().getSpalte() + "); ");
             }

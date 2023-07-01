@@ -7,7 +7,8 @@ import de.fernuni.kurs01584.ss23.modell.*;
 
 public class DarstellungProbleminstanzen {
     public static void main(String[] args) throws Exception {
-        String filePath = "C:\\Users\\Kuan\\Desktop\\Practice\\programming_practice\\datainput.xml";
+        String filePath = "C:\\Users\\Kuan\\Desktop\\Probleminstanzen2\\sj_p6_probleminstanz.xml";
+        //String filePath = "C:\\Users\\Kuan\\Desktop\\Practice\\programming_practice\\datainput.xml";
         Schlangenjagd schlangenjagd = DateneingabeXML.parseXML(filePath);
         
         //System.out.println("ÄÖÜ");
