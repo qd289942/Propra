@@ -55,6 +55,7 @@ public class SchlangenSuche {
         // erzeuge zulässige Startfelder
         List<Feld> felder = schlangenjagd.getDschungel().getFelder();
         List<Feld> startFelder = erzeugZulaessigeStartFelder(felder);
+        List<Schlangenart> schlangenarten = schlangenjagd.getSchlangenarten();
 
         if (startFelder.isEmpty()) {
             System.out.println("bisherige maximale Punktzahl: " + maximalePunkt);
@@ -63,34 +64,47 @@ public class SchlangenSuche {
         // priorisiere und sortiere zulässige Startfelder
         priorisieren(startFelder);
 
-        List<Schlangenart> schlangenarten = schlangenjagd.getSchlangenarten();
-
 
         for (Feld feld : startFelder) {
-            // bestimme zulässige Schlangenarten für Startfeld
-            List<Schlangenart> startSchlangenarten = erzeugZulassigeSchlangenart(schlangenarten, feld);
-            if (!startSchlangenarten.isEmpty()) {
-                // priorisiere und sortiere zulässige Schlangenarten
-                priorisieren(startSchlangenarten);
-                
-                feld.setVerwendbarkeit(feld.getVerwendbarkeit() - 1);
+            // Überprüft trotzdem Verwendbarkeit wegen der Änderung durch Einsetzen der Nachbarfelder
+            if (feld.getVerwendbarkeit() > 0) {
+                // bestimme zulässige Schlangenarten für Startfeld
+                List<Schlangenart> startSchlangenarten = erzeugZulassigeSchlangenart(schlangenarten, feld);
+                if (!startSchlangenarten.isEmpty()) {
+                    // priorisiere und sortiere zulässige Schlangenarten
+                    priorisieren(startSchlangenarten);
 
-                for (Schlangenart schlangenart : startSchlangenarten) {
-                    // erzeuge neue Schlange mit Schlangenkopf für Schlangenart
-                    Schlange schlange = new Schlange();
-                    schlange.setSchlangenart(schlangenart);
-                    //schlangen.add(schlange);
-                    Schlangenglied schlangenkopf = new Schlangenglied();
-                    // setze Schlangenkopf auf Startfeld
-                    schlangenkopf.setFeld(feld);
-                    // erstellt neue schlangengliedList und setzt schlangenkopf in schlangengliedList
-                    List<Schlangenglied> schlangengliedList = new ArrayList<>();
-                    schlangengliedList.add(schlangenkopf);
-                    // suche Schlangenglieden mit Schlangenkopf
-                    sucheSchlangenglied(schlangengliedList,schlangenkopf,schlange,startFelder,schlangenjagd,loesung,maximalePunkt);
-                    // entferne Schlangenkopf und Schlange
-                    schlangenjagd.getSchlangen().remove(schlange);
+                    feld.setVerwendbarkeit(feld.getVerwendbarkeit() - 1);
 
+                    for (Schlangenart schlangenart : startSchlangenarten) {
+                        // Überprüft trotzdem Verwendbarkeit wegen der Änderung durch Einsetzen der Schlange
+                        if (schlangenart.getVerwendbarkeit() > 0) {
+                            // schlangenart Anzahl - 1
+                            schlangenart.setAnzahl(schlangenart.getVerwendbarkeit() - 1);
+                            // erzeuge neue Schlange mit Schlangenkopf für Schlangenart
+                            Schlange schlange = new Schlange();
+                            schlange.setSchlangenart(schlangenart);
+                            //schlangen.add(schlange);
+                            Schlangenglied schlangenkopf = new Schlangenglied();
+                            // setze Schlangenkopf auf Startfeld
+                            schlangenkopf.setFeld(feld);
+                            // erstellt neue schlangengliedList und setzt schlangenkopf in schlangengliedList
+                            List<Schlangenglied> schlangengliedList = new ArrayList<>();
+                            schlangengliedList.add(schlangenkopf);
+                            // suche Schlangenglieden mit Schlangenkopf
+                            sucheSchlangenglied(schlangenjagd,schlangengliedList,schlangenkopf,schlange,startFelder);
+                            // keine Schlange für diese Schlangenart gefunden
+                            if (schlange.getSchlangengliedmenge() == null) {
+                                // Anzahl zurücksetzen
+                                schlangenart.setAnzahl(schlangenart.getVerwendbarkeit() + 1);
+                            }
+                            // entferne Schlangenkopf, Schlangenglied und Schlange
+                            schlangengliedList = null;
+                            schlange = null;
+                            schlangenkopf = null;
+
+                        }
+                    }
                 }
             }
 
@@ -99,7 +113,7 @@ public class SchlangenSuche {
 
     }
 
-    private static void sucheSchlangenglied (List<Schlangenglied> schlangengliedList, Schlangenglied voherigesGlied, Schlange schlange,  List<Feld> priorisierteFelder, Schlangenjagd schlangenjagd, Schlangenjagd loesung, int maximalePunkt) throws Exception {
+    private static void sucheSchlangenglied (Schlangenjagd schlangenjagd, List<Schlangenglied> schlangengliedList, Schlangenglied voherigesGlied, Schlange schlange,  List<Feld> priorisierteFelder) throws Exception {
 
         // erzeuge zulässige Nachbarfelder für vorherigesGlied
         int indexVorherigesGlied = schlangengliedList.indexOf(voherigesGlied);
@@ -109,12 +123,12 @@ public class SchlangenSuche {
         if (nachbarFelder.isEmpty()) {
             // prüft, ob Schlange vollständig ist nach Schlangenart
             if (schlangengliedList.size() == schlange.getSchlangenart().getZeichenkette().length()) {
-                schlange.setSchlangengliedmenge(schlangengliedList);
-
+                schlange.setSchlangengliedmenge(schlangengliedList); 
                 if (schlangenjagd.getSchlangen() == null) {
                     List<Schlange> schlangen = new ArrayList<>();
                     schlangen.add(schlange);
                     schlangenjagd.setSchlangen(schlangen);
+                    schlangen = null;
                 }
                 else {
                     schlangenjagd.getSchlangen().add(schlange);
@@ -122,30 +136,40 @@ public class SchlangenSuche {
             }
 
             else {
-                // Verwendbarkeit zurücksetzen falls keine vollständige Schlange gefunden wird
-                for (Schlangenglied schlangenglied : schlangengliedList) {
-                    schlangenglied.getFeld().setVerwendbarkeit(schlangenglied.getFeld().getVerwendbarkeit() + 1);
-                }
+                // ein Schritt zurück falls keine vollständige Schlange gefunden wird
+                voherigesGlied.getFeld().setVerwendbarkeit(voherigesGlied.getFeld().getVerwendbarkeit() + 1);
+                // letzte Element in schlangengliedList entfernen
+                schlangengliedList.remove(schlangengliedList.size() - 1);
+
             }
-
-
-            sucheSchlange(schlangenjagd, loesung, maximalePunkt);
             return;
 
         }
-        // priorisiere und sortiere zulässige Nachbarfelder
-        priorisieren(nachbarFelder);
 
-        for (Feld nachbarFeld: nachbarFelder) {
-            Schlangenglied nachbarSchlangenglied = new Schlangenglied();
-            // setze Schlangenglied auf Nachbarfeld
-            nachbarSchlangenglied.setFeld(nachbarFeld);
-            // Verwendbarkeit für jede verwendete Feld - 1
-            nachbarFeld.setVerwendbarkeit(nachbarFeld.getVerwendbarkeit() - 1);
-            schlangengliedList.add(nachbarSchlangenglied);
-            sucheSchlangenglied(schlangengliedList, nachbarSchlangenglied, schlange, priorisierteFelder, schlangenjagd, loesung, maximalePunkt);
-            // entferne Schlangenglied
-            schlange.setSchlangengliedmenge(null);
+        else {
+            // priorisiere und sortiere zulässige Nachbarfelder
+            priorisieren(nachbarFelder);
+
+            for (Feld nachbarFeld: nachbarFelder) {
+                // Überprüft trotzdem Verwendbarkeit wegen der Änderung durch Einsetzen der Nachbarfelder
+                if (nachbarFeld.getVerwendbarkeit() > 0) {
+                    Schlangenglied nachbarSchlangenglied = new Schlangenglied();
+                    // setze Schlangenglied auf Nachbarfeld
+                    nachbarSchlangenglied.setFeld(nachbarFeld);
+                    // Verwendbarkeit für jede verwendete Feld - 1
+                    nachbarFeld.setVerwendbarkeit(nachbarFeld.getVerwendbarkeit() - 1);
+                    schlangengliedList.add(nachbarSchlangenglied);
+                    sucheSchlangenglied(schlangenjagd, schlangengliedList, nachbarSchlangenglied, schlange, priorisierteFelder);
+                    if (schlange.getSchlangengliedmenge() != null) {
+                        break;
+                    }
+                    nachbarSchlangenglied = null;
+                }
+
+            }
+
+
+            return;
         }
     }
 
@@ -165,7 +189,7 @@ public class SchlangenSuche {
         List<Schlangenart> startSchlangenarten = new ArrayList<>();
         for (Schlangenart schlangenart : schlangenarten) {
             String firstZeichen = String.valueOf(schlangenart.getZeichenkette().charAt(0));
-            if (feld.getZeichen().equals(firstZeichen)) {
+            if (feld.getZeichen().equals(firstZeichen) && schlangenart.getVerwendbarkeit() > 0) {
                 startSchlangenarten.add(schlangenart);
             }
         }
@@ -173,18 +197,6 @@ public class SchlangenSuche {
         return startSchlangenarten;
     }
 
-    private static <T extends Priorisierbar> void priorisieren(List<T> list) {
-        Comparator<T> comparator = new Comparator<T>() {
-            @Override
-            public int compare(T o1, T o2) {
-                Integer punkt1 = o1.getPunkte();
-                Integer punkt2 = o2.getPunkte();
-                return punkt2.compareTo(punkt1);
-            }
-        };
-
-        Collections.sort(list, comparator);
-    }
 
     private static List<Feld> erzeugZulaessigeNachbarFelder (Schlangenart schlangenart, Schlangenglied voherigesGlied, int index, List<Feld> startfelder) {
 
@@ -224,6 +236,30 @@ public class SchlangenSuche {
 
         return nachbarfelder;
 
+    }
+
+    // Priorisieren 1. Punkte 2. Verwendbarkeit
+    private static <T extends Priorisierbar> void priorisieren(List<T> list) {
+        Comparator<T> comparator_1 = new Comparator<T>() {
+            @Override
+            public int compare(T o1, T o2) {
+                Integer punkt1 = o1.getPunkte();
+                Integer punkt2 = o2.getPunkte();
+                return punkt2.compareTo(punkt1);
+            }
+        };
+
+        Comparator<T> comparator_2 = new Comparator<T>() {
+            @Override
+            public int compare(T o1, T o2) {
+                Integer verwendbarkeit1 = o1.getVerwendbarkeit();
+                Integer verwendbarkeit2 = o2.getVerwendbarkeit();
+                return verwendbarkeit2.compareTo(verwendbarkeit1);
+            }
+        };
+
+        Collections.sort(list, comparator_1);
+        Collections.sort(list, comparator_2);
     }
 
     private static double zeitUmrechunung(String einheit, double inputZeit) {

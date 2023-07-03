@@ -69,6 +69,7 @@ public class Feld implements Priorisierbar{
     public void setSpalte(int spalte) {
         this.spalte = spalte;
     }
+    @Override
     public int getVerwendbarkeit() {
         return verwendbarkeit;
     }

@@ -30,7 +30,7 @@ public class DarstellungProbleminstanzen {
         List<Schlangenart> schlangenarten = schlangenjagd.getSchlangenarten();
         
         for (Schlangenart schlangenart : schlangenarten) {
-            System.out.println(schlangenart.getId() + ": Zeichenkette: " + schlangenart.getZeichenkette() + "; Nachbarschaftsstruktur: " + schlangenart.getNachStr().getTyp() + "; Punkten: " + schlangenart.getPunkte() + "; Anzahl: " + schlangenart.getAnzahl());
+            System.out.println(schlangenart.getId() + ": Zeichenkette: " + schlangenart.getZeichenkette() + "; Nachbarschaftsstruktur: " + schlangenart.getNachStr().getTyp() + "; Punkten: " + schlangenart.getPunkte() + "; Anzahl: " + schlangenart.getVerwendbarkeit());
         }
         
         System.out.println();

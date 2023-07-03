@@ -57,7 +57,8 @@ public class Schlangenart implements Priorisierbar{
         this.punkte = punkte;
     }
 
-    public int getAnzahl() {
+    @Override
+    public int getVerwendbarkeit() {
         return anzahl;
     }
 
