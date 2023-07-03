@@ -1,10 +1,10 @@
 package de.fernuni.kurs01584.ss23.modell;
 
-public class Schlangenart {
+public class Schlangenart implements Priorisierbar{
     // TODO: Attribute
     private String id;
     // Standarwert 1
-    private int punkte = 1;
+    private int punkte;
     private int anzahl;
     private String zeichenkette;
     private Nachbarschaftsstruktur nachStr;
@@ -48,6 +48,7 @@ public class Schlangenart {
         this.id = id;
     }
 
+    @Override
     public int getPunkte() {
         return punkte;
     }

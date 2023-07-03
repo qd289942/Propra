@@ -1,12 +1,11 @@
 package de.fernuni.kurs01584.ss23.modell;
 
-public class Feld {
+public class Feld implements Priorisierbar{
     private String id;
     private int zeile;
     private int spalte;
-    // Set default value of verwendbarkeit and punkt
-    private int verwendbarkeit = 1;
-    private int punkte = 1;
+    private int verwendbarkeit;
+    private int punkte;
     private String zeichen;
 
 
@@ -76,6 +75,7 @@ public class Feld {
     public void setVerwendbarkeit(int verwendbarkeit) {
         this.verwendbarkeit = verwendbarkeit;
     }
+    @Override
     public int getPunkte() {
         return punkte;
     }
