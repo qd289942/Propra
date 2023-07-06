@@ -13,7 +13,21 @@ public class DatenausgabeXML {
     public static void writeXML(Schlangenjagd schlangenjagd, String filePath) throws Exception {
             // Root Element Schlangenjagd erstellen
             Element rootElement = new Element("Schlangenjagd");
-
+            
+            // Zeit Element erstellen
+            Element zeitElement = new Element("Zeit");
+            zeitElement.setAttribute("einheit", schlangenjagd.getZeit().getEinheit());
+            
+            Element vorgabeElement = new Element("Vorgabe");
+            vorgabeElement.setText(Double.toString(schlangenjagd.getZeit().getVorgabe()));
+            Element abgabeElement = new Element("Abgabe");
+            abgabeElement.setText(Double.toString(schlangenjagd.getZeit().getAbgabe()));
+            
+            zeitElement.addContent(vorgabeElement);
+            zeitElement.addContent(abgabeElement);
+            
+            rootElement.addContent(zeitElement);
+            
             // Schlangen Element erstellen
             Element schlangenElement = new Element("Schlangen");
             
@@ -33,7 +47,7 @@ public class DatenausgabeXML {
             }
             // füge Schlangen Element in Root Element hinzu
             rootElement.addContent(schlangenElement);
-
+            
             // Dokument erstellen und rootElement zuweisen
             Document document = new Document(rootElement);
 
@@ -46,6 +60,6 @@ public class DatenausgabeXML {
             xmlOutputter.output(document, fileWriter);
             fileWriter.close();
 
-            System.out.println("XML Datei wurde erfolgreich überschrieben: " + filePath);
+            System.out.println("XML Datei wurde erfolgreich ueberschrieben: " + filePath);
     }
 }

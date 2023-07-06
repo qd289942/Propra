@@ -8,47 +8,18 @@ import de.fernuni.kurs01584.ss23.modell.*;
 
 public class SchlangenSuche {
 
-    public static void sucheSchlange(Schlangenjagd schlangenjagd, Schlangenjagd loesung, int maximalePunkt) throws Exception {
-
-        String outputFilePath = "C:\\Users\\Kuan\\Desktop\\Probleminstanzen2\\sj_p6_probleminstanz.xml";
+    public static void sucheSchlange(Schlangenjagd schlangenjagd, String outputFilePath) throws Exception {
+        
+        // Programm staten
+        long startZeit = System.currentTimeMillis();
         int aktuellePunkt = 0;
-        long startZeit = System.currentTimeMillis();     
-
-        // Rechne aktuelle gesamte Punktzahl aus Schlangen
-
-
-        if (schlangenjagd.getSchlangen() != null) {
-            for (Schlange schlange : schlangenjagd.getSchlangen()) {
-                int schlangenartPunkt = schlange.getSchlangenart().getPunkte();
-                List<Schlangenglied> schlangenglieden = schlange.getSchlangengliedmenge();
-                int summenFeldPunkt = 0;
-                for (Schlangenglied schlangengiled : schlangenglieden) {
-                    summenFeldPunkt += schlangengiled.getFeld().getPunkte();
-                }
-                int schlangePunkt = schlangenartPunkt + summenFeldPunkt;
-                aktuellePunkt += schlangePunkt;
-            }
-        }
-
-
-        if (aktuellePunkt > maximalePunkt) { 
-            loesung = schlangenjagd;
-            maximalePunkt = aktuellePunkt;
-        }
-
 
         // Umrechnung der Zeiteinheit
         String einheit = schlangenjagd.getZeit().getEinheit();
         double zeitVorgabe = schlangenjagd.getZeit().getVorgabe();
-
         double zeitVorgabeUmgerechnet = zeitUmrechunung(einheit, zeitVorgabe);
-        long currentZeit = System.currentTimeMillis();
-        long zeitInterval = currentZeit - startZeit;
-        if (zeitInterval >= zeitVorgabeUmgerechnet) {
-            //DatenausgabeXML.writeXML(lösung, outputFilePath);
-            System.out.println("bisherige maximale Punktzahl: " + maximalePunkt);
-            return;
-        }
+
+
 
 
 
@@ -58,7 +29,7 @@ public class SchlangenSuche {
         List<Schlangenart> schlangenarten = schlangenjagd.getSchlangenarten();
 
         if (startFelder.isEmpty()) {
-            System.out.println("bisherige maximale Punktzahl: " + maximalePunkt);
+            System.out.println("bisherige maximale Punktzahl: " + aktuellePunkt);
             return;
         }
         // priorisiere und sortiere zulässige Startfelder
@@ -77,62 +48,65 @@ public class SchlangenSuche {
                     feld.setVerwendbarkeit(feld.getVerwendbarkeit() - 1);
 
                     for (Schlangenart schlangenart : startSchlangenarten) {
-                        // Überprüft trotzdem Verwendbarkeit wegen der Änderung durch Einsetzen der Schlange
-                        if (schlangenart.getVerwendbarkeit() > 0) {
-                            // schlangenart Anzahl - 1
-                            schlangenart.setAnzahl(schlangenart.getVerwendbarkeit() - 1);
-                            // erzeuge neue Schlange mit Schlangenkopf für Schlangenart
-                            Schlange schlange = new Schlange();
-                            schlange.setSchlangenart(schlangenart);
-                            //schlangen.add(schlange);
-                            Schlangenglied schlangenkopf = new Schlangenglied();
-                            // setze Schlangenkopf auf Startfeld
-                            schlangenkopf.setFeld(feld);
-                            // erstellt neue schlangengliedList und setzt schlangenkopf in schlangengliedList
-                            List<Schlangenglied> schlangengliedList = new ArrayList<>();
-                            schlangengliedList.add(schlangenkopf);
-                            // suche Schlangenglieden mit Schlangenkopf
-                            sucheSchlangenglied(schlangenjagd,schlangengliedList,schlangenkopf,schlange,startFelder);
-                            // keine Schlange für diese Schlangenart gefunden
-                            if (schlange.getSchlangengliedmenge() == null) {
-                                // Anzahl zurücksetzen
-                                schlangenart.setAnzahl(schlangenart.getVerwendbarkeit() + 1);
-                            }
-                            // entferne Schlangenkopf, Schlangenglied und Schlange
-                            schlangengliedList = null;
-                            schlange = null;
-                            schlangenkopf = null;
-
+                        // erzeuge neue SchlangeList mit Schlangenkopf für Schlangenart
+                        Schlangenglied schlangenkopf = new Schlangenglied();
+                        List<Schlange> schlangeList = new ArrayList<>();
+                        // setze Schlangenkopf auf Startfeld
+                        schlangenkopf.setFeld(feld);
+                        // erstellt neue schlangengliedList und setzt schlangenkopf in schlangengliedList
+                        List<Schlangenglied> schlangengliedList = new ArrayList<>();
+                        schlangengliedList.add(schlangenkopf);
+                        // flag dient als Zeichen dass unter dem Schlangekopf Schlange gefunden wird
+                        boolean flag = false;
+                        // suche Schlangenglieden mit Schlangenkopf
+                        sucheSchlangenglied(flag,schlangenjagd,schlangengliedList,schlangenkopf,schlangeList,schlangenart,startFelder);
+                        if (flag = true) {
+                            break;
                         }
+                        // entferne Schlangenkopf, Schlangenglied und Schlange
+                        schlangengliedList = null;
+                        schlangeList = null;
+                        schlangenkopf = null;
+
                     }
                 }
+                // Rechne aktuelle gesamte Punktzahl aus Schlangen
+                aktuellePunkt = rechnePunkt(schlangenjagd, aktuellePunkt);
+                // Prüft, ob Zeitvorgabe überschritten ist
+                zeitVorgabePruefen(schlangenjagd,startZeit,zeitVorgabeUmgerechnet,outputFilePath,aktuellePunkt);
             }
 
         }
+        
+        double zeitinterval = System.currentTimeMillis() - startZeit;
+        schlangenjagd.getZeit().setAbgabe(zeitinterval);
+        System.out.println("maximale Punkt: " + aktuellePunkt);
         return;
 
     }
 
-    private static void sucheSchlangenglied (Schlangenjagd schlangenjagd, List<Schlangenglied> schlangengliedList, Schlangenglied voherigesGlied, Schlange schlange,  List<Feld> priorisierteFelder) throws Exception {
-
+    private static void sucheSchlangenglied (boolean flag, Schlangenjagd schlangenjagd, List<Schlangenglied> schlangengliedList, Schlangenglied voherigesGlied, List<Schlange> schlangeList, Schlangenart schlangenart,  List<Feld> priorisierteFelder) throws Exception {
+        
         // erzeuge zulässige Nachbarfelder für vorherigesGlied
         int indexVorherigesGlied = schlangengliedList.indexOf(voherigesGlied);
-        List <Feld> nachbarFelder = erzeugZulaessigeNachbarFelder(schlange.getSchlangenart(), voherigesGlied, indexVorherigesGlied , priorisierteFelder);
+        List <Feld> nachbarFelder = erzeugZulaessigeNachbarFelder(schlangenart, voherigesGlied, indexVorherigesGlied , priorisierteFelder);
 
         // Wenn vorherigesGlied ist letztes Schlangenglied
         if (nachbarFelder.isEmpty()) {
             // prüft, ob Schlange vollständig ist nach Schlangenart
-            if (schlangengliedList.size() == schlange.getSchlangenart().getZeichenkette().length()) {
+            if (schlangengliedList.size() == schlangenart.getZeichenkette().length()) {
+                Schlange schlange = new Schlange();
+                schlange.setSchlangenart(schlangenart);
                 schlange.setSchlangengliedmenge(schlangengliedList); 
+                schlangeList.add(schlange);
                 if (schlangenjagd.getSchlangen() == null) {
-                    List<Schlange> schlangen = new ArrayList<>();
-                    schlangen.add(schlange);
-                    schlangenjagd.setSchlangen(schlangen);
-                    schlangen = null;
+                    schlangenjagd.setSchlangen(schlangeList);
                 }
                 else {
-                    schlangenjagd.getSchlangen().add(schlange);
+                    schlangenjagd.getSchlangen().addAll(schlangeList);
                 }
+                flag = true;
+                schlange = null;
             }
 
             else {
@@ -159,10 +133,8 @@ public class SchlangenSuche {
                     // Verwendbarkeit für jede verwendete Feld - 1
                     nachbarFeld.setVerwendbarkeit(nachbarFeld.getVerwendbarkeit() - 1);
                     schlangengliedList.add(nachbarSchlangenglied);
-                    sucheSchlangenglied(schlangenjagd, schlangengliedList, nachbarSchlangenglied, schlange, priorisierteFelder);
-                    if (schlange.getSchlangengliedmenge() != null) {
-                        break;
-                    }
+                    sucheSchlangenglied(flag, schlangenjagd, schlangengliedList,nachbarSchlangenglied,schlangeList,schlangenart,priorisierteFelder);
+                    // Entfernung des nachbarSchlangenglied
                     nachbarSchlangenglied = null;
                 }
 
@@ -223,7 +195,7 @@ public class SchlangenSuche {
                         else {
                             // Es gibt zwei Parametern für Sprung Typ
                             int parameter_1 = parameters.get(0).getWert();
-                            int parameter_2 = parameters.get(0).getWert();
+                            int parameter_2 = parameters.get(1).getWert();
 
                             if ((Math.abs(nachbarFeld.getSpalte() - feldSpalte) == parameter_1 && Math.abs(nachbarFeld.getZeile() - feldZeile) == parameter_2) || (Math.abs(nachbarFeld.getSpalte() - feldSpalte) == parameter_2 && Math.abs(nachbarFeld.getZeile() - feldZeile) == parameter_1)) {
                                 nachbarfelder.add(nachbarFeld);
@@ -281,7 +253,7 @@ public class SchlangenSuche {
         return umgerechnetZeit;
     }
 
-    public static long convertToMilliseconds(double time, TimeUnit unit) {
+    private static long convertToMilliseconds(double time, TimeUnit unit) {
         long milliseconds;
 
         switch (unit) {
@@ -312,4 +284,34 @@ public class SchlangenSuche {
 
         return milliseconds;
     }
+    
+    private static int rechnePunkt(Schlangenjagd schlangenjagd, int bisherigePunkt) {
+        // Rechne aktuelle gesamte Punktzahl aus Schlangen
+        int Punktzahl = 0;
+        if (schlangenjagd.getSchlangen() != null) {
+            for (Schlange schlange : schlangenjagd.getSchlangen()) {
+                int schlangenartPunkt = schlange.getSchlangenart().getPunkte();
+                List<Schlangenglied> schlangenglieden = schlange.getSchlangengliedmenge();
+                int summenFeldPunkt = 0;
+                for (Schlangenglied schlangengiled : schlangenglieden) {
+                    summenFeldPunkt += schlangengiled.getFeld().getPunkte();
+                }
+                int schlangePunkt = schlangenartPunkt + summenFeldPunkt;
+                Punktzahl += schlangePunkt;
+            }
+        }
+        
+        return Punktzahl > bisherigePunkt ? Punktzahl:bisherigePunkt;
+    }
+    
+    private static void zeitVorgabePruefen(Schlangenjagd schlangenjagd, long startZeit, double zeitVorgabeUmgerechnet, String outputFilePath, int aktuellePunkt) throws Exception {
+        
+        long zeitInterval = System.currentTimeMillis() - startZeit;
+        if (zeitInterval >= zeitVorgabeUmgerechnet) {
+            DatenausgabeXML.writeXML(schlangenjagd, outputFilePath);
+            System.out.println("bisherige maximale Punktzahl: " + aktuellePunkt);
+            System.exit(0);
+        }
+    }
+    
 }
