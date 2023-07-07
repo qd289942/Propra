@@ -1,17 +1,82 @@
 package de.fernuni.kurs01584.ss23.hauptkomponente;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import de.fernuni.kurs01584.ss23.algorithmus.SchlangenSuche;
+import de.fernuni.kurs01584.ss23.darstellung.DarstellungLoesungen;
 import de.fernuni.kurs01584.ss23.dateiverarbeitung.DateneingabeXML;
 import de.fernuni.kurs01584.ss23.modell.*;
 
 
 public class Schlangenjagd implements SchlangenjagdAPI {
     // TODO: Implementierung von Schnittstelle und Programm-Einstieg
-    public static void main (String[] args) {
+    public static void main (String[] args) throws Exception {
         
+        // Kommandozeilenparameter zuweisen
+        String ablauf = args[0];
+        String eingabe = args[1];
+        String ausgabe = args[2];
+        
+        // Kommandozeilenparameter überprüfen
+        if (args.length != 3) {
+            System.out.println("biite nochmal Kommandozeilenparametern angeben!");
+            return;
+        }
+
+
+        // prüft alle 3 Parametern vollständig angegeben werden
+        /*if (args.length != 3) {
+            System.out.println("Kommandozeilenparametern werden falsch eingegeben!");
+            return;
+        }*/
+
+        // Erstellen neue Objekt von Hauptkomponent Schlangenjagd
+        Schlangenjagd schlangenjagd = new Schlangenjagd();
+
+        for (char c: ablauf.toCharArray()) {
+            switch (c) {
+            case 'l':
+                boolean flag = schlangenjagd.loeseProbleminstanz(eingabe, ausgabe);
+                if (flag == false) {
+                    System.out.println("keine Schlange gefunden.");
+                }
+                break;
+
+                /*case 'e':
+                schlangenjagd.loeseProbleminstanz(eingabe, ausgabe);
+                break;*/
+
+            case 'd':
+                schlangenjagd.darstellung(eingabe, ausgabe);
+                break;
+
+            case 'p':
+                List<Fehlertyp> fehlerTypList = schlangenjagd.pruefeLoesung(ausgabe);
+                System.out.println("\n\nFehlertyp und Anzahl: ");
+                if (fehlerTypList.isEmpty()) {
+                    System.out.println("keine Fehlern gefunden");
+                }
+                // Bei Unzulässigkeit werden die Art und Anzahl der verletzten Bedingungen in der Konsole ausgegeben
+                Map<Fehlertyp, Long> countMap = fehlerTypList.stream()
+                        .collect(Collectors.groupingBy(fehlertyp -> fehlertyp, Collectors.counting()));
+                for (Entry<Fehlertyp, Long> entry : countMap.entrySet()) {
+                    System.out.println(entry.getKey() + ": " + entry.getValue());
+                }
+                break;
+
+            case 'b':
+                int gesamtPunkte = schlangenjagd.bewerteLoesung(ausgabe);
+                System.out.println("\nGesamtPunkt: " + gesamtPunkte);
+                break;
+
+            default:
+                System.out.println("ungültige ablauf Parameter");
+                return;
+            }
+        }
+
     }
     @Override
     public boolean loeseProbleminstanz(String xmlEingabeDatei, String xmlAusgabeDatei) throws Exception {
@@ -19,7 +84,12 @@ public class Schlangenjagd implements SchlangenjagdAPI {
         de.fernuni.kurs01584.ss23.modell.Schlangenjagd schlangenjagd = DateneingabeXML.parseXML(xmlEingabeDatei);
         // Probleminstanz wird gelöst und in AusgabeDatei gespeichert
         SchlangenSuche.sucheSchlange(schlangenjagd, xmlAusgabeDatei);
-        return true;
+        if (schlangenjagd.getSchlangen() != null && !schlangenjagd.getSchlangen().isEmpty()) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override
@@ -42,7 +112,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
             }
 
             for (Schlangenglied schlangenglied: schlange.getSchlangengliedmenge()) {
-                if (schlangenglied.getFeld().getZeichen().equals(String.valueOf(schlange.getSchlangenart().getZeichenkette().charAt(schlange.getSchlangengliedmenge().indexOf(schlangenglied))))) {
+                if (!schlangenglied.getFeld().getZeichen().equals(String.valueOf(schlange.getSchlangenart().getZeichenkette().charAt(schlange.getSchlangengliedmenge().indexOf(schlangenglied))))) {
                     fehlertypList.add(Fehlertyp.ZUORDNUNG);
                 }
 
@@ -56,7 +126,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                     String Typ = schlange.getSchlangenart().getNachStr().getTyp();
                     List<Parameter> parameters = schlange.getSchlangenart().getNachStr().getParameters();
 
-                    if (Typ == "Distanz") {
+                    if (Typ.equals("Distanz")) {
                         Parameter parameter = parameters.get(0);
                         int wert = parameter.getWert();
                         if (Math.abs(vorherigesGlied.getFeld().getSpalte() - schlangenglied.getFeld().getSpalte()) > wert || Math.abs(vorherigesGlied.getFeld().getZeile() - schlangenglied.getFeld().getZeile()) > wert) {
@@ -64,12 +134,10 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                         }
                     }
                     else {
-                        List<Integer> werts = new ArrayList<>();
-                        for (Parameter parameter : parameters) {
-                            werts.add(parameter.getWert());
-                        }
+                        int parameter_1 = parameters.get(0).getWert();
+                        int parameter_2 = parameters.get(1).getWert();
 
-                        if ((Math.abs(vorherigesGlied.getFeld().getSpalte() - schlangenglied.getFeld().getSpalte()) == werts.get(0) && Math.abs(vorherigesGlied.getFeld().getZeile() - schlangenglied.getFeld().getZeile()) == werts.get(1)) || (Math.abs(vorherigesGlied.getFeld().getSpalte() - schlangenglied.getFeld().getSpalte()) == werts.get(1) && Math.abs(vorherigesGlied.getFeld().getZeile() - schlangenglied.getFeld().getZeile()) == werts.get(0))) {}
+                        if ((Math.abs(vorherigesGlied.getFeld().getSpalte() - schlangenglied.getFeld().getSpalte()) == parameter_1 && Math.abs(vorherigesGlied.getFeld().getZeile() - schlangenglied.getFeld().getZeile()) == parameter_2 || (Math.abs(vorherigesGlied.getFeld().getSpalte() - schlangenglied.getFeld().getSpalte()) == parameter_2 && Math.abs(vorherigesGlied.getFeld().getZeile() - schlangenglied.getFeld().getZeile()) == parameter_1))) {}
                         else {
                             fehlertypList.add(Fehlertyp.NACHBARSCHAFT);
                         }
@@ -92,11 +160,24 @@ public class Schlangenjagd implements SchlangenjagdAPI {
     }
 
     @Override
+    public void darstellung(String xmlEingabeDatei, String xmlAusgabeDatei) throws Exception {
+        if (!xmlEingabeDatei.equals("")) {
+        de.fernuni.kurs01584.ss23.modell.Schlangenjagd probleminstanz = DateneingabeXML.parseXML(xmlEingabeDatei);
+        de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = DateneingabeXML.parseXMLmitSchlangen(xmlAusgabeDatei);
+        DarstellungLoesungen.probleminstanzDarstellen(xmlEingabeDatei, probleminstanz);
+        DarstellungLoesungen.loesungDarstellen(xmlAusgabeDatei, loesung);}
+        else {
+            de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = DateneingabeXML.parseXMLmitSchlangen(xmlAusgabeDatei);
+            DarstellungLoesungen.loesungDarstellen(xmlAusgabeDatei, loesung);
+        }
+    }
+
+    @Override
     public String getName() {
         // TODO Implementierung der API-Methode zur Rueckgabe Ihres vollstaenigen Namens.
         String vorname = "Kuan";
         String nachname = "Wang";
-        
+
         return nachname + ", " + vorname;
     }
 

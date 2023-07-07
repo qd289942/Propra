@@ -3,19 +3,22 @@ package de.fernuni.kurs01584.ss23.darstellung;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.fernuni.kurs01584.ss23.dateiverarbeitung.DateneingabeXML;
-import de.fernuni.kurs01584.ss23.dateiverarbeitung.DateneinlesenmitSchlangen;
 import de.fernuni.kurs01584.ss23.modell.*;
 
 public class DarstellungLoesungen {
     public static void loesungDarstellen(String filePath, Schlangenjagd schlangenjagd) throws Exception {
-        System.out.println("Lösungen: ");
-        List<Schlangenart> schlangenarten = schlangenjagd.getSchlangenarten();
+        System.out.println("\nLösungen: \nverwendete Schlangenarten: \n");
+        
+        List<Schlangenart> genutztSchlangenarten = new ArrayList<>();
 
-        for (Schlangenart schlangenart : schlangenarten) {
+        for (Schlange schlange : schlangenjagd.getSchlangen()) {
+            if (!genutztSchlangenarten.contains(schlange.getSchlangenart())) {
+                genutztSchlangenarten.add(schlange.getSchlangenart());
+            }
+        }
+        for (Schlangenart schlangenart : genutztSchlangenarten) {
             System.out.println(schlangenart.getId() + ": Zeichenkette: " + schlangenart.getZeichenkette() + "; Nachbarschaftsstruktur: " + schlangenart.getNachStr().getTyp());
         }
-
         // Hervorhebung der im Zeichendschungel angeordneten Schlange
 
         List<Schlange> schlangen = schlangenjagd.getSchlangen();
@@ -42,7 +45,7 @@ public class DarstellungLoesungen {
         int schlangecount = 1;
         for (List<String> gliedfelderIdList: schlangengliedfelderIdList) {
 
-            System.out.print("\nSchlange_" + schlangecount +" : \n");
+            System.out.print("Schlange_" + schlangecount +" : \n");
             int aktuelleZeile = felder.get(0).getZeile();
             for (Feld feld : felder) {
                 if (aktuelleZeile != feld.getZeile()) {
@@ -57,6 +60,7 @@ public class DarstellungLoesungen {
                 }
 
             }
+            System.out.println();
             schlangecount++;
         }
 

@@ -1,5 +1,6 @@
 package de.fernuni.kurs01584.ss23.algorithmus;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -17,11 +18,6 @@ public class SchlangenSuche {
         // Umrechnung der Zeiteinheit
         String einheit = schlangenjagd.getZeit().getEinheit();
         double zeitVorgabe = schlangenjagd.getZeit().getVorgabe();
-        double zeitVorgabeUmgerechnet = zeitUmrechunung(einheit, zeitVorgabe);
-
-
-
-
 
         // erzeuge zulässige Startfelder
         List<Feld> felder = schlangenjagd.getDschungel().getFelder();
@@ -73,15 +69,15 @@ public class SchlangenSuche {
                 // Rechne aktuelle gesamte Punktzahl aus Schlangen
                 aktuellePunkt = rechnePunkt(schlangenjagd, aktuellePunkt);
                 // Prüft, ob Zeitvorgabe überschritten ist
-                zeitVorgabePruefen(schlangenjagd,startZeit,zeitVorgabeUmgerechnet,outputFilePath,aktuellePunkt);
+                zeitVorgabePruefen(schlangenjagd,startZeit,zeitVorgabe,outputFilePath,aktuellePunkt,einheit);
             }
 
         }
         
         double zeitinterval = System.currentTimeMillis() - startZeit;
-        schlangenjagd.getZeit().setAbgabe(zeitinterval);
+        double zeitintervalUmgerechnet = zeitUmrechunung(einheit, zeitinterval);
+        schlangenjagd.getZeit().setAbgabe(zeitintervalUmgerechnet);
         DatenausgabeXML.writeXML(schlangenjagd, outputFilePath);
-        System.out.println("maximale Punkt: " + aktuellePunkt);
         return;
 
     }
@@ -111,11 +107,6 @@ public class SchlangenSuche {
             }
 
             else {
-                // ein Schritt zurück falls keine vollständige Schlange gefunden wird
-                voherigesGlied.getFeld().setVerwendbarkeit(voherigesGlied.getFeld().getVerwendbarkeit() + 1);
-                // letzte Element in schlangengliedList entfernen
-                schlangengliedList.remove(schlangengliedList.size() - 1);
-
             }
             return;
 
@@ -135,6 +126,7 @@ public class SchlangenSuche {
                     nachbarFeld.setVerwendbarkeit(nachbarFeld.getVerwendbarkeit() - 1);
                     schlangengliedList.add(nachbarSchlangenglied);
                     sucheSchlangenglied(flag, schlangenjagd, schlangengliedList,nachbarSchlangenglied,schlangeList,schlangenart,priorisierteFelder);
+                    if (schlangenjagd.get)
                     // Entfernung des nachbarSchlangenglied
                     nachbarSchlangenglied = null;
                 }
@@ -238,52 +230,48 @@ public class SchlangenSuche {
     private static double zeitUmrechunung(String einheit, double inputZeit) {
         long umgerechnetZeit = 0;
         if (einheit.equals("d")) {
-            umgerechnetZeit = convertToMilliseconds(inputZeit, TimeUnit.DAYS);
+            umgerechnetZeit = MillisecondsconvertTo(inputZeit, TimeUnit.DAYS);
         }
         else if(einheit.equals("h")) {
-            umgerechnetZeit = convertToMilliseconds(inputZeit, TimeUnit.HOURS);
+            umgerechnetZeit = MillisecondsconvertTo(inputZeit, TimeUnit.HOURS);
         }
         else if(einheit.equals("min")) {
-            umgerechnetZeit = convertToMilliseconds(inputZeit, TimeUnit.MINUTES);
+            umgerechnetZeit = MillisecondsconvertTo(inputZeit, TimeUnit.MINUTES);
         }
         else if(einheit.equals("s")) {
-            umgerechnetZeit = convertToMilliseconds(inputZeit, TimeUnit.SECONDS);
+            umgerechnetZeit = MillisecondsconvertTo(inputZeit, TimeUnit.SECONDS);
         }
         else {umgerechnetZeit = (long) inputZeit;}
-
-        return umgerechnetZeit;
+        
+        BigDecimal bd = new BigDecimal(umgerechnetZeit);
+        
+        double roundedNumber = bd.doubleValue();
+        
+        return roundedNumber;
     }
 
-    private static long convertToMilliseconds(double time, TimeUnit unit) {
-        long milliseconds;
+    private static long MillisecondsconvertTo(double time, TimeUnit unit) {
+        long zeit;
 
         switch (unit) {
-        case NANOSECONDS:
-            milliseconds = (long) (time / 1000000);
-            break;
-        case MICROSECONDS:
-            milliseconds = (long) (time / 1000);
-            break;
-        case MILLISECONDS:
-            milliseconds = (long) time;
-            break;
+
         case SECONDS:
-            milliseconds = (long) (time * 1000);
+            zeit = (long) (time / 1000);
             break;
         case MINUTES:
-            milliseconds = (long) (time * 60000);
+            zeit = (long) (time / 60000);
             break;
         case HOURS:
-            milliseconds = (long) (time * 3600000);
+            zeit = (long) (time / 3600000);
             break;
         case DAYS:
-            milliseconds = (long) (time * 86400000);
+            zeit = (long) (time / 86400000);
             break;
         default:
             throw new IllegalArgumentException("ungültige Zeiteinheit: " + unit);
         }
 
-        return milliseconds;
+        return zeit;
     }
     
     public static int rechnePunkt(Schlangenjagd schlangenjagd, int bisherigePunkt) {
@@ -305,12 +293,13 @@ public class SchlangenSuche {
         return Punktzahl > bisherigePunkt ? Punktzahl:bisherigePunkt;
     }
     
-    private static void zeitVorgabePruefen(Schlangenjagd schlangenjagd, long startZeit, double zeitVorgabeUmgerechnet, String outputFilePath, int aktuellePunkt) throws Exception {
+    private static void zeitVorgabePruefen(Schlangenjagd schlangenjagd, long startZeit, double zeitVorgabe, String outputFilePath, int aktuellePunkt, String einheit) throws Exception {
         
-        long zeitInterval = System.currentTimeMillis() - startZeit;
-        if (zeitInterval >= zeitVorgabeUmgerechnet) {
+        double zeitInterval = System.currentTimeMillis() - startZeit;
+        zeitInterval = zeitUmrechunung(einheit, zeitInterval);
+        if (zeitInterval >= zeitVorgabe) {
+            schlangenjagd.getZeit().setAbgabe(zeitVorgabe);;
             DatenausgabeXML.writeXML(schlangenjagd, outputFilePath);
-            System.out.println("bisherige maximale Punktzahl: " + aktuellePunkt);
             System.exit(0);
         }
     }
