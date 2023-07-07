@@ -80,6 +80,7 @@ public class SchlangenSuche {
         
         double zeitinterval = System.currentTimeMillis() - startZeit;
         schlangenjagd.getZeit().setAbgabe(zeitinterval);
+        DatenausgabeXML.writeXML(schlangenjagd, outputFilePath);
         System.out.println("maximale Punkt: " + aktuellePunkt);
         return;
 
@@ -285,7 +286,7 @@ public class SchlangenSuche {
         return milliseconds;
     }
     
-    private static int rechnePunkt(Schlangenjagd schlangenjagd, int bisherigePunkt) {
+    public static int rechnePunkt(Schlangenjagd schlangenjagd, int bisherigePunkt) {
         // Rechne aktuelle gesamte Punktzahl aus Schlangen
         int Punktzahl = 0;
         if (schlangenjagd.getSchlangen() != null) {

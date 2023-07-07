@@ -12,7 +12,6 @@ public class Test {
         String filePath_3 = "C:\\Users\\Kuan\\Desktop\\Probleminstanzen2\\sj_p6_loesung.xml";
         Schlangenjagd schlangenjagd = DateneingabeXML.parseXML(filePath);
         SchlangenSuche.sucheSchlange(schlangenjagd, filePath_2);
-        DatenausgabeXML.writeXML(schlangenjagd, filePath_2);
         DarstellungLoesungen.loesungDarstellen(filePath_3, schlangenjagd);
         //DarstellungLoesungen.probleminstanzDarstellen(filePath_3, schlangenjagd);
     }

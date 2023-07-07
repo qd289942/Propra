@@ -15,8 +15,9 @@ public interface SchlangenjagdAPI {
 	 * @return <tt>true</tt>, wenn mindestens eine Schlange gefunden wurde,
 	 *         ansonsten <tt>false</tt>. Beim Auftreten eines Fehlers wird ebenfalls
 	 *         <tt>false</tt> zurückgegeben.
+	 * @throws Exception 
 	 */
-	public boolean loeseProbleminstanz(String xmlEingabeDatei, String xmlAusgabeDatei);
+	public boolean loeseProbleminstanz(String xmlEingabeDatei, String xmlAusgabeDatei) throws Exception;
 
 	/**
 	 * Liest die Vorgegebene Eingabedatei mit einer (moeglicherweise
@@ -59,8 +60,9 @@ public interface SchlangenjagdAPI {
 	 *                        und der zugehoerigen Loesung.
 	 * @return Liste der gefundenen Einzelfehler. Beim Auftreten eines Fehlers wird
 	 *         eine leere Liste zurueckgegeben.
+	 * @throws Exception 
 	 */
-	public List<Fehlertyp> pruefeLoesung(String xmlEingabeDatei);
+	public List<Fehlertyp> pruefeLoesung(String xmlEingabeDatei) throws Exception;
 
 	/**
 	 * Liest die Probleminstanz und Loesung aus der gegebenen Datei ein und
@@ -73,8 +75,9 @@ public interface SchlangenjagdAPI {
 	 *                        und Loesung.
 	 * @return Erreichte Gesamtpunktzahl. Beim Auftreten eines Fehlers wird der Wert
 	 *         <tt>0</tt> zurueckgegeben.
+	 * @throws Exception 
 	 */
-	public int bewerteLoesung(String xmlEingabeDatei);
+	public int bewerteLoesung(String xmlEingabeDatei) throws Exception;
 
 	/**
 	 * @return Ihr vollstaendiger Name.
