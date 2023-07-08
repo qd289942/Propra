@@ -71,7 +71,7 @@ public class SchlangenSuche {
 				}
 
 				// Prüft, ob Zeitvorgabe überschritten ist
-				//zeitVorgabePruefen(schlangenjagd,startZeit,zeitVorgabe,outputFilePath,aktuellePunkt,einheit);
+				zeitVorgabePruefen(schlangenjagd,startZeit,zeitVorgabe,outputFilePath,aktuellePunkt,einheit);
 			}
 
 		}
