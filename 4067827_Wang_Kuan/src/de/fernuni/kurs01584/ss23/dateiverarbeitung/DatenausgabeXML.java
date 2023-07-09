@@ -11,7 +11,7 @@ import java.util.List;
 
 // Ergebnisse in XML zurück schreiben
 public class DatenausgabeXML {
-    public static void writeXML(Schlangenjagd schlangenjagd, String filePath) throws Exception {
+    public static void writeXML(Schlangenjagd problemInstanz, Schlangenjagd schlangenjagd, String filePath) throws Exception {
             // Root Element Schlangenjagd erstellen
             Element rootElement = new Element("Schlangenjagd");
 
@@ -30,12 +30,12 @@ public class DatenausgabeXML {
             
             // Dschungel Element erstellen
             Element dschungelElement = new Element("Dschungel");
-            dschungelElement.setAttribute("zeilen", Integer.toString(schlangenjagd.getDschungel().getZeilen()));
-            dschungelElement.setAttribute("spalten", Integer.toString(schlangenjagd.getDschungel().getSpalten()));
-            dschungelElement.setAttribute("zeichen", schlangenjagd.getDschungel().getzeichenmenge());
+            dschungelElement.setAttribute("zeilen", Integer.toString(problemInstanz.getDschungel().getZeilen()));
+            dschungelElement.setAttribute("spalten", Integer.toString(problemInstanz.getDschungel().getSpalten()));
+            dschungelElement.setAttribute("zeichen", problemInstanz.getDschungel().getzeichenmenge());
             
           
-            for (Feld feld : schlangenjagd.getDschungel().getFelder()) {
+            for (Feld feld : problemInstanz.getDschungel().getFelder()) {
                 Element feldElement = new Element("Feld");
                 
                 // feld Element erstellen und Attribute zuweisen
@@ -54,7 +54,7 @@ public class DatenausgabeXML {
             
             // Schlangenarten Element erstellen
             Element schlangenartenElement = new Element("Schlangenarten");
-            for (Schlangenart schlangenart : schlangenjagd.getSchlangenarten()) {
+            for (Schlangenart schlangenart : problemInstanz.getSchlangenarten()) {
                 Element schlangenartElement = new Element("Schlangenart");
                 
                 // feld Element erstellen und Attribute zuweisen

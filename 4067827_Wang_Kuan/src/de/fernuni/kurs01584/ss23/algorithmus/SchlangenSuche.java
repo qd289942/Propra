@@ -9,11 +9,17 @@ import de.fernuni.kurs01584.ss23.modell.*;
 
 public class SchlangenSuche {
 
-	public static void sucheSchlange(Schlangenjagd schlangenjagd, String outputFilePath) throws Exception {
-
+	public static void sucheSchlange(String inputFilePath , String outputFilePath) throws Exception {
+	    
+	    
+	    
 		// Programm staten
 		long startZeit = System.currentTimeMillis();
 		int aktuellePunkt = 0;
+		// Parse XML Eingabe
+		Schlangenjagd schlangenjagd = DateneingabeXML.parseXML(inputFilePath);
+		// Kopie von Probleminstanz zur Ausgabe
+		Schlangenjagd problemInstanz = DateneingabeXML.parseXML(inputFilePath);
 
 		// Umrechnung der Zeiteinheit
 		String einheit = schlangenjagd.getZeit().getEinheit();
@@ -71,7 +77,7 @@ public class SchlangenSuche {
 				}
 
 				// Prüft, ob Zeitvorgabe überschritten ist
-				zeitVorgabePruefen(schlangenjagd,startZeit,zeitVorgabe,outputFilePath,aktuellePunkt,einheit);
+				zeitVorgabePruefen(problemInstanz,schlangenjagd,startZeit,zeitVorgabe,outputFilePath,aktuellePunkt,einheit);
 			}
 
 		}
@@ -79,7 +85,7 @@ public class SchlangenSuche {
 		double zeitinterval = System.currentTimeMillis() - startZeit;
 		double zeitintervalUmgerechnet = zeitUmrechunung(einheit, zeitinterval);
 		schlangenjagd.getZeit().setAbgabe(zeitintervalUmgerechnet);
-		DatenausgabeXML.writeXML(schlangenjagd, outputFilePath);
+		DatenausgabeXML.writeXML(problemInstanz,schlangenjagd, outputFilePath);
 		return;
 
 	}
@@ -300,13 +306,13 @@ public class SchlangenSuche {
 		return Punktzahl > bisherigePunkt ? Punktzahl:bisherigePunkt;
 	}
 
-	private static void zeitVorgabePruefen(Schlangenjagd schlangenjagd, long startZeit, double zeitVorgabe, String outputFilePath, int aktuellePunkt, String einheit) throws Exception {
+	private static void zeitVorgabePruefen(Schlangenjagd problemInstanz, Schlangenjagd schlangenjagd, long startZeit, double zeitVorgabe, String outputFilePath, int aktuellePunkt, String einheit) throws Exception {
 
 		double zeitInterval = System.currentTimeMillis() - startZeit;
 		zeitInterval = zeitUmrechunung(einheit, zeitInterval);
 		if (zeitInterval >= zeitVorgabe) {
 			schlangenjagd.getZeit().setAbgabe(zeitVorgabe);;
-			DatenausgabeXML.writeXML(schlangenjagd, outputFilePath);
+			DatenausgabeXML.writeXML(problemInstanz, schlangenjagd, outputFilePath);
 			System.exit(0);
 		}
 	}

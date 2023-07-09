@@ -20,16 +20,17 @@ public class Schlangenjagd implements SchlangenjagdAPI {
     // TODO: Implementierung von Schnittstelle und Programm-Einstieg
     public static void main (String[] args) throws Exception {
 
+        // Kommandozeilenparameter überprüfen
+        if (args.length < 3) {
+            System.out.println("Kommandozeilenparametern sind nicht vollständig. Dateipfad von Ausgabe fehlt noch!");
+            return;
+        }
+
         // Kommandozeilenparameter zuweisen
         String ablauf = args[0];
         String eingabe = args[1];
         String ausgabe = args[2];
 
-        // Kommandozeilenparameter überprüfen
-        if (args.length != 3) {
-            System.out.println("biite nochmal Kommandozeilenparametern angeben!");
-            return;
-        }
         // Erstellen neue Objekt von Hauptkomponent Schlangenjagd
         Schlangenjagd schlangenjagd = new Schlangenjagd();
 
@@ -40,7 +41,6 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                 if (flag == false) {
                     System.out.println("keine Schlange gefunden.");
                 }
-                break;
 
                 /*case 'e':
                 schlangenjagd.loeseProbleminstanz(eingabe, ausgabe);
@@ -82,25 +82,26 @@ public class Schlangenjagd implements SchlangenjagdAPI {
         // Probleminstanz wird gelöst und in AusgabeDatei gespeichert
         // Erstellen neue Objekt von Modelle Schlangenjagd als Probleminstanz
 
-        de.fernuni.kurs01584.ss23.modell.Schlangenjagd probleminstanz = null;
-        if (!validateDTD(xmlEingabeDatei)) {
-            return false;
-        }
+        de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = null;
+
+        validateDTD(xmlEingabeDatei);
+        validateDTDAusgabe(xmlAusgabeDatei);
+
 
         try {
-            probleminstanz = DateneingabeXML.parseXML(xmlEingabeDatei);
+            SchlangenSuche.sucheSchlange(xmlEingabeDatei, xmlAusgabeDatei);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
         try {
-            SchlangenSuche.sucheSchlange(probleminstanz, xmlAusgabeDatei);
+            loesung = DateneingabeXML.parseXMLmitSchlangen(xmlAusgabeDatei);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        if (probleminstanz.getSchlangen() != null && !probleminstanz.getSchlangen().isEmpty()) {
+        if (loesung.getSchlangen() != null && !loesung.getSchlangen().isEmpty()) {
             return true;
         }
         else {
@@ -111,18 +112,15 @@ public class Schlangenjagd implements SchlangenjagdAPI {
     @Override
     public boolean erzeugeProbleminstanz(String xmlEingabeDatei, String xmlAusgabeDatei) {
         // TODO Implementierung der API-Methode zur Erzeugung von Probleminstanzen.
-        if (!validateDTD(xmlEingabeDatei)) {
-            return false;
-        }
+        validateDTD(xmlEingabeDatei);
+        validateDTDAusgabe(xmlAusgabeDatei);
         return false;
     }
 
     @Override
     public List<Fehlertyp> pruefeLoesung(String xmlEingabeDatei) {
         de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = null;
-        if (!validateDTD(xmlEingabeDatei)) {
-            return null;
-        }
+        validateDTD(xmlEingabeDatei);
         try {
             loesung = DateneingabeXML.parseXMLmitSchlangen(xmlEingabeDatei);
         } catch (Exception e) {
@@ -134,7 +132,11 @@ public class Schlangenjagd implements SchlangenjagdAPI {
 
         List<Fehlertyp> fehlertypList = new ArrayList<>();
         List<Schlange> schlangeList = loesung.getSchlangen();
+        List<Feld> felder = loesung.getDschungel().getFelder();
         // prüft jede Schlange und gibt ggf. Fehlertyp in fehlertypList zurück
+
+        List<Schlangenglied> gesamteSchlangenglied = new ArrayList<>();
+
         for (Schlange schlange : schlangeList) {
             if (schlange.getSchlangengliedmenge().size() != schlange.getSchlangenart().getZeichenkette().length()) {
                 fehlertypList.add(Fehlertyp.GLIEDER);
@@ -145,10 +147,6 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                 for (Schlangenglied schlangenglied: schlange.getSchlangengliedmenge()) {
                     if (!schlangenglied.getFeld().getZeichen().equals(String.valueOf(schlange.getSchlangenart().getZeichenkette().charAt(schlange.getSchlangengliedmenge().indexOf(schlangenglied))))) {
                         fehlertypList.add(Fehlertyp.ZUORDNUNG);
-                    }
-
-                    if (schlangenglied.getFeld().getVerwendbarkeit() < 0) {
-                        fehlertypList.add(Fehlertyp.VERWENDUNG);
                     }
 
                     if (schlange.getSchlangengliedmenge().indexOf(schlangenglied) > 0) {
@@ -176,9 +174,28 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                         }
                     }
                 }
-
+            }
+            gesamteSchlangenglied.addAll(schlange.getSchlangengliedmenge());
+        }
+        
+        // Erstellen ein HashMap zur Speichern Schlangenglieden mit identische gliedId
+        Map<String, Integer> countMap = new HashMap<>();
+        for (Schlangenglied glied : gesamteSchlangenglied) {
+            String gliedId = glied.getFeld().getId();
+            countMap.put(gliedId, countMap.getOrDefault(gliedId, 0) + 1);
+        }
+        
+        // prüft ob ein Schlangenglied einem bereits maximal verwendeten Feld zugeordnet ist
+        for (Map.Entry<String, Integer>entry: countMap.entrySet()) {
+            for (Feld feld : felder) {
+                if (feld.getId().equals(entry.getKey())) {
+                    if (entry.getValue() > feld.getVerwendbarkeit()) {
+                        fehlertypList.add(Fehlertyp.VERWENDUNG);
+                    }
+                }
             }
         }
+        
         return fehlertypList;
     }
 
@@ -241,20 +258,44 @@ public class Schlangenjagd implements SchlangenjagdAPI {
             Document document = builder.build(new File(eingabe));
             if (!document.hasRootElement()) {
                 System.out.println("Die eingelesene XML-Datei entspricht nicht den Vorgaben der DTD.");
-                return false;
+                System.exit(0);
             }
 
         } catch (JDOMException e) {
-            System.out.println("eingelesene XML-Datei entspricht nicht den Vorgaben der DTD.");
+            System.out.println("eingelesene XML-Datei in "+ eingabe +" entspricht nicht den Vorgaben der DTD.");
+            System.exit(0);
         } catch (FileNotFoundException e) {
-            System.out.println("keine DTD-Datei gefunden");
+            System.out.println("keine DTD-Datei in " + eingabe+ " gefunden.");
+            System.exit(0);
         } catch (Exception e) {
             System.out.println("sonstige Fehlern");
+            System.exit(0);
         }
 
         return true;
 
     }
+
+    private boolean validateDTDAusgabe(String ausgabe) {
+        try {
+            // Erstellen des SAXBuilders
+            SAXBuilder builder = new SAXBuilder();
+
+            // Parsing der XML-Datei
+            Document document = builder.build(new File(ausgabe));
+
+        } catch (FileNotFoundException e) {
+            System.out.println("keine DTD-Datei in " + ausgabe+ " gefunden.");
+            System.exit(0);
+        } catch (Exception e) {
+            System.out.println("sonstige Fehlern");
+            System.exit(0);
+        }
+
+        return true;
+
+    }
+
 
 
 }
