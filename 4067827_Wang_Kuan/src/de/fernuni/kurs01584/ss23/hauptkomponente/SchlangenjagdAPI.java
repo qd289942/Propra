@@ -17,7 +17,7 @@ public interface SchlangenjagdAPI {
      *         <tt>false</tt> zurückgegeben.
      * @throws Exception 
      */
-    public boolean loeseProbleminstanz(String xmlEingabeDatei, String xmlAusgabeDatei) throws Exception;
+    public boolean loeseProbleminstanz(String xmlEingabeDatei, String xmlAusgabeDatei);
 
     /**
      * Liest die Vorgegebene Eingabedatei mit einer (moeglicherweise
@@ -62,7 +62,7 @@ public interface SchlangenjagdAPI {
      *         eine leere Liste zurueckgegeben.
      * @throws Exception 
      */
-    public List<Fehlertyp> pruefeLoesung(String xmlEingabeDatei) throws Exception;
+    public List<Fehlertyp> pruefeLoesung(String xmlEingabeDatei);
 
     /**
      * Liest die Probleminstanz und Loesung aus der gegebenen Datei ein und
@@ -77,27 +77,8 @@ public interface SchlangenjagdAPI {
      *         <tt>0</tt> zurueckgegeben.
      * @throws Exception 
      */
-    public int bewerteLoesung(String xmlEingabeDatei) throws Exception;
-
-    /**
-     * Darstellung von Probleminstanzen und Lösungen
-     * Für die Probleminstanz sollen mindestens, falls vorhanden, folgende Daten auf die Konsole 
-     * ausgegeben und übersichtlich dargestellt werden:
-     * 
-     * Anzahl der Zeilen und Spalten des Dschungels sowie die verwendeten Zeichen,
-     * Schlangenarten mit Zeichenkette, Nachbarschaftsstruktur, Punkten und Anzahl,
-     * Dschungelfelder mit (1) Zeichen (2) Verwendbarkeit (3) Punkten.
-     * 
-     * 
-     *  Darüber hinaus soll die Lösung mit allen gefundenen Schlangen ausgegeben werden:
-     *  Schlangenart mit Zeichenkette und Nachbarschaftsstruktur,
-     *  Hervorhebung der im Zeichendschungel angeordneten Schlange,
-     *  Zeile und Spalte der aufeinanderfolgenden Schlangenglieder.
-     * @param xmlEingabeDatei Dateipfad zu einer XML-Datei mit einer Probleminstanz und Loesung.
-     * @throws Exception
-     */
-    public void darstellung(String xmlEingabeDatei, String xmlAusgabeDatei) throws Exception;
-
+    public int bewerteLoesung(String xmlEingabeDatei);
+    
     /**
      * @return Ihr vollstaendiger Name.
      * @throws Exception 
