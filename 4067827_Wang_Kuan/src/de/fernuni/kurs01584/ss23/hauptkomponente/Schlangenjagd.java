@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.jdom2.*;
 import org.jdom2.input.SAXBuilder;
 
+import de.fernuni.kurs01584.ss23.algorithmus.DschungelGenerator;
 import de.fernuni.kurs01584.ss23.algorithmus.SchlangenSuche;
 import de.fernuni.kurs01584.ss23.darstellung.DarstellungLoesungen;
 import de.fernuni.kurs01584.ss23.dateiverarbeitung.DateneingabeXML;
@@ -42,9 +43,9 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                     System.out.println("keine Schlange gefunden.");
                 }
 
-                /*case 'e':
-                schlangenjagd.loeseProbleminstanz(eingabe, ausgabe);
-                break;*/
+            case 'e':
+                schlangenjagd.erzeugeProbleminstanz(eingabe, ausgabe);
+                break;
 
             case 'd':
                 schlangenjagd.darstellung(eingabe, ausgabe);
@@ -114,6 +115,13 @@ public class Schlangenjagd implements SchlangenjagdAPI {
         // TODO Implementierung der API-Methode zur Erzeugung von Probleminstanzen.
         validateDTD(xmlEingabeDatei);
         validateDTDAusgabe(xmlAusgabeDatei);
+        
+        try {
+            DschungelGenerator.erzeugProbleminstanzen(xmlEingabeDatei, xmlAusgabeDatei);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return false;
     }
 
@@ -177,14 +185,14 @@ public class Schlangenjagd implements SchlangenjagdAPI {
             }
             gesamteSchlangenglied.addAll(schlange.getSchlangengliedmenge());
         }
-        
+
         // Erstellen ein HashMap zur Speichern Schlangenglieden mit identische gliedId
         Map<String, Integer> countMap = new HashMap<>();
         for (Schlangenglied glied : gesamteSchlangenglied) {
             String gliedId = glied.getFeld().getId();
             countMap.put(gliedId, countMap.getOrDefault(gliedId, 0) + 1);
         }
-        
+
         // prüft ob ein Schlangenglied einem bereits maximal verwendeten Feld zugeordnet ist
         for (Map.Entry<String, Integer>entry: countMap.entrySet()) {
             for (Feld feld : felder) {
@@ -195,7 +203,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                 }
             }
         }
-        
+
         return fehlertypList;
     }
 

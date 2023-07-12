@@ -115,6 +115,98 @@ public class DatenausgabeXML {
             xmlOutputter.output(document, fileWriter);
             fileWriter.close();
 
-            System.out.println("XML Datei wurde erfolgreich ueberschrieben: " + filePath);
+            System.out.println("XML Datei wurde durch loesung erfolgreich ueberschrieben: " + filePath);
     }
+    
+    public static void writeProbleminstanzXML(Schlangenjagd problemInstanz, Schlangenjagd schlangenjagd, String filePath) throws Exception {
+        // Root Element Schlangenjagd erstellen
+        Element rootElement = new Element("Schlangenjagd");
+
+        // Zeit Element erstellen
+        Element zeitElement = new Element("Zeit");
+        zeitElement.setAttribute("einheit", schlangenjagd.getZeit().getEinheit());
+        
+        Element vorgabeElement = new Element("Vorgabe");
+        vorgabeElement.setText(Double.toString(schlangenjagd.getZeit().getVorgabe()));
+        Element abgabeElement = new Element("Abgabe");
+        abgabeElement.setText(Double.toString(schlangenjagd.getZeit().getAbgabe()));
+        
+        zeitElement.addContent(vorgabeElement);
+        zeitElement.addContent(abgabeElement);
+        rootElement.addContent(zeitElement);
+        
+        // Dschungel Element erstellen
+        Element dschungelElement = new Element("Dschungel");
+        dschungelElement.setAttribute("zeilen", Integer.toString(schlangenjagd.getDschungel().getZeilen()));
+        dschungelElement.setAttribute("spalten", Integer.toString(schlangenjagd.getDschungel().getSpalten()));
+        dschungelElement.setAttribute("zeichen", schlangenjagd.getDschungel().getzeichenmenge());
+        
+      
+        for (Feld feld : schlangenjagd.getDschungel().getFelder()) {
+            Element feldElement = new Element("Feld");
+            
+            // feld Element erstellen und Attribute zuweisen
+            feldElement.setAttribute("id", feld.getId());
+            feldElement.setAttribute("zeile", Integer.toString(feld.getZeile()));
+            feldElement.setAttribute("spalte", Integer.toString(feld.getSpalte()));
+            feldElement.setAttribute("verwendbarkeit", Integer.toString(feld.getVerwendbarkeit()));
+            feldElement.setAttribute("punkte", Integer.toString(feld.getPunkte()));
+            feldElement.setText(feld.getZeichen());
+            
+            // füge Element Feld in dschungel hinzu
+            dschungelElement.addContent(feldElement);
+        }
+        
+        rootElement.addContent(dschungelElement);
+        
+        // Schlangenarten Element erstellen
+        Element schlangenartenElement = new Element("Schlangenarten");
+        for (Schlangenart schlangenart : problemInstanz.getSchlangenarten()) {
+            Element schlangenartElement = new Element("Schlangenart");
+            
+            // feld Element erstellen und Attribute zuweisen
+            schlangenartElement.setAttribute("id", schlangenart.getId());
+            schlangenartElement.setAttribute("punkte", Integer.toString(schlangenart.getPunkte()));
+            schlangenartElement.setAttribute("anzahl", Integer.toString(schlangenart.getVerwendbarkeit()));
+            
+            // Zeichenkette und Nachbarschaftsstruktur Element erstellen
+            Element zeichenketteElement = new Element("Zeichenkette");
+            zeichenketteElement.setText(schlangenart.getZeichenkette());
+            Element nachbarschaftsstrukturElement = new Element("Nachbarschaftsstruktur");
+            nachbarschaftsstrukturElement.setAttribute("typ", schlangenart.getNachStr().getTyp());
+            for (Parameter parameter : schlangenart.getNachStr().getParameters()) {
+                Element parameterElement = new Element("Parameter");
+                parameterElement.setAttribute("wert", Integer.toString(parameter.getWert()));
+                nachbarschaftsstrukturElement.addContent(parameterElement);
+            }
+            // füge Element zeichenkette und nachbarschaftsstruktur in schlangenart hinzu
+            schlangenartElement.addContent(zeichenketteElement);
+            schlangenartElement.addContent(nachbarschaftsstrukturElement);
+            schlangenartenElement.addContent(schlangenartElement);
+        }
+        
+        rootElement.addContent(schlangenartenElement);
+        
+        // Dokument erstellen und rootElement zuweisen
+        Document document = new Document(rootElement);
+        // DOCTYPE Einstellen
+        DocType docType = new DocType("Schlangenjagd", "schlangenjagd.dtd");
+        document.setDocType(docType);
+
+        // XML Outputter Erstellen
+        XMLOutputter xmlOutputter = new XMLOutputter();
+        xmlOutputter.setFormat(Format.getPrettyFormat());
+
+        // Verbinden XMLOutputter und FileWriter
+        FileWriter fileWriter = new FileWriter(filePath);
+        xmlOutputter.output(document, fileWriter);
+        fileWriter.close();
+
+        System.out.println("XML Datei für vollständige Probleminstanz durch DschungelGenerator wurde erfolgreich ueberschrieben: " + filePath);
+    }
+    
+    
+    
+    
+    
 }
