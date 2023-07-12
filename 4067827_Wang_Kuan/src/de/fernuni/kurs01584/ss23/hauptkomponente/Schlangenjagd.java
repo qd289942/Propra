@@ -42,6 +42,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                 if (flag == false) {
                     System.out.println("keine Schlange gefunden.");
                 }
+                break;
 
             case 'e':
                 schlangenjagd.erzeugeProbleminstanz(eingabe, ausgabe);
