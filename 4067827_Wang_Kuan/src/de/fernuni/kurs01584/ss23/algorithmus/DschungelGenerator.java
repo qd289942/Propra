@@ -20,7 +20,7 @@ public class DschungelGenerator {
         // Prüfen die Vorgabe der Zeitlimit und Default Wert einstellen
         if (problemInstanz.getZeit().getVorgabe() == 0.0 || problemInstanz.getZeit().getEinheit().equals(null)) {
             problemInstanz.getZeit().setEinheit("ms");
-            problemInstanz.getZeit().setVorgabe(2000.0);
+            problemInstanz.getZeit().setVorgabe(20000.0);
         }
 
         // Erzeugung eines Dschungels entsprechend der gegebenen Vorgaben
@@ -41,42 +41,48 @@ public class DschungelGenerator {
 
             List <Schlangenart> schlangenartList = new ArrayList<>();
             for (Schlangenart schlangenart: schlangenartList) {
-                if (schlangenart.getVerwendbarkeit() > 0) {
+                while (schlangenart.getVerwendbarkeit() > 0) {
+                    // Zeitvorgabe überprüfen
+                    
                     String zeichenkette = schlangenart.getZeichenkette();
                     List<Schlangenglied> schlangengliedList = new ArrayList<>();
+                    Schlangenglied startGlied = new Schlangenglied();
 
-                    for (int i = 0; i < zeichenkette.length(); i++) {
-                        char zeichen = zeichenkette.charAt(i);
-                        Schlangenglied schlangenGlied = new Schlangenglied();
-                        // Erzeugen des zulaessigeFelders
-                        List<Feld> zulaessigesFelder = erzeugZulaessigeFelder(newFelder);
-                        if (i == 0) {
-                            // StartFeld auswählen    
-                            setZufaelligFeldmitZeichen(zeichen,zulaessigesFelder,schlangenGlied);
-                            schlangengliedList.add(schlangenGlied);
-                        }
-                        else {
-                            setZufaelligFeldmitZeichen(zeichen,zulaessigesFelder,schlangenGlied);
-                            Schlangenglied vorherigesGlied = schlangengliedList.get(i - 1);
-                            List<Feld> nachbarFeld = erzeugNachbarFeld(newFelder, vorherigesGlied, schlangenGlied, schlangenart);
-                            if (nachbarFeld.isEmpty()) {
-                                // keine zulässige Nachbarfelder gefunden
-                                if (schlangengliedList.size() == zeichenkette.length()) {
-                                    // vollständige Schlange nach Schlangenart gefunden
-                                    schlangenart.setAnzahl(schlangenart.getVerwendbarkeit() - 1);
-                                }
-                                else {
-                                    // keine vollständige Schlange gefunden, Schlangenglieder müssen zurückgenommen werden
-                                    for (Schlangenglied schlangenglied : schlangengliedList) {
-                                        schlangenglied.getFeld().setZeichen(null);
-                                    }
-                                }
-                            }
-                        }
+                    // Erzeugen des zulaessigeFelders
+                    List<Feld> zulaessigesFelder = erzeugZulaessigeFelder(newFelder);
+                    if (zulaessigesFelder.isEmpty()) {
+                        System.out.println("keine zulaessigesFelder mehr für Schlangenarten. Der Vorgang muss abgebrochen werden.");
+                        return false;
                     }
+                    // StartFeld auswählen
+                    char zeichen = zeichenkette.charAt(0);
+                    setZufaelligFeldmitZeichen(zeichen,zulaessigesFelder,startGlied);
+                    schlangengliedList.add(startGlied);
+                    
+                    // suche Schlangenglied nach startGlied und Schlangenart
+                    sucheGliednachSchlangenart(schlangenart,zulaessigesFelder,schlangengliedList,startGlied);
+
                 }
 
             }
+            // alle Schlangenarten sind in der gewünschten Anzahl im Dschungel vorhanden, soll verbleibenden leeren Felder mit zufällige Zeichen in Zeichenmenge des Dschungels belegt werden
+            List<Feld> leerFelder = new ArrayList<>();
+            for (Feld feld: problemInstanz.getDschungel().getFelder()) {                
+                if (feld.getZeichen().equals(null)) {
+                    // Erstellung eine randomgenerator
+                    leerFelder.add(feld);
+                }
+            }
+            
+            for (Feld feld: leerFelder) {
+                Random random = new Random();
+                int randomIndex = random.nextInt(problemInstanz.getDschungel().getzeichenmenge().length());
+                char zeichen = problemInstanz.getDschungel().getzeichenmenge().charAt(randomIndex);
+                String zeichenStr = String.valueOf(zeichen);
+                feld.setZeichen(zeichenStr);
+            }
+            
+            
         }
 
         return true;
@@ -109,7 +115,51 @@ public class DschungelGenerator {
 
         return true;
     }
-
+    
+    private void sucheGliednachSchlangenart(Schlangenart schlangenart, List<Feld> newFelder, List<Schlangenglied> schlangengliedList, Schlangenglied vorherigesGlied) {
+        String zeichenkette = schlangenart.getZeichenkette();
+        // erzeuge zulässige Nachbarfelder für vorherigesGlied
+        int indexVorherigesGlied = schlangengliedList.indexOf(vorherigesGlied);
+        char aktuellezeichen = zeichenkette.charAt(indexVorherigesGlied);
+        Schlangenglied schlangenGlied = new Schlangenglied();
+        // Erzeugen des zulaessigeFelders
+        List<Feld> zulaessigesFelder = erzeugZulaessigeFelder(newFelder);
+        // Erzeugen des Nachbarfelders
+        List<Feld> nachbarFelder = erzeugNachbarFeld(zulaessigesFelder, vorherigesGlied, schlangenGlied, schlangenart);
+        
+        // keine zulässige Nachbarfelder gefunden
+        if (nachbarFelder.isEmpty()) {
+            if (schlangengliedList.size() == zeichenkette.length()) {
+                // vollständige Schlange nach Schlangenart gefunden
+                schlangenart.setAnzahl(schlangenart.getVerwendbarkeit() - 1);
+            }
+            else {
+                // keine vollständige Schlange gefunden, Schlangenglieder müssen zurückgenommen werden
+                schlangengliedList.remove(schlangengliedList.size() - 1);
+                vorherigesGlied.getFeld().setZeichen(null);
+            }
+            return;
+        }
+        
+        else {
+            mischenFeldRandom(nachbarFelder);
+            erzeugZulaessigeFelder(nachbarFelder);
+            for (Feld feld: nachbarFelder) {
+                String zeichenStr = String.valueOf(aktuellezeichen);
+                feld.setZeichen(zeichenStr);
+                schlangenGlied.setFeld(feld);
+                schlangengliedList.add(schlangenGlied);
+                sucheGliednachSchlangenart(schlangenart, zulaessigesFelder,schlangengliedList, schlangenGlied);
+                // Falls vollständige Schlange nach Schlangenart gefunden ist, bricht die Schleife ab
+                if (schlangengliedList.size() == zeichenkette.length()) {
+                    break;
+                }
+            }
+        }
+        return;
+        
+    }
+    
     private List<Feld> erzeugZulaessigeFelder(List<Feld> felder) {
         List<Feld> freiFeld = new ArrayList<>();
         for (Feld feld: felder) {
@@ -165,4 +215,10 @@ public class DschungelGenerator {
 
         return false;
     }
+    
+    private <T> void mischenFeldRandom(List<T> felder){
+        Collections.shuffle(felder);
+    }
+
+
 }
