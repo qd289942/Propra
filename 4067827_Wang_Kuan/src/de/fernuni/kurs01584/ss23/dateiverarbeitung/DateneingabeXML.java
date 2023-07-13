@@ -44,9 +44,18 @@ public class DateneingabeXML {
         Element dschungelElement = rootElement.getChild("Dschungel");
         Dschungel dschungel = new Dschungel();
         // dschungel Objekt erstellen und Attribute zuweisen
-        dschungel.setZeilen(Integer.parseInt(dschungelElement.getAttributeValue("zeilen")));
-        dschungel.setSpalten(Integer.parseInt(dschungelElement.getAttributeValue("spalten")));
-        dschungel.setZeichenmenge(dschungelElement.getAttributeValue("zeichen"));
+        String dschungelzeilen = dschungelElement.getAttributeValue("zeilen");
+        if (dschungelzeilen != null && dschungelzeilen != "") {
+            dschungel.setZeilen(Integer.parseInt(dschungelzeilen));
+            }
+        String dschungelsplaten = dschungelElement.getAttributeValue("spalten");
+        if (dschungelsplaten != null && dschungelsplaten != "") {
+            dschungel.setSpalten(Integer.parseInt(dschungelsplaten));
+        }
+        String dschungelzeichen = dschungelElement.getAttributeValue("zeichen");
+        if (dschungelzeichen != null && dschungelzeichen != "") {
+            dschungel.setZeichenmenge(dschungelzeichen);
+        }
 
         // Feld in Dschungel zuordnen
         List<Feld> felder = new ArrayList<>();
@@ -67,10 +76,12 @@ public class DateneingabeXML {
 
         // Parse Schlangenarten Element
         Element schlangenartenElement = rootElement.getChild("Schlangenarten");
+        if (schlangenartenElement != null) {
         // List für Schlangenart erstellen
         List<Schlangenart> schlangenartList = new ArrayList<>();
         // List für SchlangenartElements in XML Datei
         List<Element> schlangenartElements = schlangenartenElement.getChildren("Schlangenart");
+        if (!schlangenartElements.isEmpty()) {
         
         // für jede Schleife Schlangenart Objekt erstellen und Attribute zuweisen
         for (Element schlangenartElement : schlangenartElements) {
@@ -102,6 +113,8 @@ public class DateneingabeXML {
             schlangenartList.add(schlangenart);
         }
         schlangenjagd.setSchlangenarten(schlangenartList);
+        }
+        }
         
 
         return schlangenjagd;
