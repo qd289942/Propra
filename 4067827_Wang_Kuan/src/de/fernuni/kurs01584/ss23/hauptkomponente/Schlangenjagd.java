@@ -116,7 +116,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
         // TODO Implementierung der API-Methode zur Erzeugung von Probleminstanzen.
         validateDTD(xmlEingabeDatei);
         validateDTDAusgabe(xmlAusgabeDatei);
-        
+
         try {
             DschungelGenerator.erzeugProbleminstanzen(xmlEingabeDatei, xmlAusgabeDatei);
         } catch (Exception e) {
@@ -269,7 +269,6 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                 System.out.println("Die eingelesene XML-Datei entspricht nicht den Vorgaben der DTD.");
                 System.exit(0);
             }
-
         } catch (JDOMException e) {
             System.out.println("eingelesene XML-Datei in "+ eingabe +" entspricht nicht den Vorgaben der DTD.");
             System.exit(0);

@@ -47,7 +47,7 @@ public class DateneingabeXML {
         String dschungelzeilen = dschungelElement.getAttributeValue("zeilen");
         if (dschungelzeilen != null && dschungelzeilen != "") {
             dschungel.setZeilen(Integer.parseInt(dschungelzeilen));
-            }
+        }
         String dschungelsplaten = dschungelElement.getAttributeValue("spalten");
         if (dschungelsplaten != null && dschungelsplaten != "") {
             dschungel.setSpalten(Integer.parseInt(dschungelsplaten));
@@ -77,49 +77,49 @@ public class DateneingabeXML {
         // Parse Schlangenarten Element
         Element schlangenartenElement = rootElement.getChild("Schlangenarten");
         if (schlangenartenElement != null) {
-        // List für Schlangenart erstellen
-        List<Schlangenart> schlangenartList = new ArrayList<>();
-        // List für SchlangenartElements in XML Datei
-        List<Element> schlangenartElements = schlangenartenElement.getChildren("Schlangenart");
-        if (!schlangenartElements.isEmpty()) {
-        
-        // für jede Schleife Schlangenart Objekt erstellen und Attribute zuweisen
-        for (Element schlangenartElement : schlangenartElements) {
-            Schlangenart schlangenart = new Schlangenart();
-            schlangenart.setId(schlangenartElement.getAttributeValue("id"));
-            schlangenart.setPunkte(Integer.parseInt(schlangenartElement.getAttributeValue("punkte")));
-            schlangenart.setAnzahl(Integer.parseInt(schlangenartElement.getAttributeValue("anzahl")));
-            schlangenart.setZeichenkette(schlangenartElement.getChildText("Zeichenkette"));
+            // List für Schlangenart erstellen
+            List<Schlangenart> schlangenartList = new ArrayList<>();
+            // List für SchlangenartElements in XML Datei
+            List<Element> schlangenartElements = schlangenartenElement.getChildren("Schlangenart");
+            if (!schlangenartElements.isEmpty()) {
 
-            Element nachbarschaftsstrukturElement = schlangenartElement.getChild("Nachbarschaftsstruktur");
-            // Objekt für Nachbarschaftsstruktur erstellen und Attribute zuweisen
-            Nachbarschaftsstruktur nachbarschaftsstruktur = new Nachbarschaftsstruktur();
-            nachbarschaftsstruktur.setTyp(nachbarschaftsstrukturElement.getAttributeValue("typ"));
-            // List für Parameter erstellen
-            List<Parameter> parameterList = new ArrayList<>();
-            // List für parameterElements in XML Datei
-            List<Element> parameterElements = nachbarschaftsstrukturElement.getChildren("Parameter");
-            
-            // für jede Schleife Parameter Objekt erstellen und Attribute zuweisen
-            for (Element parameterElement : parameterElements) {
-                Parameter parameter = new Parameter();
-                parameter.setWert(Integer.parseInt(parameterElement.getAttributeValue("wert")));
-                parameterList.add(parameter);
+                // für jede Schleife Schlangenart Objekt erstellen und Attribute zuweisen
+                for (Element schlangenartElement : schlangenartElements) {
+                    Schlangenart schlangenart = new Schlangenart();
+                    schlangenart.setId(schlangenartElement.getAttributeValue("id"));
+                    schlangenart.setPunkte(Integer.parseInt(schlangenartElement.getAttributeValue("punkte")));
+                    schlangenart.setAnzahl(Integer.parseInt(schlangenartElement.getAttributeValue("anzahl")));
+                    schlangenart.setZeichenkette(schlangenartElement.getChildText("Zeichenkette"));
+
+                    Element nachbarschaftsstrukturElement = schlangenartElement.getChild("Nachbarschaftsstruktur");
+                    // Objekt für Nachbarschaftsstruktur erstellen und Attribute zuweisen
+                    Nachbarschaftsstruktur nachbarschaftsstruktur = new Nachbarschaftsstruktur();
+                    nachbarschaftsstruktur.setTyp(nachbarschaftsstrukturElement.getAttributeValue("typ"));
+                    // List für Parameter erstellen
+                    List<Parameter> parameterList = new ArrayList<>();
+                    // List für parameterElements in XML Datei
+                    List<Element> parameterElements = nachbarschaftsstrukturElement.getChildren("Parameter");
+
+                    // für jede Schleife Parameter Objekt erstellen und Attribute zuweisen
+                    for (Element parameterElement : parameterElements) {
+                        Parameter parameter = new Parameter();
+                        parameter.setWert(Integer.parseInt(parameterElement.getAttributeValue("wert")));
+                        parameterList.add(parameter);
+                    }
+
+                    nachbarschaftsstruktur.setParameters(parameterList);
+                    schlangenart.setNachStr(nachbarschaftsstruktur);
+                    // Schlangenarten in List zuordnen
+                    schlangenartList.add(schlangenart);
+                }
+                schlangenjagd.setSchlangenarten(schlangenartList);
             }
-            
-            nachbarschaftsstruktur.setParameters(parameterList);
-            schlangenart.setNachStr(nachbarschaftsstruktur);
-            // Schlangenarten in List zuordnen
-            schlangenartList.add(schlangenart);
         }
-        schlangenjagd.setSchlangenarten(schlangenartList);
-        }
-        }
-        
+
 
         return schlangenjagd;
     }
-    
+
     public static Schlangenjagd parseXMLmitSchlangen(String filePath) throws Exception {
         SAXBuilder builder = new SAXBuilder();
         Document document = builder.build(new File(filePath));
@@ -154,9 +154,18 @@ public class DateneingabeXML {
         Element dschungelElement = rootElement.getChild("Dschungel");
         Dschungel dschungel = new Dschungel();
         // dschungel Objekt erstellen und Attribute zuweisen
-        dschungel.setZeilen(Integer.parseInt(dschungelElement.getAttributeValue("zeilen")));
-        dschungel.setSpalten(Integer.parseInt(dschungelElement.getAttributeValue("spalten")));
-        dschungel.setZeichenmenge(dschungelElement.getAttributeValue("zeichen"));
+        String dschungelzeilen = dschungelElement.getAttributeValue("zeilen");
+        if (dschungelzeilen != null && dschungelzeilen != "") {
+            dschungel.setZeilen(Integer.parseInt(dschungelzeilen));
+        }
+        String dschungelsplaten = dschungelElement.getAttributeValue("spalten");
+        if (dschungelsplaten != null && dschungelsplaten != "") {
+            dschungel.setSpalten(Integer.parseInt(dschungelsplaten));
+        }
+        String dschungelzeichen = dschungelElement.getAttributeValue("zeichen");
+        if (dschungelzeichen != null && dschungelzeichen != "") {
+            dschungel.setZeichenmenge(dschungelzeichen);
+        }
 
         // Feld in Dschungel zuordnen
         List<Feld> felder = new ArrayList<>();
@@ -177,53 +186,57 @@ public class DateneingabeXML {
 
         // Parse Schlangenarten Element
         Element schlangenartenElement = rootElement.getChild("Schlangenarten");
-        // List für Schlangenart erstellen
-        List<Schlangenart> schlangenartList = new ArrayList<>();
-        // List für SchlangenartElements in XML Datei
-        List<Element> schlangenartElements = schlangenartenElement.getChildren("Schlangenart");
-        
-        // für jede Schleife Schlangenart Objekt erstellen und Attribute zuweisen
-        for (Element schlangenartElement : schlangenartElements) {
-            Schlangenart schlangenart = new Schlangenart();
-            schlangenart.setId(schlangenartElement.getAttributeValue("id"));
-            schlangenart.setPunkte(Integer.parseInt(schlangenartElement.getAttributeValue("punkte")));
-            schlangenart.setAnzahl(Integer.parseInt(schlangenartElement.getAttributeValue("anzahl")));
-            schlangenart.setZeichenkette(schlangenartElement.getChildText("Zeichenkette"));
+        if (schlangenartenElement != null) {
+            // List für Schlangenart erstellen
+            List<Schlangenart> schlangenartList = new ArrayList<>();
+            // List für SchlangenartElements in XML Datei
+            List<Element> schlangenartElements = schlangenartenElement.getChildren("Schlangenart");
+            if (!schlangenartElements.isEmpty()) {
 
-            Element nachbarschaftsstrukturElement = schlangenartElement.getChild("Nachbarschaftsstruktur");
-            // Objekt für Nachbarschaftsstruktur erstellen und Attribute zuweisen
-            Nachbarschaftsstruktur nachbarschaftsstruktur = new Nachbarschaftsstruktur();
-            nachbarschaftsstruktur.setTyp(nachbarschaftsstrukturElement.getAttributeValue("typ"));
-            // List für Parameter erstellen
-            List<Parameter> parameterList = new ArrayList<>();
-            // List für parameterElements in XML Datei
-            List<Element> parameterElements = nachbarschaftsstrukturElement.getChildren("Parameter");
-            
-            // für jede Schleife Parameter Objekt erstellen und Attribute zuweisen
-            for (Element parameterElement : parameterElements) {
-                Parameter parameter = new Parameter();
-                parameter.setWert(Integer.parseInt(parameterElement.getAttributeValue("wert")));
-                parameterList.add(parameter);
+                // für jede Schleife Schlangenart Objekt erstellen und Attribute zuweisen
+                for (Element schlangenartElement : schlangenartElements) {
+                    Schlangenart schlangenart = new Schlangenart();
+                    schlangenart.setId(schlangenartElement.getAttributeValue("id"));
+                    schlangenart.setPunkte(Integer.parseInt(schlangenartElement.getAttributeValue("punkte")));
+                    schlangenart.setAnzahl(Integer.parseInt(schlangenartElement.getAttributeValue("anzahl")));
+                    schlangenart.setZeichenkette(schlangenartElement.getChildText("Zeichenkette"));
+
+                    Element nachbarschaftsstrukturElement = schlangenartElement.getChild("Nachbarschaftsstruktur");
+                    // Objekt für Nachbarschaftsstruktur erstellen und Attribute zuweisen
+                    Nachbarschaftsstruktur nachbarschaftsstruktur = new Nachbarschaftsstruktur();
+                    nachbarschaftsstruktur.setTyp(nachbarschaftsstrukturElement.getAttributeValue("typ"));
+                    // List für Parameter erstellen
+                    List<Parameter> parameterList = new ArrayList<>();
+                    // List für parameterElements in XML Datei
+                    List<Element> parameterElements = nachbarschaftsstrukturElement.getChildren("Parameter");
+
+                    // für jede Schleife Parameter Objekt erstellen und Attribute zuweisen
+                    for (Element parameterElement : parameterElements) {
+                        Parameter parameter = new Parameter();
+                        parameter.setWert(Integer.parseInt(parameterElement.getAttributeValue("wert")));
+                        parameterList.add(parameter);
+                    }
+
+                    nachbarschaftsstruktur.setParameters(parameterList);
+                    schlangenart.setNachStr(nachbarschaftsstruktur);
+                    // Schlangenarten in List zuordnen
+                    schlangenartList.add(schlangenart);
+                }
+                schlangenjagd.setSchlangenarten(schlangenartList);
             }
-            
-            nachbarschaftsstruktur.setParameters(parameterList);
-            schlangenart.setNachStr(nachbarschaftsstruktur);
-            // Schlangenarten in List zuordnen
-            schlangenartList.add(schlangenart);
         }
-        schlangenjagd.setSchlangenarten(schlangenartList);
-        
+
         // Parse Schlangen Element
         Element schlangenElement = rootElement.getChild("Schlangen");
         // List für Schlange erstellen
         List<Schlange> schlangenList = new ArrayList<>();
-        
+
         List<Element> schlangenElements = schlangenElement.getChildren("Schlange");
-        
+
         for (Element schlangeElement : schlangenElements) {
             Schlange schlange = new Schlange();
             String artId = schlangeElement.getAttributeValue("art");
-            
+
             // Sucht Schlangenart anhand id
             Schlangenart suchendeSchlangenart = new Schlangenart();
             for (Schlangenart schlangenart : schlangenjagd.getSchlangenarten()) {
@@ -233,9 +246,9 @@ public class DateneingabeXML {
                 }
             }
             schlange.setSchlangenart(suchendeSchlangenart);
-            
+
             // List für Schlangenglied erstellen
-            
+
             List<Element> schlangengliedElements = schlangeElement.getChildren("Schlangenglied");
             List<Schlangenglied> SchlangengliedList = new ArrayList<>();
             for (Element schlangegliedElement: schlangengliedElements) {
@@ -257,11 +270,11 @@ public class DateneingabeXML {
             // füge Schlange in SchlangenList hinzu
             schlangenList.add(schlange);
         }
-        
+
         // Schlangen Attribute in Schlangenjagd zuordnen
         schlangenjagd.setSchlangen(schlangenList);
 
         return schlangenjagd;
     }
-    
+
 }
