@@ -227,11 +227,11 @@ public class Schlangenjagd implements SchlangenjagdAPI {
         if (!xmlEingabeDatei.equals("")) {
             de.fernuni.kurs01584.ss23.modell.Schlangenjagd probleminstanz = DateneingabeXML.parseXML(xmlEingabeDatei);
             de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = DateneingabeXML.parseXMLmitSchlangen(xmlAusgabeDatei);
-            DarstellungLoesungen.probleminstanzDarstellen(xmlEingabeDatei, probleminstanz);
-            DarstellungLoesungen.loesungDarstellen(xmlAusgabeDatei, loesung);}
+            DarstellungLoesungen.probleminstanzDarstellen(probleminstanz);
+            DarstellungLoesungen.loesungDarstellen(loesung);}
         else {
             de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = DateneingabeXML.parseXMLmitSchlangen(xmlAusgabeDatei);
-            DarstellungLoesungen.loesungDarstellen(xmlAusgabeDatei, loesung);
+            DarstellungLoesungen.loesungDarstellen(loesung);
         }
     }
 

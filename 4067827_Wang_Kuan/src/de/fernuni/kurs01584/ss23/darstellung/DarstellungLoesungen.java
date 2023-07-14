@@ -6,7 +6,7 @@ import java.util.List;
 import de.fernuni.kurs01584.ss23.modell.*;
 
 public class DarstellungLoesungen {
-    public static void loesungDarstellen(String filePath, Schlangenjagd schlangenjagd) throws Exception {
+    public static void loesungDarstellen(Schlangenjagd schlangenjagd) throws Exception {
         System.out.println("\nLösungen: \nverwendete Schlangenarten: \n");
         
         List<Schlangenart> genutztSchlangenarten = new ArrayList<>();
@@ -77,7 +77,7 @@ public class DarstellungLoesungen {
             schlangecount++;
         }
     }
-    public static void probleminstanzDarstellen(String filePath, Schlangenjagd schlangenjagd) throws Exception {
+    public static void probleminstanzDarstellen(Schlangenjagd schlangenjagd) throws Exception {
 
         //System.out.println("ÄÖÜ");
         System.out.println("Probleminstanzen: ");
