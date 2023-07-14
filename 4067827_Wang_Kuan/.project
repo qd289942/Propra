@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>Probleminstanzen2</name>
-			<type>2</type>
-			<location>C:/Users/Kuan/Desktop/Probleminstanzen2</location>
-		</link>
-	</linkedResources>
 </projectDescription>

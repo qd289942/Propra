@@ -11,16 +11,17 @@ import de.fernuni.kurs01584.ss23.modell.Zeit;
 public class DateneingabeXMLTest {
     @Test
     @DisplayName("Test parseXML_Zeit Element")
-    void testParseXML_ZeitElement(String filePath) {
+    void testParseXML_ZeitElement() {
         try {
-            //String filePath = "path/to/xml/file.xml";
-            Schlangenjagd schlangenjagd = DateneingabeXML.parseXML(filePath);
+            String relativePath = "..\\..\\..\\..\\Probleminstanzen2\\sj_p8_probleminstanz.xml";
+
+            Schlangenjagd schlangenjagd = DateneingabeXML.parseXML(relativePath);
             
             Zeit zeit = schlangenjagd.getZeit();
             assertNotNull(zeit);
-            assertEquals("s", zeit.getEinheit());
-            assertEquals(10.0, zeit.getVorgabe());
-            assertEquals(20.0, zeit.getAbgabe());
+            assertEquals("min", zeit.getEinheit());
+            assertEquals(0.2, zeit.getVorgabe());
+            assertEquals(0.0, zeit.getAbgabe());
             
         } catch(Exception e) {
             fail("Exception: " + e.getMessage());
