@@ -7,10 +7,18 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import java.io.FileWriter;
-import java.util.List;
 
-// Ergebnisse in XML zurück schreiben
+/**
+ * Klasse zur Darstellung des Datenausgabeprozess in XML
+ */
 public class DatenausgabeXML {
+	/**
+	 * Speichern der Lösung in vorgegebene filepath als XML Daten
+	 * @param problemInstanz vorgegebene probleminstanz aus Dateneingabe
+	 * @param schlangenjagd vollständige Lösung gerechnete durch SchlangenSuche
+	 * @param filePath Pfad zur ausgegebene XML Datei
+	 * @throws Exception
+	 */
     public static void writeXML(Schlangenjagd problemInstanz, Schlangenjagd schlangenjagd, String filePath) throws Exception {
             // Root Element Schlangenjagd erstellen
             Element rootElement = new Element("Schlangenjagd");
@@ -117,7 +125,13 @@ public class DatenausgabeXML {
 
             System.out.println("XML Datei wurde durch loesung erfolgreich ueberschrieben: " + filePath);
     }
-    
+    /**
+     * Methode zur Ausgabe der durch DschungelGenerator erstellte Probleminstanz
+	 * @param problemInstanz vorgegebene probleminstanz aus Dateneingabe
+	 * @param schlangenjagd der durch DschungelGenerator erstellte Probleminstanz
+	 * @param filePath Pfad zur ausgegebene XML Datei
+	 * @throws Exception
+     */
     public static void writeProbleminstanzXML(Schlangenjagd problemInstanz, Schlangenjagd schlangenjagd, String filePath) throws Exception {
         // Root Element Schlangenjagd erstellen
         Element rootElement = new Element("Schlangenjagd");

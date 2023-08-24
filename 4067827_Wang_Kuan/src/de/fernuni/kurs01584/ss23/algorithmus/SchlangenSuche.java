@@ -8,11 +8,17 @@ import de.fernuni.kurs01584.ss23.dateiverarbeitung.*;
 import de.fernuni.kurs01584.ss23.modell.*;
 
 public class SchlangenSuche {
-
+	/**
+     * Liest die vorgegebene Eingabedatei mit einer vollstaendigen Probleminstanz und startet das 
+     * Loesungverfahren für die Schlangensuche. Suche mögliche Schlangen Analog zum Backtracking Algorithmus.
+     * Die gefundene Loesung wird zusammen mit der Probleminstanz in der Ausgabedatei gespeichert.
+     * 
+	 * @param inputFilePath Dateipfad zu einer XML-Datei mit Parametern fuer eine Probleminstanz, 
+	 * die erzeugt werden soll.
+	 * @param outputFilePath Dateipfad zu einer XML-Datei fuer die erzeugte Probleminstanz.
+	 * @throws Exception
+	 */
 	public static void sucheSchlange(String inputFilePath , String outputFilePath) throws Exception {
-	    
-	    
-	    
 		// Programm staten
 		long startZeit = System.currentTimeMillis();
 		int aktuellePunkt = 0;
@@ -60,7 +66,7 @@ public class SchlangenSuche {
 						schlangengliedList.add(schlangenkopf);
 						// flag dient als Zeichen dass unter dem Schlangekopf Schlange gefunden wird
 						AtomicBoolean flag = new AtomicBoolean(false);
-						// suche Schlangenglieden mit Schlangenkopf
+						// Rekursive Suchen nach Schlangenglieden anhand Schlangenkopf
 						sucheSchlangenglied(flag,schlangenjagd,schlangengliedList,schlangenkopf,schlangeList,schlangenart,startFelder);
 						if (flag.get() == true) {
 							break;
@@ -81,7 +87,8 @@ public class SchlangenSuche {
 			}
 
 		}
-
+		
+		// Wenn alle Lösungen gefunden sind, speichert die Zeitslot und Lösungen in XML Datei
 		double zeitinterval = System.currentTimeMillis() - startZeit;
 		double zeitintervalUmgerechnet = zeitUmrechunung(einheit, zeitinterval);
 		schlangenjagd.getZeit().setAbgabe(zeitintervalUmgerechnet);
@@ -89,8 +96,18 @@ public class SchlangenSuche {
 		return;
 
 	}
-
-	private static void sucheSchlangenglied (AtomicBoolean flag, Schlangenjagd schlangenjagd, List<Schlangenglied> schlangengliedList, Schlangenglied voherigesGlied, List<Schlange> schlangeList, Schlangenart schlangenart,  List<Feld> priorisierteFelder) throws Exception {
+	/**
+	 * Suche nach nächstes Schlangenglied anhand vorherigesGlied und Schlangenart
+	 * @param flag flag ist Wahr, wenn ein vollständige Schlange nach Schlangenart gefunden ist. sonst Falsch 
+	 * @param schlangenjagd aktuelle Schlangenjagd Modelle
+	 * @param schlangengliedList aktuelle List von gefundenen Schlangenglied
+	 * @param voherigesGlied letztes Schlangenglied aus schlangengliedList
+	 * @param schlangeList List zur Speichern bisher gefundene Schlangen
+	 * @param schlangenart aktueller Schlangenart
+	 * @param priorisierteFelder Felder nach Priorisierung
+	 * @throws Exception
+	 */
+	public static void sucheSchlangenglied (AtomicBoolean flag, Schlangenjagd schlangenjagd, List<Schlangenglied> schlangengliedList, Schlangenglied voherigesGlied, List<Schlange> schlangeList, Schlangenart schlangenart,  List<Feld> priorisierteFelder) throws Exception {
 
 		// erzeuge zulässige Nachbarfelder für vorherigesGlied
 		int indexVorherigesGlied = schlangengliedList.indexOf(voherigesGlied);
@@ -154,8 +171,12 @@ public class SchlangenSuche {
 			return;
 		}
 	}
-
-	private static List<Feld> erzeugZulaessigeStartFelder (List<Feld> felder) {
+	/**
+	 * Erzeugen zulässige Startfelder nach Kriterien: Verwendbarkeit > 0
+	 * @param felder ursprüngliche Felder aus Duschungel
+	 * @return Startfelder zulässige Startfelder zur Schlangen Suchen
+	 */
+	public static List<Feld> erzeugZulaessigeStartFelder (List<Feld> felder) {
 
 		List<Feld> Startfelder = new ArrayList<>();
 		for (Feld feld : felder) {
@@ -166,8 +187,14 @@ public class SchlangenSuche {
 		return Startfelder;
 
 	}
-
-	private static List<Schlangenart> erzeugZulassigeSchlangenart (List<Schlangenart> schlangenarten, Feld feld){
+	/**
+	 * Erzeugen zulässige Schlangenarten nach zeichen in Feld
+	 * @param schlangenarten List von Schlangenarten
+	 * @param feld aktuelle zulässige Feld
+	 * @return List von zulässigen Schlangenarten
+	 */
+	
+	public static List<Schlangenart> erzeugZulassigeSchlangenart (List<Schlangenart> schlangenarten, Feld feld){
 		List<Schlangenart> startSchlangenarten = new ArrayList<>();
 		for (Schlangenart schlangenart : schlangenarten) {
 			String firstZeichen = String.valueOf(schlangenart.getZeichenkette().charAt(0));
@@ -178,12 +205,20 @@ public class SchlangenSuche {
 
 		return startSchlangenarten;
 	}
+	
+	/**
+	 * Erzeugen zulässige NachbarschaftFelder
+	 * @param schlangenart aktuelle Schlangenart
+	 * @param voherigesGlied letzte Schlangenglied in SchlangengliedList 
+	 * @param index index von vorherigesGlied in SchlangengliedList
+	 * @param startfelder zulässige startfelder
+	 * @return
+	 */
 
+	public static List<Feld> erzeugZulaessigeNachbarFelder (Schlangenart schlangenart, Schlangenglied vorherigesGlied, int index, List<Feld> startfelder) {
 
-	private static List<Feld> erzeugZulaessigeNachbarFelder (Schlangenart schlangenart, Schlangenglied voherigesGlied, int index, List<Feld> startfelder) {
-
-		int feldSpalte = voherigesGlied.getFeld().getSpalte();
-		int feldZeile = voherigesGlied.getFeld().getZeile();
+		int feldSpalte = vorherigesGlied.getFeld().getSpalte();
+		int feldZeile = vorherigesGlied.getFeld().getZeile();
 		List<Feld> nachbarfelder = new ArrayList<>();
 		// prüft ob vorherigesGlied letzte Glied von Schlangenart ist
 		if (index >= schlangenart.getZeichenkette().length() - 1) {}
@@ -220,8 +255,12 @@ public class SchlangenSuche {
 
 	}
 
-	// Priorisieren 1. Punkte 2. Verwendbarkeit
-	private static <T extends Priorisierbar> void priorisieren(List<T> list) {
+	/**
+	 * Priorisieren die List von Feld und Schlangenart nach 1. Punkte 2. Verwendbarkeit
+	 * @param <T> Element in List
+	 * @param list priorisierte List
+	 */
+	public static <T extends Priorisierbar> void priorisieren(List<T> list) {
 		Comparator<T> comparator_1 = new Comparator<T>() {
 			@Override
 			public int compare(T o1, T o2) {
@@ -243,8 +282,13 @@ public class SchlangenSuche {
 		Collections.sort(list, comparator_1);
 		Collections.sort(list, comparator_2);
 	}
-
-	private static double zeitUmrechunung(String einheit, double inputZeit) {
+	/**
+	 * Umrechnung der Zeit anhand einheit
+	 * @param einheit vorgegebenen Zeiteinheit
+	 * @param inputZeit 
+	 * @return umgerechneteZeit
+	 */
+	public static double zeitUmrechunung(String einheit, double inputZeit) {
 		long umgerechnetZeit = 0;
 		if (einheit.equals("d")) {
 			umgerechnetZeit = MillisecondsconvertTo(inputZeit, TimeUnit.DAYS);
@@ -262,8 +306,14 @@ public class SchlangenSuche {
 
 		return umgerechnetZeit;
 	}
-
-	private static long MillisecondsconvertTo(double time, TimeUnit unit) {
+	
+	/**
+	 * Zeitumrechnung nach Miliseconds
+	 * @param time eingegebene Zeit
+	 * @param unit ZeitEinheit
+	 * @return umgerechneteZeit
+	 */
+	public static long MillisecondsconvertTo(double time, TimeUnit unit) {
 		long zeit;
 
 		switch (unit) {
@@ -286,7 +336,12 @@ public class SchlangenSuche {
 
 		return zeit;
 	}
-
+	/**
+	 * Rechnen gesamte bisherige Punktzahl von Schlangen in Schlangenjagd 
+	 * @param schlangenjagd aktuelle Schlangenjagd Modelle
+	 * @param bisherigePunkt
+	 * @return GesamtPunktzahl aktuelle 
+	 */
 	public static int rechnePunkt(Schlangenjagd schlangenjagd, int bisherigePunkt) {
 		// Rechne aktuelle gesamte Punktzahl aus Schlangen
 		int Punktzahl = 0;
@@ -305,8 +360,18 @@ public class SchlangenSuche {
 
 		return Punktzahl > bisherigePunkt ? Punktzahl:bisherigePunkt;
 	}
-
-	private static void zeitVorgabePruefen(Schlangenjagd problemInstanz, Schlangenjagd schlangenjagd, long startZeit, double zeitVorgabe, String outputFilePath, int aktuellePunkt, String einheit) throws Exception {
+	/**
+	 * Prüft, ob aktuelle Zeitslot die Zeitvorgabe überschritt hat
+	 * @param problemInstanz eingelesene Probleminstanz aus XML-Datei
+	 * @param schlangenjagd aktuelle Modelle 
+	 * @param startZeit Zeit, die die Programm gestart wird
+	 * @param zeitVorgabe Zeitvorgabe, die durch XML-Datei vorgegeben ist
+	 * @param outputFilePath Pfad zur Ausgabe
+	 * @param aktuellePunkt aktuelle Punktzahl
+	 * @param einheit Zeit Einheit, vorgegeben durch XML
+	 * @throws Exception
+	 */
+	public static void zeitVorgabePruefen(Schlangenjagd problemInstanz, Schlangenjagd schlangenjagd, long startZeit, double zeitVorgabe, String outputFilePath, int aktuellePunkt, String einheit) throws Exception {
 
 		double zeitInterval = System.currentTimeMillis() - startZeit;
 		zeitInterval = zeitUmrechunung(einheit, zeitInterval);

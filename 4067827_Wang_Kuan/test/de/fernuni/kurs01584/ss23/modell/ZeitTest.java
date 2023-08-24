@@ -8,12 +8,17 @@ import org.junit.jupiter.api.*;
 
 public class ZeitTest {
     private Zeit zeit;
-    
+    /**
+     * Instanz von Zeit initialisieren
+     */
     @BeforeEach
     void init() {
         zeit = new Zeit();
     }
-    
+    /**
+     * Testfälle für Default Konstruktor
+     * Test, ob leere Konstruktor funktioniert ist und Default Wert von Vorgabe und Abgabe
+     */
     @Test
     @DisplayName("Test Default-Konstruktor")
     void testDefaultKontruktor() {
@@ -23,6 +28,10 @@ public class ZeitTest {
         assertEquals(0.0, zeit.getAbgabe());
     }
     
+    /**
+     * Testfälle für Default Konstruktor mit Parametern
+     * Test, ob parameterisierte Konstruktor funktioniert und richtige Wert aufnehmen kann 
+     */
     @Test
     @DisplayName("Test Parameterisiert Konstruktor")
     void testParameterisiertKontruktor() {
@@ -37,6 +46,9 @@ public class ZeitTest {
         assertEquals(abgabe, zeit.getAbgabe());
     }
     
+    /**
+     * Test Getters und Setters von Methoden
+     */
     @Test
     @DisplayName("Test Setters und Getters")
     void testSettersUndGetters() {
@@ -52,6 +64,10 @@ public class ZeitTest {
         assertEquals(vorgabe, zeit.getVorgabe());
         assertEquals(abgabe, zeit.getAbgabe());
     }
+    
+    /**
+     * Wiederholte Test zur Test Getters und Setters von ZeitVorgabe 
+     */
     
     @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
     @Nested

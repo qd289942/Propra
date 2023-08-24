@@ -18,7 +18,11 @@ import de.fernuni.kurs01584.ss23.modell.*;
 
 public class Schlangenjagd implements SchlangenjagdAPI {
 
-    // TODO: Implementierung von Schnittstelle und Programm-Einstieg
+    /**
+     * Implementierung von Schnittstelle und Programm-Einstieg
+     * @param args Kommandozeilenparameter
+     * @throws Exception
+     */
     public static void main (String[] args) throws Exception {
 
         // Kommandozeilenparameter überprüfen
@@ -28,30 +32,31 @@ public class Schlangenjagd implements SchlangenjagdAPI {
         }
 
         // Kommandozeilenparameter zuweisen
-        String ablauf = args[0];
-        String eingabe = args[1];
-        String ausgabe = args[2];
+        String ablauf = args[0].substring(args[0].indexOf('=') + 1);
+        String eingabe = args[1].substring(args[1].indexOf('=') + 1);
+        String ausgabe = args[2].substring(args[2].indexOf('=') + 1);
 
         // Erstellen neue Objekt von Hauptkomponent Schlangenjagd
         Schlangenjagd schlangenjagd = new Schlangenjagd();
 
         for (char c: ablauf.toCharArray()) {
             switch (c) {
+            // Für eine gegebene Probleminstanz wird nach einer neuen Lösung gesucht und bei Angabe einer Ausgabedatei gespeichert.
             case 'l':
                 boolean flag = schlangenjagd.loeseProbleminstanz(eingabe, ausgabe);
                 if (flag == false) {
                     System.out.println("keine Schlange gefunden.");
                 }
                 break;
-
+            // Eine neue Probleminstanz wird auf Basis der gegebenen Parameter erzeugt und bei Angabe einer Ausgabedatei gespeichert.    
             case 'e':
                 schlangenjagd.erzeugeProbleminstanz(eingabe, ausgabe);
                 break;
-
+            // Die Probleminstanz und die zugehörige Lösung werden in der Konsole dargestellt.
             case 'd':
                 schlangenjagd.darstellung(eingabe, ausgabe);
                 break;
-
+            // Die Zulässigkeit der gegebenen Lösung wird überprüft. Bei Unzulässigkeit werden die Art und Anzahl der verletzten Bedingungen in der Konsole ausgegeben
             case 'p':
                 List<Fehlertyp> fehlerTypList = schlangenjagd.pruefeLoesung(ausgabe);
                 System.out.println("\n\nFehlertyp und Anzahl: ");
@@ -65,7 +70,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                     System.out.println(entry.getKey() + ": " + entry.getValue());
                 }
                 break;
-
+            // Die Gesamtpunktzahl der Lösung wird unabhängig von der Zulässigkeit berechnet und in der Konsole ausgegeben.
             case 'b':
                 int gesamtPunkte = schlangenjagd.bewerteLoesung(ausgabe);
                 System.out.println("\nGesamtPunkt: " + gesamtPunkte);
@@ -78,29 +83,26 @@ public class Schlangenjagd implements SchlangenjagdAPI {
         }
 
     }
+    /**
+     * Implementierung der API-Methode zur Loesung von Probleminstanzen.
+     * 
+     */
     @Override
     public boolean loeseProbleminstanz(String xmlEingabeDatei, String xmlAusgabeDatei) {
-        // TODO Implementierung der API-Methode zur Loesung von Probleminstanzen.
-        // Probleminstanz wird gelöst und in AusgabeDatei gespeichert
-        // Erstellen neue Objekt von Modelle Schlangenjagd als Probleminstanz
 
         de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = null;
 
         validateDTD(xmlEingabeDatei);
-        validateDTDAusgabe(xmlAusgabeDatei);
-
 
         try {
             SchlangenSuche.sucheSchlange(xmlEingabeDatei, xmlAusgabeDatei);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
         try {
             loesung = DateneingabeXML.parseXMLmitSchlangen(xmlAusgabeDatei);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         if (loesung.getSchlangen() != null && !loesung.getSchlangen().isEmpty()) {
@@ -110,12 +112,13 @@ public class Schlangenjagd implements SchlangenjagdAPI {
             return false;
         }
     }
-
+    /**
+     * Implementierung der API-Methode zur Erzeugung von Probleminstanzen.
+     */
     @Override
     public boolean erzeugeProbleminstanz(String xmlEingabeDatei, String xmlAusgabeDatei) {
-        // TODO Implementierung der API-Methode zur Erzeugung von Probleminstanzen.
+
         validateDTD(xmlEingabeDatei);
-        validateDTDAusgabe(xmlAusgabeDatei);
 
         try {
             DschungelGenerator.erzeugProbleminstanzen(xmlEingabeDatei, xmlAusgabeDatei);
@@ -125,7 +128,9 @@ public class Schlangenjagd implements SchlangenjagdAPI {
         }
         return false;
     }
-
+    /**
+     * Implementierung der API-Methode zur Pruefung von Loesungen.
+     */
     @Override
     public List<Fehlertyp> pruefeLoesung(String xmlEingabeDatei) {
         de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = null;
@@ -133,11 +138,8 @@ public class Schlangenjagd implements SchlangenjagdAPI {
         try {
             loesung = DateneingabeXML.parseXMLmitSchlangen(xmlEingabeDatei);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        // TODO Implementierung der API-Methode zur Pruefung von Loesungen.
 
         List<Fehlertyp> fehlertypList = new ArrayList<>();
         List<Schlange> schlangeList = loesung.getSchlangen();
@@ -207,22 +209,28 @@ public class Schlangenjagd implements SchlangenjagdAPI {
 
         return fehlertypList;
     }
-
+    /**
+     * Implementierung der API-Methode zur Bewertung von Loesungen.
+     */
     @Override
     public int bewerteLoesung(String xmlEingabeDatei) {
-        // TODO Implementierung der API-Methode zur Bewertung von Loesungen.
         de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = null;
         try {
             loesung = DateneingabeXML.parseXMLmitSchlangen(xmlEingabeDatei);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         int punktzahl = 0;
         punktzahl = SchlangenSuche.rechnePunkt(loesung, punktzahl);
         return punktzahl;
     }
-
+    /**
+     * Darstellung der Lösungen und Probleminstanz
+     * @param xmlEingabeDatei Dateipfad zu einer XML-Datei mit Parametern fuer eine
+     *                        Probleminstanz, die erzeugt werden soll.
+     * @param xmlAusgabeDatei Dateipfad zu einer XML-Datei fuer die erzeugte Probleminstanz.
+     * @throws Exception
+     */
     public void darstellung(String xmlEingabeDatei, String xmlAusgabeDatei) throws Exception {
         if (!xmlEingabeDatei.equals("")) {
             de.fernuni.kurs01584.ss23.modell.Schlangenjagd probleminstanz = DateneingabeXML.parseXML(xmlEingabeDatei);
@@ -234,30 +242,42 @@ public class Schlangenjagd implements SchlangenjagdAPI {
             DarstellungLoesungen.loesungDarstellen(loesung);
         }
     }
-
+    
+    /**
+     * Implementierung der API-Methode zur Rueckgabe Ihres vollstaenigen Namens.
+     */
     @Override
     public String getName() {
-        // TODO Implementierung der API-Methode zur Rueckgabe Ihres vollstaenigen Namens.
+    	
         String vorname = "Kuan";
         String nachname = "Wang";
 
         return nachname + ", " + vorname;
     }
-
+    
+    /**
+     * Implementierung der API-Methode zur Rueckgabe Ihrer Matrikelnummer.
+     */
     @Override
     public String getMatrikelnummer() {
-        // TODO Implementierung der API-Methode zur Rueckgabe Ihrer Matrikelnummer.
+    	
         String matriketnummer = "4067827";
         return matriketnummer;
     }
-
+    
+    /**
+     * Implementierung der API-Methode zur Rueckgabe Ihrer E-Mail Adresse.
+     */
     @Override
     public String getEmail() {
-        // TODO Implementierung der API-Methode zur Rueckgabe Ihrer E-Mail Adresse.
         String Email = "wangkuan42@gmail.com";
         return Email;
     }
-
+    /**
+     * Validierung der DTD Datei
+     * @param eingabe Datenpfad
+     * @return falsch wenn Exception ausgelöst ist, sonst true
+     */
     private boolean validateDTD(String eingabe) {
         try {
             // Erstellen des SAXBuilders
@@ -284,25 +304,6 @@ public class Schlangenjagd implements SchlangenjagdAPI {
 
     }
 
-    private boolean validateDTDAusgabe(String ausgabe) {
-        try {
-            // Erstellen des SAXBuilders
-            SAXBuilder builder = new SAXBuilder();
-
-            // Parsing der XML-Datei
-            Document document = builder.build(new File(ausgabe));
-
-        } catch (FileNotFoundException e) {
-            System.out.println("keine DTD-Datei in " + ausgabe+ " gefunden.");
-            System.exit(0);
-        } catch (Exception e) {
-            System.out.println("sonstige Fehlern");
-            System.exit(0);
-        }
-
-        return true;
-
-    }
 
 
 

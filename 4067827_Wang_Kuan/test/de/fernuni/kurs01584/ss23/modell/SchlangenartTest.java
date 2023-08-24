@@ -8,11 +8,18 @@ public class SchlangenartTest {
     
     private Schlangenart schlangenart;
     
+    /**
+     * Instanz initialisieren
+     */
     @BeforeEach
     void init() {
         schlangenart = new Schlangenart();
     }
     
+    /**
+     * Testfälle für Default Konstruktor
+     * Test, ob leere Konstruktor funktioniert ist und Default Wert von Vorgabe und Abgabe
+     */
     @Test
     @DisplayName("Test Default-Konstruktor")
     void testDefaultKonstruktor() {
@@ -24,6 +31,10 @@ public class SchlangenartTest {
         assertNull(schlangenart.getNachStr());
     }
     
+    /**
+     * Testfälle für Default Konstruktor mit Parametern
+     * Test, ob parameterisierte Konstruktor funktioniert und richtige Wert aufnehmen kann 
+     */
     @Test
     @DisplayName("Test Parameterisierter-Konstruktor")
     void testParameterisiertKonstruktor() {
@@ -43,6 +54,9 @@ public class SchlangenartTest {
         
     }
     
+    /**
+     * negative Test
+     */
     @DisplayName("test negative Anzahl und Punkte von Schlangenarten.")
     @Test
     void testNegativAnzahlundPunkte() {
@@ -57,7 +71,9 @@ public class SchlangenartTest {
         assertThrows(IllegalArgumentException.class, () -> new Schlangenart(id, punkte, 1, zeichenkette, nachStr),
                 () -> "Fuer den (negativen) Anzahl '" + punkte + "' wird keine Ausnahme erzeugt.");
     }
-    
+    /**
+     * Testfälle für Setters und Getters
+     */
     @Test
     @DisplayName("Test Setters und Getters")
     void testSettersundGetters() {

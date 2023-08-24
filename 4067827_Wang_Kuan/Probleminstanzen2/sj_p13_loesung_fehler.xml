@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Schlangenjagd SYSTEM "schlangenjagd.dtd">
+<Schlangenjagd>
+    <Zeit einheit="s">
+        <Vorgabe>10.0</Vorgabe>
+        <Abgabe>1.8958422750000001</Abgabe>
+    </Zeit>
+    <Dschungel zeilen="20" spalten="20" zeichen="'">
+        <Feld id="F0" zeile="0" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F1" zeile="0" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F2" zeile="0" spalte="2" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F3" zeile="0" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F4" zeile="0" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F5" zeile="0" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F6" zeile="0" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F7" zeile="0" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F8" zeile="0" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F9" zeile="0" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F10" zeile="0" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F11" zeile="0" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F12" zeile="0" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F13" zeile="0" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F14" zeile="0" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F15" zeile="0" spalte="15" verwendbarkeit="5" punkte="7">1</Feld>
+        <Feld id="F16" zeile="0" spalte="16" verwendbarkeit="5" punkte="2">0</Feld>
+        <Feld id="F17" zeile="0" spalte="17" verwendbarkeit="2" punkte="2">0</Feld>
+        <Feld id="F18" zeile="0" spalte="18" verwendbarkeit="1" punkte="7">1</Feld>
+        <Feld id="F19" zeile="0" spalte="19" verwendbarkeit="7" punkte="9">0</Feld>
+        <Feld id="F20" zeile="1" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F21" zeile="1" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F22" zeile="1" spalte="2" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F23" zeile="1" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F24" zeile="1" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F25" zeile="1" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F26" zeile="1" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F27" zeile="1" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F28" zeile="1" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F29" zeile="1" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F30" zeile="1" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F31" zeile="1" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F32" zeile="1" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F33" zeile="1" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F34" zeile="1" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F35" zeile="1" spalte="15" verwendbarkeit="7" punkte="5">0</Feld>
+        <Feld id="F36" zeile="1" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F37" zeile="1" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F38" zeile="1" spalte="18" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F39" zeile="1" spalte="19" verwendbarkeit="1" punkte="6">0</Feld>
+        <Feld id="F40" zeile="2" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F41" zeile="2" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F42" zeile="2" spalte="2" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F43" zeile="2" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F44" zeile="2" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F45" zeile="2" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F46" zeile="2" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F47" zeile="2" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F48" zeile="2" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F49" zeile="2" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F50" zeile="2" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F51" zeile="2" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F52" zeile="2" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F53" zeile="2" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F54" zeile="2" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F55" zeile="2" spalte="15" verwendbarkeit="2" punkte="2">0</Feld>
+        <Feld id="F56" zeile="2" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F57" zeile="2" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F58" zeile="2" spalte="18" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F59" zeile="2" spalte="19" verwendbarkeit="4" punkte="2">1</Feld>
+        <Feld id="F60" zeile="3" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F61" zeile="3" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F62" zeile="3" spalte="2" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F63" zeile="3" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F64" zeile="3" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F65" zeile="3" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F66" zeile="3" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F67" zeile="3" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F68" zeile="3" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F69" zeile="3" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F70" zeile="3" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F71" zeile="3" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F72" zeile="3" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F73" zeile="3" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F74" zeile="3" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F75" zeile="3" spalte="15" verwendbarkeit="7" punkte="2">1</Feld>
+        <Feld id="F76" zeile="3" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F77" zeile="3" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F78" zeile="3" spalte="18" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F79" zeile="3" spalte="19" verwendbarkeit="6" punkte="8">1</Feld>
+        <Feld id="F80" zeile="4" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F81" zeile="4" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F82" zeile="4" spalte="2" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F83" zeile="4" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F84" zeile="4" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F85" zeile="4" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F86" zeile="4" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F87" zeile="4" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F88" zeile="4" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F89" zeile="4" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F90" zeile="4" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F91" zeile="4" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F92" zeile="4" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F93" zeile="4" spalte="13" verwendbarkeit="6" punkte="8">0</Feld>
+        <Feld id="F94" zeile="4" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F95" zeile="4" spalte="15" verwendbarkeit="6" punkte="2">0</Feld>
+        <Feld id="F96" zeile="4" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F97" zeile="4" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F98" zeile="4" spalte="18" verwendbarkeit="6" punkte="1">1</Feld>
+        <Feld id="F99" zeile="4" spalte="19" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F100" zeile="5" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F101" zeile="5" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F102" zeile="5" spalte="2" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F103" zeile="5" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F104" zeile="5" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F105" zeile="5" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F106" zeile="5" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F107" zeile="5" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F108" zeile="5" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F109" zeile="5" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F110" zeile="5" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F111" zeile="5" spalte="11" verwendbarkeit="3" punkte="1">0</Feld>
+        <Feld id="F112" zeile="5" spalte="12" verwendbarkeit="3" punkte="8">1</Feld>
+        <Feld id="F113" zeile="5" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F114" zeile="5" spalte="14" verwendbarkeit="1" punkte="3">1</Feld>
+        <Feld id="F115" zeile="5" spalte="15" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F116" zeile="5" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F117" zeile="5" spalte="17" verwendbarkeit="1" punkte="4">0</Feld>
+        <Feld id="F118" zeile="5" spalte="18" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F119" zeile="5" spalte="19" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F120" zeile="6" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F121" zeile="6" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F122" zeile="6" spalte="2" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F123" zeile="6" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F124" zeile="6" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F125" zeile="6" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F126" zeile="6" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F127" zeile="6" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F128" zeile="6" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F129" zeile="6" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F130" zeile="6" spalte="10" verwendbarkeit="1" punkte="7">1</Feld>
+        <Feld id="F131" zeile="6" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F132" zeile="6" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F133" zeile="6" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F134" zeile="6" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F135" zeile="6" spalte="15" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F136" zeile="6" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F137" zeile="6" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F138" zeile="6" spalte="18" verwendbarkeit="6" punkte="6">0</Feld>
+        <Feld id="F139" zeile="6" spalte="19" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F140" zeile="7" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F141" zeile="7" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F142" zeile="7" spalte="2" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F143" zeile="7" spalte="3" verwendbarkeit="3" punkte="3">0</Feld>
+        <Feld id="F144" zeile="7" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F145" zeile="7" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F146" zeile="7" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F147" zeile="7" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F148" zeile="7" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F149" zeile="7" spalte="9" verwendbarkeit="7" punkte="9">0</Feld>
+        <Feld id="F150" zeile="7" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F151" zeile="7" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F152" zeile="7" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F153" zeile="7" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F154" zeile="7" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F155" zeile="7" spalte="15" verwendbarkeit="5" punkte="5">0</Feld>
+        <Feld id="F156" zeile="7" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F157" zeile="7" spalte="17" verwendbarkeit="4" punkte="9">1</Feld>
+        <Feld id="F158" zeile="7" spalte="18" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F159" zeile="7" spalte="19" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F160" zeile="8" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F161" zeile="8" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F162" zeile="8" spalte="2" verwendbarkeit="5" punkte="6">0</Feld>
+        <Feld id="F163" zeile="8" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F164" zeile="8" spalte="4" verwendbarkeit="3" punkte="9">0</Feld>
+        <Feld id="F165" zeile="8" spalte="5" verwendbarkeit="7" punkte="8">1</Feld>
+        <Feld id="F166" zeile="8" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F167" zeile="8" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F168" zeile="8" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F169" zeile="8" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F170" zeile="8" spalte="10" verwendbarkeit="1" punkte="9">0</Feld>
+        <Feld id="F171" zeile="8" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F172" zeile="8" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F173" zeile="8" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F174" zeile="8" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F175" zeile="8" spalte="15" verwendbarkeit="6" punkte="4">1</Feld>
+        <Feld id="F176" zeile="8" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F177" zeile="8" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F178" zeile="8" spalte="18" verwendbarkeit="3" punkte="9">0</Feld>
+        <Feld id="F179" zeile="8" spalte="19" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F180" zeile="9" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F181" zeile="9" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F182" zeile="9" spalte="2" verwendbarkeit="6" punkte="8">1</Feld>
+        <Feld id="F183" zeile="9" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F184" zeile="9" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F185" zeile="9" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F186" zeile="9" spalte="6" verwendbarkeit="7" punkte="5">0</Feld>
+        <Feld id="F187" zeile="9" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F188" zeile="9" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F189" zeile="9" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F190" zeile="9" spalte="10" verwendbarkeit="3" punkte="4">0</Feld>
+        <Feld id="F191" zeile="9" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F192" zeile="9" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F193" zeile="9" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F194" zeile="9" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F195" zeile="9" spalte="15" verwendbarkeit="4" punkte="5">0</Feld>
+        <Feld id="F196" zeile="9" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F197" zeile="9" spalte="17" verwendbarkeit="5" punkte="6">1</Feld>
+        <Feld id="F198" zeile="9" spalte="18" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F199" zeile="9" spalte="19" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F200" zeile="10" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F201" zeile="10" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F202" zeile="10" spalte="2" verwendbarkeit="4" punkte="7">1</Feld>
+        <Feld id="F203" zeile="10" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F204" zeile="10" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F205" zeile="10" spalte="5" verwendbarkeit="4" punkte="1">1</Feld>
+        <Feld id="F206" zeile="10" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F207" zeile="10" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F208" zeile="10" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F209" zeile="10" spalte="9" verwendbarkeit="7" punkte="7">1</Feld>
+        <Feld id="F210" zeile="10" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F211" zeile="10" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F212" zeile="10" spalte="12" verwendbarkeit="7" punkte="1">1</Feld>
+        <Feld id="F213" zeile="10" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F214" zeile="10" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F215" zeile="10" spalte="15" verwendbarkeit="1" punkte="9">0</Feld>
+        <Feld id="F216" zeile="10" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F217" zeile="10" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F218" zeile="10" spalte="18" verwendbarkeit="7" punkte="2">0</Feld>
+        <Feld id="F219" zeile="10" spalte="19" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F220" zeile="11" spalte="0" verwendbarkeit="7" punkte="6">0</Feld>
+        <Feld id="F221" zeile="11" spalte="1" verwendbarkeit="6" punkte="8">1</Feld>
+        <Feld id="F222" zeile="11" spalte="2" verwendbarkeit="6" punkte="7">0</Feld>
+        <Feld id="F223" zeile="11" spalte="3" verwendbarkeit="5" punkte="1">1</Feld>
+        <Feld id="F224" zeile="11" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F225" zeile="11" spalte="5" verwendbarkeit="4" punkte="4">0</Feld>
+        <Feld id="F226" zeile="11" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F227" zeile="11" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F228" zeile="11" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F229" zeile="11" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F230" zeile="11" spalte="10" verwendbarkeit="3" punkte="4">0</Feld>
+        <Feld id="F231" zeile="11" spalte="11" verwendbarkeit="6" punkte="4">0</Feld>
+        <Feld id="F232" zeile="11" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F233" zeile="11" spalte="13" verwendbarkeit="4" punkte="2">1</Feld>
+        <Feld id="F234" zeile="11" spalte="14" verwendbarkeit="6" punkte="6">0</Feld>
+        <Feld id="F235" zeile="11" spalte="15" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F236" zeile="11" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F237" zeile="11" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F238" zeile="11" spalte="18" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F239" zeile="11" spalte="19" verwendbarkeit="4" punkte="2">1</Feld>
+        <Feld id="F240" zeile="12" spalte="0" verwendbarkeit="1" punkte="7">0</Feld>
+        <Feld id="F241" zeile="12" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F242" zeile="12" spalte="2" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F243" zeile="12" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F244" zeile="12" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F245" zeile="12" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F246" zeile="12" spalte="6" verwendbarkeit="4" punkte="9">0</Feld>
+        <Feld id="F247" zeile="12" spalte="7" verwendbarkeit="2" punkte="4">0</Feld>
+        <Feld id="F248" zeile="12" spalte="8" verwendbarkeit="3" punkte="4">0</Feld>
+        <Feld id="F249" zeile="12" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F250" zeile="12" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F251" zeile="12" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F252" zeile="12" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F253" zeile="12" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F254" zeile="12" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F255" zeile="12" spalte="15" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F256" zeile="12" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F257" zeile="12" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F258" zeile="12" spalte="18" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F259" zeile="12" spalte="19" verwendbarkeit="1" punkte="2">0</Feld>
+        <Feld id="F260" zeile="13" spalte="0" verwendbarkeit="4" punkte="3">0</Feld>
+        <Feld id="F261" zeile="13" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F262" zeile="13" spalte="2" verwendbarkeit="7" punkte="8">0</Feld>
+        <Feld id="F263" zeile="13" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F264" zeile="13" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F265" zeile="13" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F266" zeile="13" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F267" zeile="13" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F268" zeile="13" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F269" zeile="13" spalte="9" verwendbarkeit="1" punkte="3">0</Feld>
+        <Feld id="F270" zeile="13" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F271" zeile="13" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F272" zeile="13" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F273" zeile="13" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F274" zeile="13" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F275" zeile="13" spalte="15" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F276" zeile="13" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F277" zeile="13" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F278" zeile="13" spalte="18" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F279" zeile="13" spalte="19" verwendbarkeit="5" punkte="6">1</Feld>
+        <Feld id="F280" zeile="14" spalte="0" verwendbarkeit="2" punkte="1">1</Feld>
+        <Feld id="F281" zeile="14" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F282" zeile="14" spalte="2" verwendbarkeit="6" punkte="8">1</Feld>
+        <Feld id="F283" zeile="14" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F284" zeile="14" spalte="4" verwendbarkeit="4" punkte="8">0</Feld>
+        <Feld id="F285" zeile="14" spalte="5" verwendbarkeit="3" punkte="7">1</Feld>
+        <Feld id="F286" zeile="14" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F287" zeile="14" spalte="7" verwendbarkeit="6" punkte="8">0</Feld>
+        <Feld id="F288" zeile="14" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F289" zeile="14" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F290" zeile="14" spalte="10" verwendbarkeit="7" punkte="4">1</Feld>
+        <Feld id="F291" zeile="14" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F292" zeile="14" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F293" zeile="14" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F294" zeile="14" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F295" zeile="14" spalte="15" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F296" zeile="14" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F297" zeile="14" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F298" zeile="14" spalte="18" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F299" zeile="14" spalte="19" verwendbarkeit="4" punkte="3">0</Feld>
+        <Feld id="F300" zeile="15" spalte="0" verwendbarkeit="2" punkte="2">0</Feld>
+        <Feld id="F301" zeile="15" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F302" zeile="15" spalte="2" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F303" zeile="15" spalte="3" verwendbarkeit="4" punkte="6">0</Feld>
+        <Feld id="F304" zeile="15" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F305" zeile="15" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F306" zeile="15" spalte="6" verwendbarkeit="1" punkte="3">0</Feld>
+        <Feld id="F307" zeile="15" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F308" zeile="15" spalte="8" verwendbarkeit="1" punkte="2">0</Feld>
+        <Feld id="F309" zeile="15" spalte="9" verwendbarkeit="3" punkte="5">0</Feld>
+        <Feld id="F310" zeile="15" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F311" zeile="15" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F312" zeile="15" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F313" zeile="15" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F314" zeile="15" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F315" zeile="15" spalte="15" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F316" zeile="15" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F317" zeile="15" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F318" zeile="15" spalte="18" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F319" zeile="15" spalte="19" verwendbarkeit="7" punkte="2">1</Feld>
+        <Feld id="F320" zeile="16" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F321" zeile="16" spalte="1" verwendbarkeit="4" punkte="5">1</Feld>
+        <Feld id="F322" zeile="16" spalte="2" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F323" zeile="16" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F324" zeile="16" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F325" zeile="16" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F326" zeile="16" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F327" zeile="16" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F328" zeile="16" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F329" zeile="16" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F330" zeile="16" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F331" zeile="16" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F332" zeile="16" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F333" zeile="16" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F334" zeile="16" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F335" zeile="16" spalte="15" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F336" zeile="16" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F337" zeile="16" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F338" zeile="16" spalte="18" verwendbarkeit="7" punkte="1">0</Feld>
+        <Feld id="F339" zeile="16" spalte="19" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F340" zeile="17" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F341" zeile="17" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F342" zeile="17" spalte="2" verwendbarkeit="4" punkte="1">0</Feld>
+        <Feld id="F343" zeile="17" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F344" zeile="17" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F345" zeile="17" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F346" zeile="17" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F347" zeile="17" spalte="7" verwendbarkeit="1" punkte="7">1</Feld>
+        <Feld id="F348" zeile="17" spalte="8" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F349" zeile="17" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F350" zeile="17" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F351" zeile="17" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F352" zeile="17" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F353" zeile="17" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F354" zeile="17" spalte="14" verwendbarkeit="4" punkte="5">0</Feld>
+        <Feld id="F355" zeile="17" spalte="15" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F356" zeile="17" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F357" zeile="17" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F358" zeile="17" spalte="18" verwendbarkeit="4" punkte="1">0</Feld>
+        <Feld id="F359" zeile="17" spalte="19" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F360" zeile="18" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F361" zeile="18" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F362" zeile="18" spalte="2" verwendbarkeit="1" punkte="9">1</Feld>
+        <Feld id="F363" zeile="18" spalte="3" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F364" zeile="18" spalte="4" verwendbarkeit="7" punkte="3">0</Feld>
+        <Feld id="F365" zeile="18" spalte="5" verwendbarkeit="3" punkte="1">1</Feld>
+        <Feld id="F366" zeile="18" spalte="6" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F367" zeile="18" spalte="7" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F368" zeile="18" spalte="8" verwendbarkeit="2" punkte="9">0</Feld>
+        <Feld id="F369" zeile="18" spalte="9" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F370" zeile="18" spalte="10" verwendbarkeit="7" punkte="4">1</Feld>
+        <Feld id="F371" zeile="18" spalte="11" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F372" zeile="18" spalte="12" verwendbarkeit="2" punkte="4">0</Feld>
+        <Feld id="F373" zeile="18" spalte="13" verwendbarkeit="7" punkte="3">1</Feld>
+        <Feld id="F374" zeile="18" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F375" zeile="18" spalte="15" verwendbarkeit="2" punkte="3">0</Feld>
+        <Feld id="F376" zeile="18" spalte="16" verwendbarkeit="3" punkte="3">1</Feld>
+        <Feld id="F377" zeile="18" spalte="17" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F378" zeile="18" spalte="18" verwendbarkeit="4" punkte="5">1</Feld>
+        <Feld id="F379" zeile="18" spalte="19" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F380" zeile="19" spalte="0" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F381" zeile="19" spalte="1" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F382" zeile="19" spalte="2" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F383" zeile="19" spalte="3" verwendbarkeit="3" punkte="1">0</Feld>
+        <Feld id="F384" zeile="19" spalte="4" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F385" zeile="19" spalte="5" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F386" zeile="19" spalte="6" verwendbarkeit="7" punkte="1">1</Feld>
+        <Feld id="F387" zeile="19" spalte="7" verwendbarkeit="5" punkte="7">1</Feld>
+        <Feld id="F388" zeile="19" spalte="8" verwendbarkeit="7" punkte="3">0</Feld>
+        <Feld id="F389" zeile="19" spalte="9" verwendbarkeit="6" punkte="2">0</Feld>
+        <Feld id="F390" zeile="19" spalte="10" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F391" zeile="19" spalte="11" verwendbarkeit="5" punkte="9">0</Feld>
+        <Feld id="F392" zeile="19" spalte="12" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F393" zeile="19" spalte="13" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F394" zeile="19" spalte="14" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F395" zeile="19" spalte="15" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F396" zeile="19" spalte="16" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F397" zeile="19" spalte="17" verwendbarkeit="6" punkte="9">1</Feld>
+        <Feld id="F398" zeile="19" spalte="18" verwendbarkeit="0" punkte="0">'</Feld>
+        <Feld id="F399" zeile="19" spalte="19" verwendbarkeit="0" punkte="0">'</Feld>
+    </Dschungel>
+    <Schlangenarten>
+        <Schlangenart id="A0" punkte="150" anzahl="1">
+            <Zeichenkette>01000110010001010101001001001110010101010100111001001001</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A1" punkte="100" anzahl="1">
+            <Zeichenkette>0100100001000001010001110100010101001110</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+    </Schlangenarten>
+    <Schlangen>
+        <Schlange art="A1">
+            <Schlangenglied feld="F262" />
+            <Schlangenglied feld="F282" />
+            <Schlangenglied feld="F303" />
+            <Schlangenglied feld="F284" />
+            <Schlangenglied feld="F285" />
+            <Schlangenglied feld="F306" />
+            <Schlangenglied feld="F287" />
+            <Schlangenglied feld="F308" />
+            <Schlangenglied feld="F309" />
+            <Schlangenglied feld="F290" />
+            <Schlangenglied feld="F269" />
+            <Schlangenglied feld="F248" />
+            <Schlangenglied feld="F247" />
+            <Schlangenglied feld="F246" />
+            <Schlangenglied feld="F225" />
+            <Schlangenglied feld="F205" />
+            <Schlangenglied feld="F186" />
+            <Schlangenglied feld="F165" />
+            <Schlangenglied feld="F164" />
+            <Schlangenglied feld="F143" />
+            <Schlangenglied feld="F162" />
+            <Schlangenglied feld="F182" />
+            <Schlangenglied feld="F202" />
+            <Schlangenglied feld="F221" />
+            <Schlangenglied feld="F222" />
+            <Schlangenglied feld="F221" />
+            <Schlangenglied feld="F220" />
+            <Schlangenglied feld="F240" />
+            <Schlangenglied feld="F260" />
+            <Schlangenglied feld="F280" />
+            <Schlangenglied feld="F300" />
+            <Schlangenglied feld="F321" />
+            <Schlangenglied feld="F342" />
+            <Schlangenglied feld="F362" />
+            <Schlangenglied feld="F383" />
+            <Schlangenglied feld="F364" />
+            <Schlangenglied feld="F365" />
+            <Schlangenglied feld="F386" />
+            <Schlangenglied feld="F387" />
+            <Schlangenglied feld="F19" />
+        </Schlange>
+        <Schlange art="A0">
+            <Schlangenglied feld="F234" />
+            <Schlangenglied feld="F233" />
+            <Schlangenglied feld="F234" />
+            <Schlangenglied feld="F215" />
+            <Schlangenglied feld="F234" />
+            <Schlangenglied feld="F233" />
+            <Schlangenglied feld="F212" />
+            <Schlangenglied feld="F231" />
+            <Schlangenglied feld="F230" />
+            <Schlangenglied feld="F209" />
+            <Schlangenglied feld="F190" />
+            <Schlangenglied feld="F170" />
+            <Schlangenglied feld="F149" />
+            <Schlangenglied feld="F130" />
+            <Schlangenglied feld="F111" />
+            <Schlangenglied feld="F112" />
+            <Schlangenglied feld="F93" />
+            <Schlangenglied feld="F114" />
+            <Schlangenglied feld="F95" />
+            <Schlangenglied feld="F75" />
+            <Schlangenglied feld="F55" />
+            <Schlangenglied feld="F35" />
+            <Schlangenglied feld="F15" />
+            <Schlangenglied feld="F16" />
+            <Schlangenglied feld="F17" />
+            <Schlangenglied feld="F18" />
+            <Schlangenglied feld="F19" />
+            <Schlangenglied feld="F39" />
+            <Schlangenglied feld="F59" />
+            <Schlangenglied feld="F79" />
+            <Schlangenglied feld="F98" />
+            <Schlangenglied feld="F117" />
+            <Schlangenglied feld="F138" />
+            <Schlangenglied feld="F157" />
+            <Schlangenglied feld="F178" />
+            <Schlangenglied feld="F197" />
+            <Schlangenglied feld="F218" />
+            <Schlangenglied feld="F239" />
+            <Schlangenglied feld="F259" />
+            <Schlangenglied feld="F279" />
+            <Schlangenglied feld="F299" />
+            <Schlangenglied feld="F319" />
+            <Schlangenglied feld="F338" />
+            <Schlangenglied feld="F358" />
+            <Schlangenglied feld="F378" />
+            <Schlangenglied feld="F397" />
+            <Schlangenglied feld="F378" />
+            <Schlangenglied feld="F358" />
+            <Schlangenglied feld="F338" />
+            <Schlangenglied feld="F319" />
+            <Schlangenglied feld="F338" />
+            <Schlangenglied feld="F358" />
+            <Schlangenglied feld="F378" />
+            <Schlangenglied feld="F358" />
+            <Schlangenglied feld="F338" />
+            <Schlangenglied feld="F319" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F375" />
+            <Schlangenglied feld="F376" />
+            <Schlangenglied feld="F375" />
+            <Schlangenglied feld="F354" />
+            <Schlangenglied feld="F373" />
+            <Schlangenglied feld="F372" />
+            <Schlangenglied feld="F391" />
+            <Schlangenglied feld="F372" />
+            <Schlangenglied feld="F391" />
+            <Schlangenglied feld="F370" />
+            <Schlangenglied feld="F389" />
+            <Schlangenglied feld="F388" />
+            <Schlangenglied feld="F389" />
+            <Schlangenglied feld="F388" />
+            <Schlangenglied feld="F389" />
+            <Schlangenglied feld="F370" />
+            <Schlangenglied feld="F391" />
+            <Schlangenglied feld="F370" />
+            <Schlangenglied feld="F389" />
+            <Schlangenglied feld="F368" />
+            <Schlangenglied feld="F388" />
+            <Schlangenglied feld="F387" />
+            <Schlangenglied feld="F386" />
+            <Schlangenglied feld="F387" />
+            <Schlangenglied feld="F388" />
+            <Schlangenglied feld="F387" />
+            <Schlangenglied feld="F368" />
+            <Schlangenglied feld="F388" />
+            <Schlangenglied feld="F389" />
+            <Schlangenglied feld="F370" />
+            <Schlangenglied feld="F391" />
+            <Schlangenglied feld="F370" />
+            <Schlangenglied feld="F391" />
+            <Schlangenglied feld="F370" />
+            <Schlangenglied feld="F389" />
+            <Schlangenglied feld="F388" />
+            <Schlangenglied feld="F387" />
+            <Schlangenglied feld="F386" />
+            <Schlangenglied feld="F365" />
+            <Schlangenglied feld="F364" />
+        </Schlange>
+    </Schlangen>
+</Schlangenjagd>

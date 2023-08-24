@@ -5,9 +5,17 @@ import java.util.List;
 
 import de.fernuni.kurs01584.ss23.modell.*;
 
+/**
+ * Klass zur Darstellung des Probleminstanzs aus vorgegebenen Probleminstanz und der Lösung aus Datenausgabe
+ */
 public class DarstellungLoesungen {
+	/**
+	 * Darstellung der Lösung aus SchlangenSuche-Algorithmus
+	 * @param schlangenjagd vollständige Lösung gerechnete durch SchlangenSuche
+	 * @throws Exception
+	 */
     public static void loesungDarstellen(Schlangenjagd schlangenjagd) throws Exception {
-        System.out.println("\nLösungen: \nverwendete Schlangenarten: \n");
+        System.out.print("\nLösungen: \nverwendete Schlangenarten: \n");
         
         List<Schlangenart> genutztSchlangenarten = new ArrayList<>();
 
@@ -17,7 +25,7 @@ public class DarstellungLoesungen {
             }
         }
         for (Schlangenart schlangenart : genutztSchlangenarten) {
-            System.out.println(schlangenart.getId() + ": Zeichenkette: " + schlangenart.getZeichenkette() + "; Nachbarschaftsstruktur: " + schlangenart.getNachStr().getTyp());
+            System.out.print(schlangenart.getId() + ": Zeichenkette: " + schlangenart.getZeichenkette() + "; Nachbarschaftsstruktur: " + schlangenart.getNachStr().getTyp() + '\n');
         }
         // Hervorhebung der im Zeichendschungel angeordneten Schlange
 
@@ -35,7 +43,7 @@ public class DarstellungLoesungen {
         }
 
 
-        System.out.println("\nZeichendschungel: ");
+        System.out.print("\nZeichendschungel: \n");
         Dschungel dschungel = schlangenjagd.getDschungel();
         List<Feld> felder = dschungel.getFelder();
         String highlightEscapeSequence = "\u001B[31m";
@@ -49,7 +57,7 @@ public class DarstellungLoesungen {
             int aktuelleZeile = felder.get(0).getZeile();
             for (Feld feld : felder) {
                 if (aktuelleZeile != feld.getZeile()) {
-                    System.out.println("");
+                    System.out.print("\n");
                     aktuelleZeile++;
                 }
                 if (gliedfelderIdList.contains(feld.getId())) {
@@ -60,13 +68,13 @@ public class DarstellungLoesungen {
                 }
 
             }
-            System.out.println();
+            System.out.print("\n");
             schlangecount++;
         }
 
         //Zeile und Spalte der aufeinanderfolgenden Schlangenglieder
 
-        System.out.println("\n\nSchlangenglieder (Zeile, Spalte): ");
+        System.out.print("\n\nSchlangenglieder (Zeile, Spalte): \n");
 
         schlangecount = 1;
         for (Schlange schlange :  schlangen) {
@@ -77,10 +85,15 @@ public class DarstellungLoesungen {
             schlangecount++;
         }
     }
+    /**
+	 * Darstellung des Probleminstanzs aus vorgegebener Dateneingabe
+	 * @param schlangenjagd vollständiger Probleminstanz aus vorgegebener Dateneingabe 
+	 * @throws Exception
+     */
     public static void probleminstanzDarstellen(Schlangenjagd schlangenjagd) throws Exception {
 
         //System.out.println("ÄÖÜ");
-        System.out.println("Probleminstanzen: ");
+        System.out.print("Probleminstanzen: \n");
         Dschungel dschungel = schlangenjagd.getDschungel();
         int zeilen = dschungel.getZeilen();
         int spalten = dschungel.getSpalten();
@@ -89,25 +102,24 @@ public class DarstellungLoesungen {
 
 
         // Darstellung der Anzahl der Zeilen und Spalten des Dschungels sowie Zeichenmenge
-        System.out.println("Anzahl der Zeilen des Dschungels: " + zeilen);
-        System.out.println("Anzahl der Spalten des Dschungels: " + spalten);
-        System.out.println("Dschungel verwendeten Zeichen: " + zeichenmenge);
-        System.out.println();
+        System.out.print("Anzahl der Zeilen des Dschungels: " + zeilen + "\n");
+        System.out.print("Anzahl der Spalten des Dschungels: " + spalten + "\n");
+        System.out.print("Dschungel verwendeten Zeichen: " + zeichenmenge + "\n\n");
         // Darstellung der Schlangenarten
-        System.out.println("vorhandene Schlangenarten: ");
+        System.out.print("vorhandene Schlangenarten: " + "\n");
         List<Schlangenart> schlangenarten = schlangenjagd.getSchlangenarten();
 
         for (Schlangenart schlangenart : schlangenarten) {
-            System.out.println(schlangenart.getId() + ": Zeichenkette: " + schlangenart.getZeichenkette() + "; Nachbarschaftsstruktur: " + schlangenart.getNachStr().getTyp() + "; Punkten: " + schlangenart.getPunkte() + "; Anzahl: " + schlangenart.getVerwendbarkeit());
+            System.out.print(schlangenart.getId() + ": Zeichenkette: " + schlangenart.getZeichenkette() + "; Nachbarschaftsstruktur: " + schlangenart.getNachStr().getTyp() + "; Punkten: " + schlangenart.getPunkte() + "; Anzahl: " + schlangenart.getVerwendbarkeit() + "\n");
         }
 
-        System.out.println();
+        System.out.print("\n");
         // Darstellung der Dschungelfelder
-        System.out.println("Dschungelfelder sind folgend dargestellt: ");
+        System.out.print("Dschungelfelder sind folgend dargestellt: \n");
 
 
         for (Feld feld : felder) {
-            System.out.println(feld.getId() + ": " + "Zeichen: " + feld.getZeichen() + "; Verwendbarkeit: " + feld.getVerwendbarkeit() + "; Punkten: " + feld.getPunkte());
+            System.out.print(feld.getId() + ": " + "Zeichen: " + feld.getZeichen() + "; Verwendbarkeit: " + feld.getVerwendbarkeit() + "; Punkten: " + feld.getPunkte() + "\n");
         }
     }
 }

@@ -7,6 +7,20 @@ import de.fernuni.kurs01584.ss23.dateiverarbeitung.DateneingabeXML;
 import de.fernuni.kurs01584.ss23.modell.*;
 
 public class DschungelGenerator {
+    /**
+     * Liest die Vorgegebene Eingabedatei mit einer (moeglicherweise
+     * unvollstaendigen) Probleminstanz und erzeugt eine neue Probleminstanz auf
+     * Basis der gegebenen Parameter. Die erzeugte Probleminstanz wird in der
+     * vorgegebenen Ausgabedatei gespeichert.
+     * 
+     * @param xmlEingabeDatei Dateipfad zu einer XML-Datei mit Parametern fuer eine
+     *                        Probleminstanz, die erzeugt werden soll.
+     * @param xmlAusgabeDatei Dateipfad zu einer XML-Datei fuer die erzeugte
+     *                        Probleminstanz.
+     * @return <tt>true</tt>, bei Erfolg, ansonsten <tt>false</tt>. Beim Auftreten
+     *         eines Fehlers wird ebenfalls <tt>false</tt> zurückgegeben.
+     * @throws Exception
+     */
     public static boolean erzeugProbleminstanzen(String xmlEingabedatei, String xmlAusgabedatei) throws Exception {
         // laden der vorgegebenen Probleminstanz
         Schlangenjagd problemInstanz = DateneingabeXML.parseXML(xmlEingabedatei);
@@ -19,6 +33,7 @@ public class DschungelGenerator {
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            return false;
         }
 
         // Vervollständigung der Probleminstanz mit Hilfe des Dschungelgenerators
@@ -126,11 +141,16 @@ public class DschungelGenerator {
 
 
     }
-
-    private static boolean checkProbleminszanz(Schlangenjagd problemInstanz) {
+    /**
+     * Methode zur Prüfen des vorgegebenen Probleminstanz nach Vorgabe
+     * @param problemInstanz vorgegebene Probleminstanz
+     * @return <tt>true</tt>, bei Erfolg, ansonsten <tt>false</tt>. Beim Auftreten
+     *         eines Fehlers wird ebenfalls <tt>false</tt> zurückgegeben.
+     */
+    public static boolean checkProbleminszanz(Schlangenjagd problemInstanz) {
         if (problemInstanz.getDschungel().getZeilen() == 0 || problemInstanz.getDschungel().getSpalten() == 0) {
             // Zeilen oder Spalten Anzahlen sind nicht definiert oder initialisiert
-            System.out.println("Anzahl der Zeilen und Spalten des Dschungels sind nicht vollständig in Eingabedatei angegeben.");
+            System.out.println("Anzahl der Zeilen und Spalten des Dschungels sind nicht vollstaendig in Eingabedatei angegeben.");
             return false;
         }
         if (problemInstanz.getDschungel().getzeichenmenge() == null) {
@@ -142,7 +162,7 @@ public class DschungelGenerator {
             return false;
         }
         else {
-            List <Schlangenart> schlangenarten = new ArrayList<>();
+            List <Schlangenart> schlangenarten = problemInstanz.getSchlangenarten();
             for (Schlangenart schlangenart : schlangenarten) {
                 // Anzahl von Schlangenart sind nicht definiert oder initialisiert
                 if (schlangenart.getVerwendbarkeit() == 0) {
@@ -154,7 +174,13 @@ public class DschungelGenerator {
 
         return true;
     }
-
+    /**
+     * suche Schlangenglied nach StartGlied bzw. VorherigesGlied und Schlangenart
+     * @param schlangenart zulässige Schlangenart für vorherigesGlied
+     * @param newFelder zulässige(leere) Felder aus Dschungel
+     * @param schlangengliedList List von bisherigen gefundenen Schlangenglied nach Schlangenart
+     * @param vorherigesGlied letzte Schlangenglied in schlangengliedList
+     */
     private static void sucheGliednachSchlangenart(Schlangenart schlangenart, List<Feld> newFelder, List<Schlangenglied> schlangengliedList, Schlangenglied vorherigesGlied) {
         String zeichenkette = schlangenart.getZeichenkette();
         // erzeuge zulässige Nachbarfelder für vorherigesGlied
@@ -205,8 +231,12 @@ public class DschungelGenerator {
         return;
 
     }
-
-    private static List<Feld> erzeugZulaessigeFelder(List<Feld> felder) {
+    /**
+     * erzeugen zulässige felder nach Suchekriterien
+     * @param startfelder
+     * @return zulässige felder
+     */
+    public static List<Feld> erzeugZulaessigeFelder(List<Feld> felder) {
         List<Feld> freiFeld = new ArrayList<>();
         for (Feld feld: felder) {
             if (feld.getZeichen() == null) {
@@ -216,7 +246,14 @@ public class DschungelGenerator {
 
         return freiFeld;
     }
-
+    
+    /**
+     * Suchen nach Random Feld in felder und erste zeichen aus zeichenkette zuweisen, dann wird den 
+     * Feld in einen Schlangenglied zugeordenet.
+     * @param erste zeichen aktuelle zeichenkette von Schlangenart
+     * @param felder zulässige felder
+     * @param schlangenGlied leere Schlangenglied 
+     */
     private static void setZufaelligFeldmitZeichen(char zeichen, List<Feld>felder, Schlangenglied schlangenGlied) {
         String zeichenStr = String.valueOf(zeichen);
         // Erstellung eine randomgenerator
@@ -226,8 +263,14 @@ public class DschungelGenerator {
         feld.setZeichen(zeichenStr);
         schlangenGlied.setFeld(feld);
     }
-
-    private static List<Feld> erzeugNachbarFeld(List<Feld> felder, Schlangenglied vorherigesGlied, Schlangenart schlangenart){
+    /**
+     * Suchen nach Nachbarfelder des vorherigesGlieds
+     * @param felder zulässige felder
+     * @param vorherigesGlied Vorherigesglied in SchlangengliedList
+     * @param schlangenart aktuelle verwendete Schlangenart
+     * @return zulässige NachbarFelder
+     */
+    public static List<Feld> erzeugNachbarFeld(List<Feld> felder, Schlangenglied vorherigesGlied, Schlangenart schlangenart){
         List<Feld> nachbarFeld = new ArrayList<>();
         Feld vorherigesGliedFeld = vorherigesGlied.getFeld();
         for (Feld schlangenGliedFeld: felder) {
@@ -238,7 +281,15 @@ public class DschungelGenerator {
 
         return nachbarFeld;
     }
-
+    
+    /**
+     * Prüft, ob der gegebene Feld Nachbarfeld zum vorherigesFeld ist
+     * @param vorherigesFeld VorherigesFeld im Schlangenglied der SchlangengliedList
+     * @param aktuellesFeld AktuellesFeld in List
+     * @param schlangenart aktuelle verwendete Schlangenart
+     * @return <tt>true</tt>, Wenn aktellesFeld tatsächlich NachbarFeld von VorherigesFeld ist, ansonsten <tt>false</tt>. Beim Auftreten
+     * eines Fehlers wird ebenfalls <tt>false</tt> zurückgegeben.
+     */
     private static boolean checkNachbarfeld(Feld vorherigesFeld, Feld aktuellesFeld, Schlangenart schlangenart){
         String nachbarTyp = schlangenart.getNachStr().getTyp();
         List<Parameter> parameters = schlangenart.getNachStr().getParameters();
@@ -260,7 +311,11 @@ public class DschungelGenerator {
 
         return false;
     }
-
+    /**
+     * Mischen der vorhandenen Nachbarfelder
+     * @param <T> Element in Nachbarfelder
+     * @param felder gemischte felder
+     */
     private static <T> void mischenFeldRandom(List<T> felder){
         Collections.shuffle(felder);
     }

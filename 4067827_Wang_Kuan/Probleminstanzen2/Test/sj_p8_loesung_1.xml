@@ -105,25 +105,25 @@
   </Schlangenarten>
   <Schlangen>
     <Schlange art="A0">
-      <Schlangenglied feld="F18" />
-      <Schlangenglied feld="F18" />
-      <Schlangenglied feld="F18" />
-      <Schlangenglied feld="F18" />
-      <Schlangenglied feld="F18" />
+      <Schlangenglied feld="F57" />
+      <Schlangenglied feld="F57" />
+      <Schlangenglied feld="F57" />
+      <Schlangenglied feld="F57" />
+      <Schlangenglied feld="F57" />
     </Schlange>
     <Schlange art="A0">
-      <Schlangenglied feld="F18" />
-      <Schlangenglied feld="F18" />
-      <Schlangenglied feld="F18" />
-      <Schlangenglied feld="F18" />
-      <Schlangenglied feld="F18" />
+      <Schlangenglied feld="F57" />
+      <Schlangenglied feld="F57" />
+      <Schlangenglied feld="F57" />
+      <Schlangenglied feld="F57" />
+      <Schlangenglied feld="F57" />
     </Schlange>
     <Schlange art="A0">
-      <Schlangenglied feld="F18" />
-      <Schlangenglied feld="F18" />
-      <Schlangenglied feld="F18" />
-      <Schlangenglied feld="F18" />
-      <Schlangenglied feld="F18" />
+      <Schlangenglied feld="F57" />
+      <Schlangenglied feld="F57" />
+      <Schlangenglied feld="F57" />
+      <Schlangenglied feld="F57" />
+      <Schlangenglied feld="F57" />
     </Schlange>
   </Schlangen>
 </Schlangenjagd>

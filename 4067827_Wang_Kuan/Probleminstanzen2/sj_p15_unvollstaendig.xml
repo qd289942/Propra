@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Schlangenjagd SYSTEM "schlangenjagd.dtd" >
+<Schlangenjagd>
+	<Zeit einheit="min">
+		<Vorgabe>0.3</Vorgabe>
+	</Zeit>
+	<Dschungel zeilen="50" spalten="50" zeichen="ABCDEFGHIJKLMNOPQRSTUVWXYZ">
+	</Dschungel>
+    <Schlangenarten>
+        <Schlangenart id="A0" punkte="30" anzahl="50">
+            <Zeichenkette>ERNSTE</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="2" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A1" punkte="20" anzahl="50">
+            <Zeichenkette>ERSTEN</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="4" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A2" punkte="10" anzahl="50">
+            <Zeichenkette>NESTER</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="6" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A3" punkte="40" anzahl="50">
+            <Zeichenkette>STERNE</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Sprung">
+                <Parameter wert="2" />
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A4" punkte="50" anzahl="50">
+            <Zeichenkette>RESTEN</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Sprung">
+                <Parameter wert="3" />
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A5" punkte="60" anzahl="50">
+            <Zeichenkette>TRENSE</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Sprung">
+                <Parameter wert="3" />
+                <Parameter wert="2" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A6" punkte="70" anzahl="50">
+            <Zeichenkette>TRESEN</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Sprung">
+                <Parameter wert="4" />
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+    </Schlangenarten>
+</Schlangenjagd>

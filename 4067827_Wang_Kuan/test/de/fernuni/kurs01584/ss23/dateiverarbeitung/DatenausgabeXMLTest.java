@@ -21,6 +21,10 @@ public class DatenausgabeXMLTest {
     String inputnormalizedPath = Paths.get(inputfilePathMitPunkte).normalize().toString();
     String outputnormalizedPath = Paths.get(outputfilePathMitPunkte).normalize().toString();
     
+    /**
+     * Testfälle für WriteXML
+     * @throws Exception
+     */
     @Test
     @DisplayName("test Write XML")
     void testWriteXML() throws Exception {

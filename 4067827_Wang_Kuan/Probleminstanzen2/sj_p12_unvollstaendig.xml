@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Schlangenjagd SYSTEM "schlangenjagd.dtd" >
+<Schlangenjagd>
+	<Zeit einheit="s">
+		<Vorgabe>10.0</Vorgabe>
+	</Zeit>
+	<Dschungel zeilen="5" spalten="5" zeichen="VIP">
+	</Dschungel>
+    <Schlangenarten>
+        <Schlangenart id="A0" punkte="100" anzahl="1">
+            <Zeichenkette>NATTER</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A1" punkte="10" anzahl="1">
+            <Zeichenkette>OTTER</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A2" punkte="1" anzahl="1">
+            <Zeichenkette>VIPER</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+    </Schlangenarten>
+</Schlangenjagd>

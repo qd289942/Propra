@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Schlangenjagd SYSTEM "schlangenjagd.dtd">
+<Schlangenjagd>
+    <Zeit einheit="ms">
+        <Vorgabe>100.0</Vorgabe>
+        <Abgabe>100.067818</Abgabe>
+    </Zeit>
+    <Dschungel zeilen="10" spalten="10" zeichen="EHLMNPRUV">
+        <Feld id="F0" zeile="0" spalte="0" verwendbarkeit="3" punkte="7">R</Feld>
+        <Feld id="F1" zeile="0" spalte="1" verwendbarkeit="9" punkte="2">H</Feld>
+        <Feld id="F2" zeile="0" spalte="2" verwendbarkeit="5" punkte="8">U</Feld>
+        <Feld id="F3" zeile="0" spalte="3" verwendbarkeit="2" punkte="1">R</Feld>
+        <Feld id="F4" zeile="0" spalte="4" verwendbarkeit="2" punkte="4">V</Feld>
+        <Feld id="F5" zeile="0" spalte="5" verwendbarkeit="2" punkte="8">V</Feld>
+        <Feld id="F6" zeile="0" spalte="6" verwendbarkeit="3" punkte="6">E</Feld>
+        <Feld id="F7" zeile="0" spalte="7" verwendbarkeit="3" punkte="7">M</Feld>
+        <Feld id="F8" zeile="0" spalte="8" verwendbarkeit="1" punkte="1">L</Feld>
+        <Feld id="F9" zeile="0" spalte="9" verwendbarkeit="9" punkte="9">O</Feld>
+        <Feld id="F10" zeile="1" spalte="0" verwendbarkeit="7" punkte="2">U</Feld>
+        <Feld id="F11" zeile="1" spalte="1" verwendbarkeit="3" punkte="3">U</Feld>
+        <Feld id="F12" zeile="1" spalte="2" verwendbarkeit="9" punkte="2">U</Feld>
+        <Feld id="F13" zeile="1" spalte="3" verwendbarkeit="5" punkte="9">H</Feld>
+        <Feld id="F14" zeile="1" spalte="4" verwendbarkeit="5" punkte="2">O</Feld>
+        <Feld id="F15" zeile="1" spalte="5" verwendbarkeit="6" punkte="7">O</Feld>
+        <Feld id="F16" zeile="1" spalte="6" verwendbarkeit="7" punkte="8">E</Feld>
+        <Feld id="F17" zeile="1" spalte="7" verwendbarkeit="5" punkte="1">N</Feld>
+        <Feld id="F18" zeile="1" spalte="8" verwendbarkeit="9" punkte="7">E</Feld>
+        <Feld id="F19" zeile="1" spalte="9" verwendbarkeit="5" punkte="4">V</Feld>
+        <Feld id="F20" zeile="2" spalte="0" verwendbarkeit="2" punkte="5">H</Feld>
+        <Feld id="F21" zeile="2" spalte="1" verwendbarkeit="6" punkte="4">H</Feld>
+        <Feld id="F22" zeile="2" spalte="2" verwendbarkeit="3" punkte="6">H</Feld>
+        <Feld id="F23" zeile="2" spalte="3" verwendbarkeit="6" punkte="3">U</Feld>
+        <Feld id="F24" zeile="2" spalte="4" verwendbarkeit="9" punkte="8">L</Feld>
+        <Feld id="F25" zeile="2" spalte="5" verwendbarkeit="6" punkte="5">L</Feld>
+        <Feld id="F26" zeile="2" spalte="6" verwendbarkeit="4" punkte="2">L</Feld>
+        <Feld id="F27" zeile="2" spalte="7" verwendbarkeit="5" punkte="7">N</Feld>
+        <Feld id="F28" zeile="2" spalte="8" verwendbarkeit="4" punkte="3">N</Feld>
+        <Feld id="F29" zeile="2" spalte="9" verwendbarkeit="8" punkte="9">O</Feld>
+        <Feld id="F30" zeile="3" spalte="0" verwendbarkeit="7" punkte="3">R</Feld>
+        <Feld id="F31" zeile="3" spalte="1" verwendbarkeit="4" punkte="9">U</Feld>
+        <Feld id="F32" zeile="3" spalte="2" verwendbarkeit="1" punkte="3">H</Feld>
+        <Feld id="F33" zeile="3" spalte="3" verwendbarkeit="7" punkte="5">R</Feld>
+        <Feld id="F34" zeile="3" spalte="4" verwendbarkeit="7" punkte="3">M</Feld>
+        <Feld id="F35" zeile="3" spalte="5" verwendbarkeit="9" punkte="4">M</Feld>
+        <Feld id="F36" zeile="3" spalte="6" verwendbarkeit="9" punkte="7">M</Feld>
+        <Feld id="F37" zeile="3" spalte="7" verwendbarkeit="3" punkte="6">E</Feld>
+        <Feld id="F38" zeile="3" spalte="8" verwendbarkeit="8" punkte="9">N</Feld>
+        <Feld id="F39" zeile="3" spalte="9" verwendbarkeit="5" punkte="8">L</Feld>
+        <Feld id="F40" zeile="4" spalte="0" verwendbarkeit="1" punkte="6">L</Feld>
+        <Feld id="F41" zeile="4" spalte="1" verwendbarkeit="4" punkte="9">E</Feld>
+        <Feld id="F42" zeile="4" spalte="2" verwendbarkeit="7" punkte="6">N</Feld>
+        <Feld id="F43" zeile="4" spalte="3" verwendbarkeit="4" punkte="4">N</Feld>
+        <Feld id="F44" zeile="4" spalte="4" verwendbarkeit="9" punkte="6">E</Feld>
+        <Feld id="F45" zeile="4" spalte="5" verwendbarkeit="2" punkte="6">P</Feld>
+        <Feld id="F46" zeile="4" spalte="6" verwendbarkeit="7" punkte="4">E</Feld>
+        <Feld id="F47" zeile="4" spalte="7" verwendbarkeit="4" punkte="4">P</Feld>
+        <Feld id="F48" zeile="4" spalte="8" verwendbarkeit="2" punkte="4">E</Feld>
+        <Feld id="F49" zeile="4" spalte="9" verwendbarkeit="7" punkte="4">M</Feld>
+        <Feld id="F50" zeile="5" spalte="0" verwendbarkeit="2" punkte="7">L</Feld>
+        <Feld id="F51" zeile="5" spalte="1" verwendbarkeit="4" punkte="4">R</Feld>
+        <Feld id="F52" zeile="5" spalte="2" verwendbarkeit="7" punkte="9">N</Feld>
+        <Feld id="F53" zeile="5" spalte="3" verwendbarkeit="6" punkte="5">E</Feld>
+        <Feld id="F54" zeile="5" spalte="4" verwendbarkeit="3" punkte="9">N</Feld>
+        <Feld id="F55" zeile="5" spalte="5" verwendbarkeit="9" punkte="3">E</Feld>
+        <Feld id="F56" zeile="5" spalte="6" verwendbarkeit="8" punkte="8">N</Feld>
+        <Feld id="F57" zeile="5" spalte="7" verwendbarkeit="8" punkte="3">N</Feld>
+        <Feld id="F58" zeile="5" spalte="8" verwendbarkeit="2" punkte="7">E</Feld>
+        <Feld id="F59" zeile="5" spalte="9" verwendbarkeit="7" punkte="5">P</Feld>
+        <Feld id="F60" zeile="6" spalte="0" verwendbarkeit="4" punkte="7">U</Feld>
+        <Feld id="F61" zeile="6" spalte="1" verwendbarkeit="5" punkte="9">E</Feld>
+        <Feld id="F62" zeile="6" spalte="2" verwendbarkeit="2" punkte="3">P</Feld>
+        <Feld id="F63" zeile="6" spalte="3" verwendbarkeit="4" punkte="7">E</Feld>
+        <Feld id="F64" zeile="6" spalte="4" verwendbarkeit="8" punkte="6">N</Feld>
+        <Feld id="F65" zeile="6" spalte="5" verwendbarkeit="3" punkte="4">P</Feld>
+        <Feld id="F66" zeile="6" spalte="6" verwendbarkeit="1" punkte="1">L</Feld>
+        <Feld id="F67" zeile="6" spalte="7" verwendbarkeit="4" punkte="6">L</Feld>
+        <Feld id="F68" zeile="6" spalte="8" verwendbarkeit="5" punkte="4">L</Feld>
+        <Feld id="F69" zeile="6" spalte="9" verwendbarkeit="5" punkte="8">E</Feld>
+        <Feld id="F70" zeile="7" spalte="0" verwendbarkeit="3" punkte="2">L</Feld>
+        <Feld id="F71" zeile="7" spalte="1" verwendbarkeit="5" punkte="6">H</Feld>
+        <Feld id="F72" zeile="7" spalte="2" verwendbarkeit="2" punkte="5">N</Feld>
+        <Feld id="F73" zeile="7" spalte="3" verwendbarkeit="2" punkte="8">N</Feld>
+        <Feld id="F74" zeile="7" spalte="4" verwendbarkeit="6" punkte="3">E</Feld>
+        <Feld id="F75" zeile="7" spalte="5" verwendbarkeit="9" punkte="3">E</Feld>
+        <Feld id="F76" zeile="7" spalte="6" verwendbarkeit="7" punkte="5">L</Feld>
+        <Feld id="F77" zeile="7" spalte="7" verwendbarkeit="6" punkte="3">L</Feld>
+        <Feld id="F78" zeile="7" spalte="8" verwendbarkeit="4" punkte="9">E</Feld>
+        <Feld id="F79" zeile="7" spalte="9" verwendbarkeit="5" punkte="9">N</Feld>
+        <Feld id="F80" zeile="8" spalte="0" verwendbarkeit="1" punkte="5">R</Feld>
+        <Feld id="F81" zeile="8" spalte="1" verwendbarkeit="6" punkte="2">U</Feld>
+        <Feld id="F82" zeile="8" spalte="2" verwendbarkeit="4" punkte="9">R</Feld>
+        <Feld id="F83" zeile="8" spalte="3" verwendbarkeit="1" punkte="2">M</Feld>
+        <Feld id="F84" zeile="8" spalte="4" verwendbarkeit="8" punkte="1">P</Feld>
+        <Feld id="F85" zeile="8" spalte="5" verwendbarkeit="5" punkte="5">N</Feld>
+        <Feld id="F86" zeile="8" spalte="6" verwendbarkeit="9" punkte="5">L</Feld>
+        <Feld id="F87" zeile="8" spalte="7" verwendbarkeit="3" punkte="3">L</Feld>
+        <Feld id="F88" zeile="8" spalte="8" verwendbarkeit="3" punkte="6">L</Feld>
+        <Feld id="F89" zeile="8" spalte="9" verwendbarkeit="7" punkte="2">N</Feld>
+        <Feld id="F90" zeile="9" spalte="0" verwendbarkeit="3" punkte="9">V</Feld>
+        <Feld id="F91" zeile="9" spalte="1" verwendbarkeit="6" punkte="5">O</Feld>
+        <Feld id="F92" zeile="9" spalte="2" verwendbarkeit="9" punkte="5">L</Feld>
+        <Feld id="F93" zeile="9" spalte="3" verwendbarkeit="8" punkte="4">E</Feld>
+        <Feld id="F94" zeile="9" spalte="4" verwendbarkeit="6" punkte="7">E</Feld>
+        <Feld id="F95" zeile="9" spalte="5" verwendbarkeit="3" punkte="1">E</Feld>
+        <Feld id="F96" zeile="9" spalte="6" verwendbarkeit="5" punkte="2">N</Feld>
+        <Feld id="F97" zeile="9" spalte="7" verwendbarkeit="9" punkte="6">E</Feld>
+        <Feld id="F98" zeile="9" spalte="8" verwendbarkeit="2" punkte="2">P</Feld>
+        <Feld id="F99" zeile="9" spalte="9" verwendbarkeit="1" punkte="9">E</Feld>
+    </Dschungel>
+    <Schlangenarten>
+        <Schlangenart id="A0" punkte="115" anzahl="4">
+            <Zeichenkette>RUHR</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A1" punkte="131" anzahl="4">
+            <Zeichenkette>LENNE</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A2" punkte="213" anzahl="4">
+            <Zeichenkette>VOLME</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A3" punkte="63" anzahl="4">
+            <Zeichenkette>ENNEPE</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+    </Schlangenarten>
+    <Schlangen>
+        <Schlange art="A2">
+            <Schlangenglied feld="F90" />
+            <Schlangenglied feld="F91" />
+            <Schlangenglied feld="F92" />
+            <Schlangenglied feld="F83" />
+            <Schlangenglied feld="F94" />
+        </Schlange>
+        <Schlange art="A2">
+            <Schlangenglied feld="F5" />
+            <Schlangenglied feld="F15" />
+            <Schlangenglied feld="F24" />
+            <Schlangenglied feld="F35" />
+            <Schlangenglied feld="F44" />
+        </Schlange>
+        <Schlange art="A2">
+            <Schlangenglied feld="F5" />
+            <Schlangenglied feld="F15" />
+            <Schlangenglied feld="F24" />
+            <Schlangenglied feld="F35" />
+            <Schlangenglied feld="F44" />
+        </Schlange>
+        <Schlange art="A2">
+            <Schlangenglied feld="F4" />
+            <Schlangenglied feld="F15" />
+            <Schlangenglied feld="F24" />
+            <Schlangenglied feld="F35" />
+            <Schlangenglied feld="F44" />
+        </Schlange>
+        <Schlange art="A2">
+            <Schlangenglied feld="F4" />
+            <Schlangenglied feld="F15" />
+            <Schlangenglied feld="F24" />
+            <Schlangenglied feld="F35" />
+            <Schlangenglied feld="F44" />
+        </Schlange>
+        <Schlange art="A2">
+            <Schlangenglied feld="F19" />
+            <Schlangenglied feld="F9" />
+            <Schlangenglied feld="F8" />
+            <Schlangenglied feld="F7" />
+            <Schlangenglied feld="F16" />
+        </Schlange>
+        <Schlange art="A2">
+            <Schlangenglied feld="F19" />
+            <Schlangenglied feld="F29" />
+            <Schlangenglied feld="F39" />
+            <Schlangenglied feld="F49" />
+            <Schlangenglied feld="F58" />
+        </Schlange>
+        <Schlange art="A2">
+            <Schlangenglied feld="F19" />
+            <Schlangenglied feld="F29" />
+            <Schlangenglied feld="F39" />
+            <Schlangenglied feld="F49" />
+            <Schlangenglied feld="F58" />
+        </Schlange>
+        <Schlange art="A2">
+            <Schlangenglied feld="F19" />
+            <Schlangenglied feld="F29" />
+            <Schlangenglied feld="F39" />
+            <Schlangenglied feld="F49" />
+            <Schlangenglied feld="F48" />
+        </Schlange>
+        <Schlange art="A2">
+            <Schlangenglied feld="F19" />
+            <Schlangenglied feld="F29" />
+            <Schlangenglied feld="F39" />
+            <Schlangenglied feld="F49" />
+            <Schlangenglied feld="F48" />
+        </Schlange>
+        <Schlange art="A0">
+            <Schlangenglied feld="F82" />
+            <Schlangenglied feld="F81" />
+            <Schlangenglied feld="F71" />
+            <Schlangenglied feld="F82" />
+        </Schlange>
+        <Schlange art="A0">
+            <Schlangenglied feld="F82" />
+            <Schlangenglied feld="F81" />
+            <Schlangenglied feld="F71" />
+            <Schlangenglied feld="F82" />
+        </Schlange>
+        <Schlange art="A0">
+            <Schlangenglied feld="F0" />
+            <Schlangenglied feld="F11" />
+            <Schlangenglied feld="F22" />
+            <Schlangenglied feld="F33" />
+        </Schlange>
+        <Schlange art="A0">
+            <Schlangenglied feld="F0" />
+            <Schlangenglied feld="F11" />
+            <Schlangenglied feld="F22" />
+            <Schlangenglied feld="F33" />
+        </Schlange>
+        <Schlange art="A0">
+            <Schlangenglied feld="F0" />
+            <Schlangenglied feld="F11" />
+            <Schlangenglied feld="F22" />
+            <Schlangenglied feld="F33" />
+        </Schlange>
+        <Schlange art="A0">
+            <Schlangenglied feld="F33" />
+            <Schlangenglied feld="F23" />
+            <Schlangenglied feld="F13" />
+            <Schlangenglied feld="F3" />
+        </Schlange>
+        <Schlange art="A0">
+            <Schlangenglied feld="F33" />
+            <Schlangenglied feld="F23" />
+            <Schlangenglied feld="F13" />
+            <Schlangenglied feld="F3" />
+        </Schlange>
+        <Schlange art="A0">
+            <Schlangenglied feld="F33" />
+            <Schlangenglied feld="F23" />
+            <Schlangenglied feld="F32" />
+            <Schlangenglied feld="F33" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F50" />
+            <Schlangenglied feld="F41" />
+            <Schlangenglied feld="F52" />
+            <Schlangenglied feld="F42" />
+            <Schlangenglied feld="F41" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F50" />
+            <Schlangenglied feld="F41" />
+            <Schlangenglied feld="F52" />
+            <Schlangenglied feld="F42" />
+            <Schlangenglied feld="F41" />
+        </Schlange>
+        <Schlange art="A0">
+            <Schlangenglied feld="F51" />
+            <Schlangenglied feld="F60" />
+            <Schlangenglied feld="F71" />
+            <Schlangenglied feld="F80" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F67" />
+            <Schlangenglied feld="F78" />
+            <Schlangenglied feld="F79" />
+            <Schlangenglied feld="F89" />
+            <Schlangenglied feld="F78" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F67" />
+            <Schlangenglied feld="F78" />
+            <Schlangenglied feld="F79" />
+            <Schlangenglied feld="F89" />
+            <Schlangenglied feld="F78" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F88" />
+            <Schlangenglied feld="F99" />
+            <Schlangenglied feld="F89" />
+            <Schlangenglied feld="F79" />
+            <Schlangenglied feld="F69" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F88" />
+            <Schlangenglied feld="F97" />
+            <Schlangenglied feld="F96" />
+            <Schlangenglied feld="F85" />
+            <Schlangenglied feld="F94" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F88" />
+            <Schlangenglied feld="F97" />
+            <Schlangenglied feld="F96" />
+            <Schlangenglied feld="F85" />
+            <Schlangenglied feld="F94" />
+        </Schlange>
+        <Schlange art="A0">
+            <Schlangenglied feld="F30" />
+            <Schlangenglied feld="F31" />
+            <Schlangenglied feld="F20" />
+            <Schlangenglied feld="F30" />
+        </Schlange>
+        <Schlange art="A0">
+            <Schlangenglied feld="F30" />
+            <Schlangenglied feld="F31" />
+            <Schlangenglied feld="F20" />
+            <Schlangenglied feld="F30" />
+        </Schlange>
+        <Schlange art="A0">
+            <Schlangenglied feld="F30" />
+            <Schlangenglied feld="F31" />
+            <Schlangenglied feld="F21" />
+            <Schlangenglied feld="F30" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F25" />
+            <Schlangenglied feld="F16" />
+            <Schlangenglied feld="F27" />
+            <Schlangenglied feld="F38" />
+            <Schlangenglied feld="F37" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F25" />
+            <Schlangenglied feld="F16" />
+            <Schlangenglied feld="F27" />
+            <Schlangenglied feld="F38" />
+            <Schlangenglied feld="F37" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F25" />
+            <Schlangenglied feld="F16" />
+            <Schlangenglied feld="F27" />
+            <Schlangenglied feld="F38" />
+            <Schlangenglied feld="F37" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F25" />
+            <Schlangenglied feld="F16" />
+            <Schlangenglied feld="F27" />
+            <Schlangenglied feld="F28" />
+            <Schlangenglied feld="F18" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F25" />
+            <Schlangenglied feld="F16" />
+            <Schlangenglied feld="F27" />
+            <Schlangenglied feld="F28" />
+            <Schlangenglied feld="F18" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F25" />
+            <Schlangenglied feld="F16" />
+            <Schlangenglied feld="F17" />
+            <Schlangenglied feld="F28" />
+            <Schlangenglied feld="F18" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F76" />
+            <Schlangenglied feld="F75" />
+            <Schlangenglied feld="F64" />
+            <Schlangenglied feld="F54" />
+            <Schlangenglied feld="F63" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F76" />
+            <Schlangenglied feld="F75" />
+            <Schlangenglied feld="F64" />
+            <Schlangenglied feld="F54" />
+            <Schlangenglied feld="F63" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F76" />
+            <Schlangenglied feld="F75" />
+            <Schlangenglied feld="F64" />
+            <Schlangenglied feld="F54" />
+            <Schlangenglied feld="F63" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F76" />
+            <Schlangenglied feld="F75" />
+            <Schlangenglied feld="F64" />
+            <Schlangenglied feld="F73" />
+            <Schlangenglied feld="F63" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F76" />
+            <Schlangenglied feld="F75" />
+            <Schlangenglied feld="F64" />
+            <Schlangenglied feld="F73" />
+            <Schlangenglied feld="F74" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F76" />
+            <Schlangenglied feld="F75" />
+            <Schlangenglied feld="F85" />
+            <Schlangenglied feld="F96" />
+            <Schlangenglied feld="F97" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F76" />
+            <Schlangenglied feld="F75" />
+            <Schlangenglied feld="F85" />
+            <Schlangenglied feld="F96" />
+            <Schlangenglied feld="F97" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F86" />
+            <Schlangenglied feld="F97" />
+            <Schlangenglied feld="F96" />
+            <Schlangenglied feld="F85" />
+            <Schlangenglied feld="F94" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F70" />
+            <Schlangenglied feld="F61" />
+            <Schlangenglied feld="F52" />
+            <Schlangenglied feld="F42" />
+            <Schlangenglied feld="F53" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F70" />
+            <Schlangenglied feld="F61" />
+            <Schlangenglied feld="F52" />
+            <Schlangenglied feld="F42" />
+            <Schlangenglied feld="F53" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F70" />
+            <Schlangenglied feld="F61" />
+            <Schlangenglied feld="F52" />
+            <Schlangenglied feld="F42" />
+            <Schlangenglied feld="F53" />
+        </Schlange>
+        <Schlange art="A1">
+            <Schlangenglied feld="F66" />
+            <Schlangenglied feld="F55" />
+            <Schlangenglied feld="F56" />
+            <Schlangenglied feld="F57" />
+            <Schlangenglied feld="F46" />
+        </Schlange>
+        <Schlange art="A3">
+            <Schlangenglied feld="F61" />
+            <Schlangenglied feld="F52" />
+            <Schlangenglied feld="F42" />
+            <Schlangenglied feld="F53" />
+            <Schlangenglied feld="F62" />
+            <Schlangenglied feld="F61" />
+        </Schlange>
+        <Schlange art="A3">
+            <Schlangenglied feld="F44" />
+            <Schlangenglied feld="F43" />
+            <Schlangenglied feld="F52" />
+            <Schlangenglied feld="F53" />
+            <Schlangenglied feld="F62" />
+            <Schlangenglied feld="F53" />
+        </Schlange>
+        <Schlange art="A3">
+            <Schlangenglied feld="F46" />
+            <Schlangenglied feld="F56" />
+            <Schlangenglied feld="F57" />
+            <Schlangenglied feld="F46" />
+            <Schlangenglied feld="F45" />
+            <Schlangenglied feld="F44" />
+        </Schlange>
+        <Schlange art="A3">
+            <Schlangenglied feld="F46" />
+            <Schlangenglied feld="F57" />
+            <Schlangenglied feld="F56" />
+            <Schlangenglied feld="F55" />
+            <Schlangenglied feld="F45" />
+            <Schlangenglied feld="F44" />
+        </Schlange>
+        <Schlange art="A3">
+            <Schlangenglied feld="F46" />
+            <Schlangenglied feld="F57" />
+            <Schlangenglied feld="F56" />
+            <Schlangenglied feld="F55" />
+            <Schlangenglied feld="F65" />
+            <Schlangenglied feld="F55" />
+        </Schlange>
+        <Schlange art="A3">
+            <Schlangenglied feld="F46" />
+            <Schlangenglied feld="F57" />
+            <Schlangenglied feld="F56" />
+            <Schlangenglied feld="F55" />
+            <Schlangenglied feld="F65" />
+            <Schlangenglied feld="F55" />
+        </Schlange>
+        <Schlange art="A3">
+            <Schlangenglied feld="F46" />
+            <Schlangenglied feld="F57" />
+            <Schlangenglied feld="F56" />
+            <Schlangenglied feld="F55" />
+            <Schlangenglied feld="F65" />
+            <Schlangenglied feld="F55" />
+        </Schlange>
+    </Schlangen>
+</Schlangenjagd>

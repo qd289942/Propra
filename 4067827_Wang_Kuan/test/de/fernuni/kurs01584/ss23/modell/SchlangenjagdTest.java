@@ -10,11 +10,17 @@ public class SchlangenjagdTest {
     
     private Schlangenjagd schlangenjagd;
     
+    /**
+     * Instanz initialisieren
+     */
     @BeforeEach
     void init() {
         schlangenjagd = new Schlangenjagd();
     }
-    
+    /**
+     * Testfälle für Default Konstruktor
+     * Test, ob leere Konstruktor funktioniert ist und Default Wert von Vorgabe und Abgabe
+     */
     @Test
     @DisplayName("Test Default-Konstruktor")
     void testDefaultKontruktor() {
@@ -25,6 +31,10 @@ public class SchlangenjagdTest {
         assertNull(schlangenjagd.getSchlangen());
     }
     
+    /**
+     * Testfälle für Default Konstruktor mit Parametern
+     * Test, ob parameterisierte Konstruktor funktioniert und richtige Wert aufnehmen kann
+     */
     @Test
     @DisplayName("Test Parameterisiert Konstruktor")
     void testParameterisiertKontruktor() {
@@ -40,7 +50,9 @@ public class SchlangenjagdTest {
         assertEquals(schlangenarten, schlangenjagd.getSchlangenarten());
         assertEquals(schlangen, schlangenjagd.getSchlangen());
     }
-    
+    /**
+     * Test Getters und Setters von Methoden
+     */
     @Test
     @DisplayName("Test Setters und Getters")
     void testSettersUndGetters() {

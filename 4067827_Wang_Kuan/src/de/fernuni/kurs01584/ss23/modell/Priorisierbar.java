@@ -1,8 +1,19 @@
 package de.fernuni.kurs01584.ss23.modell;
 
-// interface zur Erreichen der Priorisierungsfunktion in sucheSchlange
+/**
+ *  Interface zur Erreichen der Funktion zur Priorisierung in sucheSchlange
+ */
 public interface Priorisierbar {
-    int getPunkte();
     
+	/**
+	 * get Punktzahl von Feld oder Schlangenart
+	 * @return int Punkte
+	 */
+	int getPunkte();
+    
+	/**
+	 * get Anzahl bzw. Verwendbarkeit von Schlangenart und Feld
+	 * @return int Verwendbarkeit
+	 */
     int getVerwendbarkeit();
 }

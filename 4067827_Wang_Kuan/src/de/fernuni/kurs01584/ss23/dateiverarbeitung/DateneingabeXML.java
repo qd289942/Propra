@@ -8,8 +8,16 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-// Dateneingabe nur aus Probleminstanz
+/**
+ *  Klasse zur Darstellung der Dateneinlesenprozess
+ */
 public class DateneingabeXML {
+	/**
+	 * Dateneinlesen durch vorgegebene Probleminstanz
+	 * @param filePath von Probleminstanz
+	 * @return Schlangenjagd Modelle mit vorgegebener Daten aus Probleminstanz
+	 * @throws Exception
+	 */
     public static Schlangenjagd parseXML(String filePath) throws Exception {
         SAXBuilder builder = new SAXBuilder();
         Document document = builder.build(new File(filePath));
@@ -119,7 +127,12 @@ public class DateneingabeXML {
 
         return schlangenjagd;
     }
-
+    /**
+     * Dateneinlesen mit Schlangen(Lösung) zur Auswertung
+     * @param filePath von ausgegebene Lösung durch SchlangenSuche Algorithmus
+     * @return Schlangenjagd Modelle mit vorgegebener Daten aus Probleminstanz sowie Schlangen aus Lösungen
+     * @throws Exception
+     */
     public static Schlangenjagd parseXMLmitSchlangen(String filePath) throws Exception {
         SAXBuilder builder = new SAXBuilder();
         Document document = builder.build(new File(filePath));

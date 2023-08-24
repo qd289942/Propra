@@ -20,7 +20,10 @@ public class DateneingabeXMLTest {
     String normalizedPath = Paths.get(filePathMitPunkte).normalize().toString();
     
     
-    
+    /**
+     * Testfälle für parse Zeitelement
+     * @throws Exception
+     */
     @Test
     @DisplayName("Test parseXML Zeit Element")
     void testParseXML_ZeitElement() throws Exception {
@@ -31,7 +34,11 @@ public class DateneingabeXMLTest {
         assertEquals(0.2, zeit.getVorgabe());
         assertEquals(0.0, zeit.getAbgabe());
     }
-
+    
+    /**
+     * Testfälle für parse Dschungelelement
+     * @throws Exception
+     */
     @Test
     @DisplayName("Test parseXML Dschungel Element")
     void testParseXML_DschungelElement() throws Exception {
@@ -45,6 +52,10 @@ public class DateneingabeXMLTest {
         assertEquals(64, dschungel.getFelder().size());
     }
     
+    /**
+     * Testfälle für parse Schlangenarten Element
+     * @throws Exception
+     */
     @Test
     @DisplayName("Test parseXML Schlangenarten Element")
     void testParseXML_SchlangenartenElement() throws Exception {

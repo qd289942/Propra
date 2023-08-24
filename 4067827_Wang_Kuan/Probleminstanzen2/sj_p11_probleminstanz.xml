@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Schlangenjagd SYSTEM "schlangenjagd.dtd">
+<Schlangenjagd>
+    <Zeit einheit="s">
+        <Vorgabe>10.0</Vorgabe>
+    </Zeit>
+    <Dschungel zeilen="7" spalten="7" zeichen="AEIOU">
+        <Feld id="F0" zeile="0" spalte="0" verwendbarkeit="1" punkte="5">I</Feld>
+        <Feld id="F1" zeile="0" spalte="1" verwendbarkeit="1" punkte="8">M</Feld>
+        <Feld id="F2" zeile="0" spalte="2" verwendbarkeit="1" punkte="7">U</Feld>
+        <Feld id="F3" zeile="0" spalte="3" verwendbarkeit="1" punkte="3">B</Feld>
+        <Feld id="F4" zeile="0" spalte="4" verwendbarkeit="2" punkte="4">L</Feld>
+        <Feld id="F5" zeile="0" spalte="5" verwendbarkeit="1" punkte="4">I</Feld>
+        <Feld id="F6" zeile="0" spalte="6" verwendbarkeit="1" punkte="4">A</Feld>
+        <Feld id="F7" zeile="1" spalte="0" verwendbarkeit="1" punkte="6">A</Feld>
+        <Feld id="F8" zeile="1" spalte="1" verwendbarkeit="1" punkte="8">V</Feld>
+        <Feld id="F9" zeile="1" spalte="2" verwendbarkeit="1" punkte="8">T</Feld>
+        <Feld id="F10" zeile="1" spalte="3" verwendbarkeit="2" punkte="9">E</Feld>
+        <Feld id="F11" zeile="1" spalte="4" verwendbarkeit="2" punkte="3">I</Feld>
+        <Feld id="F12" zeile="1" spalte="5" verwendbarkeit="1" punkte="7">P</Feld>
+        <Feld id="F13" zeile="1" spalte="6" verwendbarkeit="1" punkte="3">I</Feld>
+        <Feld id="F14" zeile="2" spalte="0" verwendbarkeit="1" punkte="2">I</Feld>
+        <Feld id="F15" zeile="2" spalte="1" verwendbarkeit="1" punkte="4">A</Feld>
+        <Feld id="F16" zeile="2" spalte="2" verwendbarkeit="1" punkte="2">V</Feld>
+        <Feld id="F17" zeile="2" spalte="3" verwendbarkeit="1" punkte="2">E</Feld>
+        <Feld id="F18" zeile="2" spalte="4" verwendbarkeit="3" punkte="6">A</Feld>
+        <Feld id="F19" zeile="2" spalte="5" verwendbarkeit="2" punkte="9">N</Feld>
+        <Feld id="F20" zeile="2" spalte="6" verwendbarkeit="2" punkte="6">N</Feld>
+        <Feld id="F21" zeile="3" spalte="0" verwendbarkeit="1" punkte="2">L</Feld>
+        <Feld id="F22" zeile="3" spalte="1" verwendbarkeit="1" punkte="0">E</Feld>
+        <Feld id="F23" zeile="3" spalte="2" verwendbarkeit="1" punkte="9">U</Feld>
+        <Feld id="F24" zeile="3" spalte="3" verwendbarkeit="1" punkte="4">I</Feld>
+        <Feld id="F25" zeile="3" spalte="4" verwendbarkeit="1" punkte="9">R</Feld>
+        <Feld id="F26" zeile="3" spalte="5" verwendbarkeit="2" punkte="8">A</Feld>
+        <Feld id="F27" zeile="3" spalte="6" verwendbarkeit="2" punkte="3">A</Feld>
+        <Feld id="F28" zeile="4" spalte="0" verwendbarkeit="1" punkte="7">Y</Feld>
+        <Feld id="F29" zeile="4" spalte="1" verwendbarkeit="1" punkte="2">S</Feld>
+        <Feld id="F30" zeile="4" spalte="2" verwendbarkeit="2" punkte="5">A</Feld>
+        <Feld id="F31" zeile="4" spalte="3" verwendbarkeit="1" punkte="4">A</Feld>
+        <Feld id="F32" zeile="4" spalte="4" verwendbarkeit="3" punkte="0">E</Feld>
+        <Feld id="F33" zeile="4" spalte="5" verwendbarkeit="1" punkte="6">A</Feld>
+        <Feld id="F34" zeile="4" spalte="6" verwendbarkeit="1" punkte="3">D</Feld>
+        <Feld id="F35" zeile="5" spalte="0" verwendbarkeit="1" punkte="5">M</Feld>
+        <Feld id="F36" zeile="5" spalte="1" verwendbarkeit="1" punkte="9">D</Feld>
+        <Feld id="F37" zeile="5" spalte="2" verwendbarkeit="1" punkte="0">V</Feld>
+        <Feld id="F38" zeile="5" spalte="3" verwendbarkeit="1" punkte="5">L</Feld>
+        <Feld id="F39" zeile="5" spalte="4" verwendbarkeit="1" punkte="4">O</Feld>
+        <Feld id="F40" zeile="5" spalte="5" verwendbarkeit="1" punkte="5">L</Feld>
+        <Feld id="F41" zeile="5" spalte="6" verwendbarkeit="1" punkte="0">S</Feld>
+        <Feld id="F42" zeile="6" spalte="0" verwendbarkeit="1" punkte="7">I</Feld>
+        <Feld id="F43" zeile="6" spalte="1" verwendbarkeit="2" punkte="7">A</Feld>
+        <Feld id="F44" zeile="6" spalte="2" verwendbarkeit="1" punkte="7">A</Feld>
+        <Feld id="F45" zeile="6" spalte="3" verwendbarkeit="1" punkte="2">A</Feld>
+        <Feld id="F46" zeile="6" spalte="4" verwendbarkeit="1" punkte="0">Z</Feld>
+        <Feld id="F47" zeile="6" spalte="5" verwendbarkeit="1" punkte="8">I</Feld>
+        <Feld id="F48" zeile="6" spalte="6" verwendbarkeit="1" punkte="0">O</Feld>
+    </Dschungel>
+    <Schlangenarten>
+        <Schlangenart id="A0" punkte="10" anzahl="1">
+            <Zeichenkette>ADA</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A1" punkte="10" anzahl="1">
+            <Zeichenkette>AMY</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A2" punkte="10" anzahl="1">
+            <Zeichenkette>ANN</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A3" punkte="10" anzahl="1">
+            <Zeichenkette>AVA</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A4" punkte="10" anzahl="1">
+            <Zeichenkette>BEA</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A5" punkte="10" anzahl="1">
+            <Zeichenkette>ELA</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A6" punkte="10" anzahl="1">
+            <Zeichenkette>EVA</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A7" punkte="10" anzahl="1">
+            <Zeichenkette>IDA</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A8" punkte="10" anzahl="1">
+            <Zeichenkette>INA</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A9" punkte="10" anzahl="1">
+            <Zeichenkette>ISA</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A10" punkte="10" anzahl="1">
+            <Zeichenkette>LEA</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A11" punkte="10" anzahl="1">
+            <Zeichenkette>LIA</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A12" punkte="10" anzahl="1">
+            <Zeichenkette>LIN</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A13" punkte="10" anzahl="1">
+            <Zeichenkette>LIV</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A14" punkte="10" anzahl="1">
+            <Zeichenkette>MIA</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A15" punkte="10" anzahl="1">
+            <Zeichenkette>PIA</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A16" punkte="10" anzahl="1">
+            <Zeichenkette>RIA</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A17" punkte="10" anzahl="1">
+            <Zeichenkette>SUE</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A18" punkte="10" anzahl="1">
+            <Zeichenkette>UTE</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+        <Schlangenart id="A19" punkte="10" anzahl="1">
+            <Zeichenkette>ZOE</Zeichenkette>
+            <Nachbarschaftsstruktur typ="Distanz">
+                <Parameter wert="1" />
+            </Nachbarschaftsstruktur>
+        </Schlangenart>
+    </Schlangenarten>
+    <Schlangen />
+</Schlangenjagd>

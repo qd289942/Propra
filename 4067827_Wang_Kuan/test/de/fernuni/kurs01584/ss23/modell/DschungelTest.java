@@ -12,15 +12,19 @@ public class DschungelTest {
     private Dschungel dschungel;
     private List<Feld> felder;
     
+    /**
+     * initialisierung Dschungel und Feld Instanzen
+     */
     @BeforeEach
     void init() {
-        // initialisierung Dschungel und Feld Instanzen
         dschungel = new Dschungel();
         felder = new ArrayList<>();
-
         dschungel.setFelder(felder);
     }
-    
+    /**
+     * Testfälle für Default Konstruktor
+     * Test, ob leere Konstruktor funktioniert ist und Default Wert von Zeilen, Spalten sowie Zeichenmenge
+     */
     @Test
     @DisplayName("Test DefaultKonstruktor")
     void testDefaultKonstruktor() {
@@ -36,6 +40,11 @@ public class DschungelTest {
         assertTrue(dschungel.getFelder().isEmpty());
     }
     
+    /**
+     * Testfälle für Default Konstruktor mit Parametern
+     * Test, ob parameterisierte Konstruktor funktioniert und richtige Wert aufnehmen kann
+     */
+    
     @Test
     @DisplayName("Test DefaultKonstruktormitParametern")
     void testParameterizedKonstruktor() {
@@ -49,6 +58,10 @@ public class DschungelTest {
         assertEquals(zeichenmenge, dschungel.getzeichenmenge());
         assertEquals(felder, dschungel.getFelder());
     }
+    
+    /**
+     * Testfälle für Getters und Setters Methoden
+     */
     @Test
     @DisplayName("Test Getters und Setters von Attribute")
     void testSetterundGettersAttribute() {
