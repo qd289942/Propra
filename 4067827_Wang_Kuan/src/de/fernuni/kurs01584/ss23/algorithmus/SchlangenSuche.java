@@ -166,8 +166,6 @@ public class SchlangenSuche {
 				}
 
 			}
-
-
 			return;
 		}
 	}
@@ -373,10 +371,11 @@ public class SchlangenSuche {
 	 */
 	public static void zeitVorgabePruefen(Schlangenjagd problemInstanz, Schlangenjagd schlangenjagd, long startZeit, double zeitVorgabe, String outputFilePath, int aktuellePunkt, String einheit) throws Exception {
 
-		double zeitInterval = System.currentTimeMillis() - startZeit;
-		zeitInterval = zeitUmrechunung(einheit, zeitInterval);
+		long aktuelleZeit = System.currentTimeMillis();
+		double zeitInterval = zeitUmrechunung(einheit, aktuelleZeit - startZeit);
 		if (zeitInterval >= zeitVorgabe) {
-			schlangenjagd.getZeit().setAbgabe(zeitVorgabe);;
+			schlangenjagd.getZeit().setAbgabe(zeitInterval);
+			System.out.println("Bei der Schlangesuche wird Zeitvorgabe erreicht.");
 			DatenausgabeXML.writeXML(problemInstanz, schlangenjagd, outputFilePath);
 			System.exit(0);
 		}
