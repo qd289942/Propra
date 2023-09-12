@@ -15,6 +15,7 @@ public class Feld implements Priorisierbar{
     private int verwendbarkeit;
     private int punkte;
     private String zeichen;
+    private Dschungel dschungel;
 
 
     /**
@@ -164,5 +165,20 @@ public class Feld implements Priorisierbar{
      */
     public void setZeichen(String zeichen) {
         this.zeichen = zeichen;
+    }
+    
+    /**
+     * get dschungel für Feld
+     * @return dschungel
+     */
+    public Dschungel getDschungel() {
+        return dschungel;
+    }
+    /**
+     * set dschungel
+     * @param dschungel
+     */
+    public void setDschungel(Dschungel dschungel) {
+        this.dschungel = dschungel;
     }
 }

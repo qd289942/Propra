@@ -7,6 +7,7 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import java.io.FileWriter;
+import java.util.List;
 
 /**
  * Klasse zur Darstellung des Datenausgabeprozess in XML
@@ -19,18 +20,18 @@ public class DatenausgabeXML {
 	 * @param filePath Pfad zur ausgegebene XML Datei
 	 * @throws Exception
 	 */
-    public static void writeXML(Schlangenjagd problemInstanz, Schlangenjagd schlangenjagd, String filePath) throws Exception {
+    public static void writeXML(Schlangenjagd problemInstanz, List<Schlange> loesung, String filePath) throws Exception {
             // Root Element Schlangenjagd erstellen
             Element rootElement = new Element("Schlangenjagd");
 
             // Zeit Element erstellen
             Element zeitElement = new Element("Zeit");
-            zeitElement.setAttribute("einheit", schlangenjagd.getZeit().getEinheit());
+            zeitElement.setAttribute("einheit", problemInstanz.getZeit().getEinheit());
             
             Element vorgabeElement = new Element("Vorgabe");
-            vorgabeElement.setText(Double.toString(schlangenjagd.getZeit().getVorgabe()));
+            vorgabeElement.setText(Double.toString(problemInstanz.getZeit().getVorgabe()));
             Element abgabeElement = new Element("Abgabe");
-            abgabeElement.setText(Double.toString(schlangenjagd.getZeit().getAbgabe()));
+            abgabeElement.setText(Double.toString(problemInstanz.getZeit().getAbgabe()));
             
             zeitElement.addContent(vorgabeElement);
             zeitElement.addContent(abgabeElement);
@@ -92,7 +93,7 @@ public class DatenausgabeXML {
             Element schlangenElement = new Element("Schlangen");
             
             // Schlange Element erstellen und Attribute zuweisen
-            for (Schlange schlange : schlangenjagd.getSchlangen()) {
+            for (Schlange schlange : loesung) {
                 Element schlangeElement = new Element("Schlange");
                 schlangeElement.setAttribute("art", schlange.getSchlangenart().getId());
                 // Schlangenglied Element erstellen und Attribute zuweisen

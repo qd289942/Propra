@@ -66,8 +66,8 @@ public class DateneingabeXML {
         }
 
         // Feld in Dschungel zuordnen
-        List<Feld> felder = new ArrayList<>();
         List<Element> feldElements = dschungelElement.getChildren("Feld");
+        List<Feld> felder = new ArrayList<>();
         // FeldList erstellen und Feld in List einpacken und attribute zuweisen
         for (Element feldElement : feldElements) {
             Feld feld = new Feld();
@@ -79,16 +79,17 @@ public class DateneingabeXML {
             feld.setZeichen(feldElement.getText());
             felder.add(feld);
         }
+        
         dschungel.setFelder(felder);
         schlangenjagd.setDschungel(dschungel);
 
         // Parse Schlangenarten Element
         Element schlangenartenElement = rootElement.getChild("Schlangenarten");
         if (schlangenartenElement != null) {
-            // List für Schlangenart erstellen
-            List<Schlangenart> schlangenartList = new ArrayList<>();
             // List für SchlangenartElements in XML Datei
             List<Element> schlangenartElements = schlangenartenElement.getChildren("Schlangenart");
+            // List für Schlangenart erstellen
+            List<Schlangenart> schlangenartList = new ArrayList<>();
             if (!schlangenartElements.isEmpty()) {
 
                 // für jede Schleife Schlangenart Objekt erstellen und Attribute zuweisen

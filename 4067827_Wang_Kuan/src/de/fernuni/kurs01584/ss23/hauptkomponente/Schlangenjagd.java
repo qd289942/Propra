@@ -91,15 +91,28 @@ public class Schlangenjagd implements SchlangenjagdAPI {
     public boolean loeseProbleminstanz(String xmlEingabeDatei, String xmlAusgabeDatei) {
 
         de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = null;
+        de.fernuni.kurs01584.ss23.modell.Schlangenjagd schlangenjagd = null;
+        de.fernuni.kurs01584.ss23.modell.Schlangenjagd probleminstanz = null;
 
-        validateDTD(xmlEingabeDatei);
-
+        validateDTD(xmlEingabeDatei); 
         try {
-            SchlangenSuche.sucheSchlange(xmlEingabeDatei, xmlAusgabeDatei);
-        } catch (Exception e) {
-            e.printStackTrace();
+            schlangenjagd = DateneingabeXML.parseXML(xmlEingabeDatei);
+            probleminstanz = DateneingabeXML.parseXML(xmlEingabeDatei);
+        } catch (Exception e2) {
+            // TODO Auto-generated catch block
+            e2.printStackTrace();
         }
-
+        
+        try {
+            SchlangenSuche.outputFilePath = xmlAusgabeDatei;
+            SchlangenSuche.problemInstanz = probleminstanz;
+            SchlangenSuche.schlangenjagd = schlangenjagd;
+            SchlangenSuche.sucheSchlange();
+        } catch (Exception e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        
         try {
             loesung = DateneingabeXML.parseXMLmitSchlangen(xmlAusgabeDatei);
         } catch (Exception e) {
@@ -221,7 +234,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
             e.printStackTrace();
         }
         int punktzahl = 0;
-        punktzahl = SchlangenSuche.rechnePunkt(loesung, punktzahl);
+        punktzahl = SchlangenSuche.rechnePunkt(loesung.getSchlangen(), punktzahl);
         return punktzahl;
     }
     /**
