@@ -124,7 +124,7 @@ public class DatenausgabeXML {
             xmlOutputter.output(document, fileWriter);
             fileWriter.close();
 
-            System.out.println("XML Datei wurde durch loesung erfolgreich ueberschrieben: " + filePath);
+            System.out.println("XML Datei wurde durch Loesung erfolgreich ueberschrieben: " + filePath);
     }
     /**
      * Methode zur Ausgabe der durch DschungelGenerator erstellte Probleminstanz

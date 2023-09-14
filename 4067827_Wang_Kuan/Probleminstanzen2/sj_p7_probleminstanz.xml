@@ -4,7 +4,7 @@
     <Zeit einheit="s">
         <Vorgabe>10.0</Vorgabe>
     </Zeit>
-    <Dschungel zeilen="100" spalten="50000" zeichen="!&quot;§$%&amp;/()=?+*~#',;:-_@€&lt;&gt;|">
+    <Dschungel zeilen="10" spalten="5" zeichen="!&quot;§$%&amp;/()=?+*~#',;:-_@€&lt;&gt;|">
         <Feld id="F0" zeile="0" spalte="0" verwendbarkeit="1" punkte="5">N</Feld>
         <Feld id="F1" zeile="0" spalte="1" verwendbarkeit="1" punkte="8">a</Feld>
         <Feld id="F2" zeile="0" spalte="2" verwendbarkeit="1" punkte="7">e</Feld>

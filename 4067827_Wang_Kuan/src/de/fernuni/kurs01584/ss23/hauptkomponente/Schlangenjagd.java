@@ -12,6 +12,7 @@ import org.jdom2.input.SAXBuilder;
 import de.fernuni.kurs01584.ss23.algorithmus.DschungelGenerator;
 import de.fernuni.kurs01584.ss23.algorithmus.SchlangenSuche;
 import de.fernuni.kurs01584.ss23.darstellung.DarstellungLoesungen;
+import de.fernuni.kurs01584.ss23.dateiverarbeitung.DatenausgabeXML;
 import de.fernuni.kurs01584.ss23.dateiverarbeitung.DateneingabeXML;
 import de.fernuni.kurs01584.ss23.modell.*;
 
@@ -90,7 +91,6 @@ public class Schlangenjagd implements SchlangenjagdAPI {
     @Override
     public boolean loeseProbleminstanz(String xmlEingabeDatei, String xmlAusgabeDatei) {
 
-        de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = null;
         de.fernuni.kurs01584.ss23.modell.Schlangenjagd schlangenjagd = null;
         de.fernuni.kurs01584.ss23.modell.Schlangenjagd probleminstanz = null;
 
@@ -113,17 +113,26 @@ public class Schlangenjagd implements SchlangenjagdAPI {
             e1.printStackTrace();
         }
         
+        // Wenn die Zeitabgabe noch unbekannt ist
+        if (SchlangenSuche.problemInstanz.getZeit().getAbgabe() == 0.0) {
+            double zeitinterval = System.currentTimeMillis() - SchlangenSuche.getStartZeit();
+            double zeitintervalUmgerechnet = SchlangenSuche.zeitUmrechunung(probleminstanz.getZeit().getEinheit(), zeitinterval);
+            SchlangenSuche.problemInstanz.getZeit().setAbgabe(zeitintervalUmgerechnet);
+        }
         try {
-            loesung = DateneingabeXML.parseXMLmitSchlangen(xmlAusgabeDatei);
+            DatenausgabeXML.writeXML(probleminstanz,SchlangenSuche.loesungSchlangen,xmlAusgabeDatei);
         } catch (Exception e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        if (loesung.getSchlangen() != null && !loesung.getSchlangen().isEmpty()) {
+        
+        if (SchlangenSuche.loesungSchlangen != null) {
+            System.out.println("Rueckgabe erfolgt, Loesungen sind in XML gespeichert.");
             return true;
         }
         else {
             return false;
-        }
+        }  
     }
     /**
      * Implementierung der API-Methode zur Erzeugung von Probleminstanzen.
@@ -185,6 +194,9 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                             if (Math.abs(vorherigesGlied.getFeld().getSpalte() - schlangenglied.getFeld().getSpalte()) > wert || Math.abs(vorherigesGlied.getFeld().getZeile() - schlangenglied.getFeld().getZeile()) > wert) {
                                 fehlertypList.add(Fehlertyp.NACHBARSCHAFT);
                             }
+                            else if (vorherigesGlied.getFeld().getSpalte() == schlangenglied.getFeld().getSpalte() && vorherigesGlied.getFeld().getZeile() == schlangenglied.getFeld().getZeile()){
+                                fehlertypList.add(Fehlertyp.NACHBARSCHAFT);
+                            }
                         }
                         else {
                             int parameter_1 = parameters.get(0).getWert();
@@ -234,7 +246,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
             e.printStackTrace();
         }
         int punktzahl = 0;
-        punktzahl = SchlangenSuche.rechnePunkt(loesung.getSchlangen(), punktzahl);
+        punktzahl = SchlangenSuche.rechnePunkt(loesung.getSchlangen());
         return punktzahl;
     }
     /**

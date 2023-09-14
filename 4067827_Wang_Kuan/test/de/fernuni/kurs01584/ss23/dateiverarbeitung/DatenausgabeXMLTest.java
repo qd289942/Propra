@@ -59,7 +59,7 @@ public class DatenausgabeXMLTest {
         schlangenjagd.setSchlangen(schlangenList);
         
         // Schreibt Daten in XML File
-        DatenausgabeXML.writeXML(problemInstanz, schlangenjagd, outputnormalizedPath);
+        DatenausgabeXML.writeXML(problemInstanz, schlangenList, outputnormalizedPath);
         
         File file = new File(outputnormalizedPath);
         assertTrue(file.exists());

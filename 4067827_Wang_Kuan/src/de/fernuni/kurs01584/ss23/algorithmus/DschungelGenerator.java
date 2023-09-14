@@ -57,14 +57,18 @@ public class DschungelGenerator {
         }
         // löschen bereits vorhandene Dschungelfelder (vollständige Probleminstanz) in problemInstanz oder neue Felder erstellen (unvollständige Probleminstanz)
         List <Feld> newFelder = new ArrayList<>();
-        for (int FeldId = 0; FeldId < problemInstanz.getDschungel().getSpalten() * problemInstanz.getDschungel().getZeilen(); FeldId++) {
-            Feld feld = new Feld();
-            feld.setId("F" + FeldId);
-            feld.setSpalte(FeldId % problemInstanz.getDschungel().getSpalten());
-            feld.setZeile(FeldId / problemInstanz.getDschungel().getZeilen());
-            feld.setVerwendbarkeit(1);
-            feld.setPunkte(1);
-            newFelder.add(feld);
+        int zeilen = problemInstanz.getDschungel().getZeilen();
+        int spalten = problemInstanz.getDschungel().getSpalten();
+        for (int zeilenummer = 0; zeilenummer < zeilen; zeilenummer++) {
+            for (int spaltenummer = 0; spaltenummer < spalten; spaltenummer++) {
+                Feld feld = new Feld();
+                feld.setId("F" + (zeilenummer * spalten + spaltenummer));
+                feld.setSpalte(spaltenummer);
+                feld.setZeile(zeilenummer);
+                feld.setVerwendbarkeit(1);
+                feld.setPunkte(1);
+                newFelder.add(feld);
+            }
         }
         problemInstanz.getDschungel().setFelder(newFelder);
 
@@ -122,6 +126,7 @@ public class DschungelGenerator {
             String zeichenStr = String.valueOf(zeichen);
             feld.setZeichen(zeichenStr);
         }
+        
         long aktuelleZeit = System.currentTimeMillis();
         String einheit = problemInstanz.getZeit().getEinheit();
         double umgerechneteZeit = SchlangenSuche.zeitUmrechunung(einheit, aktuelleZeit - startZeit);

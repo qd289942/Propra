@@ -2,7 +2,7 @@
 <!DOCTYPE Schlangenjagd SYSTEM "schlangenjagd.dtd">
 <Schlangenjagd>
     <Zeit einheit="min">
-        <Vorgabe>0.3</Vorgabe>
+        <Vorgabe>0.5</Vorgabe>
     </Zeit>
     <Dschungel zeilen="50" spalten="50" zeichen="ABCDEFGHIJKLMNOPQRSTUVWXYZ">
         <Feld id="F0" zeile="0" spalte="0" verwendbarkeit="1" punkte="5">R</Feld>
