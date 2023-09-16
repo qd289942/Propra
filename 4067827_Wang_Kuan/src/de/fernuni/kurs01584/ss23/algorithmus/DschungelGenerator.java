@@ -147,6 +147,9 @@ public class DschungelGenerator {
 
                     // suche Schlangenglied nach startGlied und Schlangenart
                     sucheGliednachSchlangenart(startGlied);
+                    if (flag == true) {
+                        return;
+                    }
                     // lösche startGlied sowie schlange wenn keine Nachbarfeld mehr zu finden ist
                     schlange.getSchlangengliedmenge().remove(startGlied);
                     startGlied.getFeld().setZeichen(null);

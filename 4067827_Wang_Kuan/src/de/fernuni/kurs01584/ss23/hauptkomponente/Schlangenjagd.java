@@ -49,18 +49,18 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                     System.out.println("keine Schlange gefunden.");
                 }
                 break;
-            // Eine neue Probleminstanz wird auf Basis der gegebenen Parameter erzeugt und bei Angabe einer Ausgabedatei gespeichert.    
+                // Eine neue Probleminstanz wird auf Basis der gegebenen Parameter erzeugt und bei Angabe einer Ausgabedatei gespeichert.    
             case 'e':
                 boolean flag_1 =schlangenjagd.erzeugeProbleminstanz(eingabe, ausgabe);
                 if (flag_1 == true) {
                     System.out.println("Probleminstanz wird generiert.");
                 }
                 break;
-            // Die Probleminstanz und die zugehörige Lösung werden in der Konsole dargestellt.
+                // Die Probleminstanz und die zugehörige Lösung werden in der Konsole dargestellt.
             case 'd':
-                schlangenjagd.darstellung(eingabe, ausgabe);
+                schlangenjagd.darstellung(eingabe, ausgabe, ablauf);
                 break;
-            // Die Zulässigkeit der gegebenen Lösung wird überprüft. Bei Unzulässigkeit werden die Art und Anzahl der verletzten Bedingungen in der Konsole ausgegeben
+                // Die Zulässigkeit der gegebenen Lösung wird überprüft. Bei Unzulässigkeit werden die Art und Anzahl der verletzten Bedingungen in der Konsole ausgegeben
             case 'p':
                 List<Fehlertyp> fehlerTypList = schlangenjagd.pruefeLoesung(ausgabe);
                 System.out.println("\n\nFehlertyp und Anzahl: ");
@@ -74,10 +74,10 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                     System.out.println(entry.getKey() + ": " + entry.getValue());
                 }
                 break;
-            // Die Gesamtpunktzahl der Lösung wird unabhängig von der Zulässigkeit berechnet und in der Konsole ausgegeben.
+                // Die Gesamtpunktzahl der Lösung wird unabhängig von der Zulässigkeit berechnet und in der Konsole ausgegeben.
             case 'b':
                 int gesamtPunkte = schlangenjagd.bewerteLoesung(ausgabe);
-                System.out.println("\nGesamtPunkt: " + gesamtPunkte);
+                System.out.println("\n\nGesamtPunkt: " + gesamtPunkte);
                 break;
 
             default:
@@ -105,7 +105,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
             // TODO Auto-generated catch block
             e2.printStackTrace();
         }
-        
+
         try {
             SchlangenSuche.outputFilePath = xmlAusgabeDatei;
             SchlangenSuche.problemInstanz = probleminstanz;
@@ -115,7 +115,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        
+
         // Wenn die Zeitabgabe noch unbekannt ist
         if (SchlangenSuche.problemInstanz.getZeit().getAbgabe() == 0.0) {
             double zeitinterval = System.currentTimeMillis() - SchlangenSuche.getStartZeit();
@@ -128,7 +128,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+
         if (SchlangenSuche.loesungSchlangen != null) {
             System.out.println("Rueckgabe erfolgt, Loesungen sind in XML gespeichert.");
             return true;
@@ -257,43 +257,42 @@ public class Schlangenjagd implements SchlangenjagdAPI {
      * @param xmlEingabeDatei Dateipfad zu einer XML-Datei mit Parametern fuer eine
      *                        Probleminstanz, die erzeugt werden soll.
      * @param xmlAusgabeDatei Dateipfad zu einer XML-Datei fuer die erzeugte Probleminstanz.
+     * @param ablauf Ablaufparameter
      * @throws Exception
      */
-    public void darstellung(String xmlEingabeDatei, String xmlAusgabeDatei) throws Exception {
-        if (!xmlEingabeDatei.equals("")) {
-            de.fernuni.kurs01584.ss23.modell.Schlangenjagd probleminstanz = DateneingabeXML.parseXML(xmlEingabeDatei);
-            de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = DateneingabeXML.parseXMLmitSchlangen(xmlAusgabeDatei);
+    public void darstellung(String xmlEingabeDatei, String xmlAusgabeDatei, String ablauf) throws Exception {
+        if (ablauf.contains("e")) {
+            de.fernuni.kurs01584.ss23.modell.Schlangenjagd probleminstanz = DateneingabeXML.parseXML(xmlAusgabeDatei);
             DarstellungLoesungen.probleminstanzDarstellen(probleminstanz);
-            DarstellungLoesungen.loesungDarstellen(loesung);}
+        }
         else {
-            de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = DateneingabeXML.parseXMLmitSchlangen(xmlAusgabeDatei);
-            
+            de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = DateneingabeXML.parseXMLmitSchlangen(xmlAusgabeDatei);            
             DarstellungLoesungen.loesungDarstellen(loesung);
         }
     }
-    
+
     /**
      * Implementierung der API-Methode zur Rueckgabe Ihres vollstaenigen Namens.
      */
     @Override
     public String getName() {
-    	
+
         String vorname = "Kuan";
         String nachname = "Wang";
 
         return nachname + ", " + vorname;
     }
-    
+
     /**
      * Implementierung der API-Methode zur Rueckgabe Ihrer Matrikelnummer.
      */
     @Override
     public String getMatrikelnummer() {
-    	
+
         String matriketnummer = "4067827";
         return matriketnummer;
     }
-    
+
     /**
      * Implementierung der API-Methode zur Rueckgabe Ihrer E-Mail Adresse.
      */
