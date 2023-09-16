@@ -51,7 +51,10 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                 break;
             // Eine neue Probleminstanz wird auf Basis der gegebenen Parameter erzeugt und bei Angabe einer Ausgabedatei gespeichert.    
             case 'e':
-                schlangenjagd.erzeugeProbleminstanz(eingabe, ausgabe);
+                boolean flag_1 =schlangenjagd.erzeugeProbleminstanz(eingabe, ausgabe);
+                if (flag_1 == true) {
+                    System.out.println("Probleminstanz wird generiert.");
+                }
                 break;
             // Die Probleminstanz und die zugehörige Lösung werden in der Konsole dargestellt.
             case 'd':
@@ -264,6 +267,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
             DarstellungLoesungen.loesungDarstellen(loesung);}
         else {
             de.fernuni.kurs01584.ss23.modell.Schlangenjagd loesung = DateneingabeXML.parseXMLmitSchlangen(xmlAusgabeDatei);
+            
             DarstellungLoesungen.loesungDarstellen(loesung);
         }
     }

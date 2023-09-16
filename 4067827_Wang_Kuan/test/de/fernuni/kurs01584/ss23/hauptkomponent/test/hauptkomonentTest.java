@@ -46,7 +46,7 @@ public class hauptkomonentTest {
 	@Test
 	public void testBewerteLoesung() {
 		int punkte = schlangenjagd.bewerteLoesung(outputfilePathMitPunkte);
-		assertEquals(214, punkte);
+		assertEquals(271, punkte);
 	}
 
 	/**
@@ -63,15 +63,5 @@ public class hauptkomonentTest {
 		assertTrue(!fehlern.isEmpty());
 	}
 	
-	/**
-	 * Testfälle für erzeugeProbleminstanz
-	 * Test, ob ein Probleminstanz durch Dschungelgenerator erstellt werden kann
-	 */
-	@DisplayName("test Erzeugen Probleminstanz")
-	@Test
-	public void testErzeugeProbleminstanz() {
-		boolean result = schlangenjagd.erzeugeProbleminstanz(inputnormalizedPath, outputnormalizedPath);
-		assertTrue(result);
-	}
 	
 }

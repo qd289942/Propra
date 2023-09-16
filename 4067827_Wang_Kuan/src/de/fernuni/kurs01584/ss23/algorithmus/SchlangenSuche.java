@@ -1,7 +1,6 @@
 package de.fernuni.kurs01584.ss23.algorithmus;
 
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import de.fernuni.kurs01584.ss23.modell.*;
 
 public class SchlangenSuche {
@@ -203,7 +202,7 @@ public class SchlangenSuche {
 
     public static List<Schlangenart> erzeugZulassigeSchlangenart (List<Schlangenart> schlangenarten, Feld feld){
         List<Schlangenart> startSchlangenarten = new ArrayList<>();
-        boolean flag = true;
+        boolean flag_1 = true;
         String str = new String();
         for (Feld fd : feld.getDschungel().getFelder()) {
             if (fd.getVerwendbarkeit() > 0) {
@@ -212,16 +211,16 @@ public class SchlangenSuche {
         }
         for (Schlangenart schlangenart : schlangenarten) {
             String firstZeichen = String.valueOf(schlangenart.getZeichenkette().charAt(0));
-            
+
             if (feld.getZeichen().equals(firstZeichen)) {
                 // prüft, ob es noch Felder vorhanden sind, die für Schlangenarten mit entsprechender Zeichenkette nutzbar sind.
                 for (int i = 0; i <schlangenart.getZeichenkette().length(); i++) {
                     if (!str.contains(String.valueOf(schlangenart.getZeichenkette().charAt(i)))) {
-                        flag = false;
+                        flag_1 = false;
                         break;
                     }
                 }
-                if (flag == true) {
+                if (flag_1 == true) {
                     startSchlangenarten.add(schlangenart);
                 }
             }
@@ -253,24 +252,26 @@ public class SchlangenSuche {
             List<Parameter> parameters = schlangenart.getNachStr().getParameters();
 
             for (Feld nachbarFeld : startfelder) {
-                if (nachbarTyp.equals("Distanz")) {
-                    // Es gibt nur ein Parameter für Distanz Typ
-                    int parameter = parameters.get(0).getWert();
-                    if (Math.abs(nachbarFeld.getSpalte() - feldSpalte) <= parameter && Math.abs(nachbarFeld.getZeile() - feldZeile) <= parameter) {
-                        // Ein Feld liegt nicht in seiner eigenen Nachbarschaft
-                        if (nachbarFeld.getSpalte() == feldSpalte && nachbarFeld.getZeile() == feldZeile) {}
-                        else {
-                            nachbarfelder.add(nachbarFeld);
+                if (nachbarFeld.getVerwendbarkeit() > 0) {
+                    if (nachbarTyp.equals("Distanz")) {
+                        // Es gibt nur ein Parameter für Distanz Typ
+                        int parameter = parameters.get(0).getWert();
+                        if (Math.abs(nachbarFeld.getSpalte() - feldSpalte) <= parameter && Math.abs(nachbarFeld.getZeile() - feldZeile) <= parameter) {
+                            // Ein Feld liegt nicht in seiner eigenen Nachbarschaft
+                            if (nachbarFeld.getSpalte() == feldSpalte && nachbarFeld.getZeile() == feldZeile) {}
+                            else {
+                                nachbarfelder.add(nachbarFeld);
+                            }
                         }
                     }
-                }
-                else {
-                    // Es gibt zwei Parametern für Sprung Typ
-                    int parameter_1 = parameters.get(0).getWert();
-                    int parameter_2 = parameters.get(1).getWert();
+                    else {
+                        // Es gibt zwei Parametern für Sprung Typ
+                        int parameter_1 = parameters.get(0).getWert();
+                        int parameter_2 = parameters.get(1).getWert();
 
-                    if ((Math.abs(nachbarFeld.getSpalte() - feldSpalte) == parameter_1 && Math.abs(nachbarFeld.getZeile() - feldZeile) == parameter_2) || (Math.abs(nachbarFeld.getSpalte() - feldSpalte) == parameter_2 && Math.abs(nachbarFeld.getZeile() - feldZeile) == parameter_1)) {
-                        nachbarfelder.add(nachbarFeld);
+                        if ((Math.abs(nachbarFeld.getSpalte() - feldSpalte) == parameter_1 && Math.abs(nachbarFeld.getZeile() - feldZeile) == parameter_2) || (Math.abs(nachbarFeld.getSpalte() - feldSpalte) == parameter_2 && Math.abs(nachbarFeld.getZeile() - feldZeile) == parameter_1)) {
+                            nachbarfelder.add(nachbarFeld);
+                        }
                     }
                 }
             }

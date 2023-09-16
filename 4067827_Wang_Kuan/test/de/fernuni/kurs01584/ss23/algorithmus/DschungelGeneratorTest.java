@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+
 import de.fernuni.kurs01584.ss23.modell.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,6 +23,7 @@ public class DschungelGeneratorTest {
 	List <Feld> felder = new ArrayList<>();
 	List <Schlangenart> sl1 = new ArrayList<>();
 	List <Schlangenart> s21 = new ArrayList<>();
+    Schlangenjagd sjd = new Schlangenjagd();
 
 	/**
 	 * Initialisierung von Felder für Dschungel
@@ -44,9 +46,6 @@ public class DschungelGeneratorTest {
 		felder.add(feld5);
 		felder.add(feld6);
 
-		Dschungel d3 = new Dschungel(10,10,"ABC",felder);
-		Dschungel d1 = new Dschungel();
-		Dschungel d2 = new Dschungel(1,3,null,felder);
 
 	}
 
@@ -68,26 +67,25 @@ public class DschungelGeneratorTest {
 		 */
 		void testCheckProbleminszanzDschungel(Dschungel d) {
 
-			Schlangenjagd sjd = new Schlangenjagd();
 
 			// System.out umleiten, um die Ausgabe zu erfassen
 			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 			PrintStream printStream = new PrintStream(outputStream);
-			PrintStream originalPrintStream = System.out;
 			System.setOut(printStream);
 
 			// keine Zeilen und Spalten angegeben
 			sjd.setDschungel(d);
-			DschungelGenerator.checkProbleminszanz(sjd);
+			DschungelGenerator.problemInstanz = sjd;
+			DschungelGenerator.checkProbleminszanz();
 			if (d.getSpalten() == 0 || d.getZeilen() == 0) {
 				assertEquals("Anzahl der Zeilen und Spalten des Dschungels sind nicht vollstaendig in Eingabedatei angegeben.", outputStream.toString().trim());
-				assertFalse(DschungelGenerator.checkProbleminszanz(sjd));
+				assertFalse(DschungelGenerator.checkProbleminszanz());
 			}
 			else { 
 				// keine Zeichenkette angegeben
 				if (d.getzeichenmenge() == null) {
 					assertEquals("keine zulässige Zeichen wird für den Dschungel angegeben.", outputStream.toString().trim());
-					assertFalse(DschungelGenerator.checkProbleminszanz(sjd));
+					assertFalse(DschungelGenerator.checkProbleminszanz());
 				}	
 			}
 		}
@@ -104,25 +102,24 @@ public class DschungelGeneratorTest {
 		sl1.add(schart1);
 		sl1.add(schart2);
 
-		Schlangenjagd sjd = new Schlangenjagd();
 		// System.out umleiten, um die Ausgabe zu erfassen
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		PrintStream printStream = new PrintStream(outputStream);
-		PrintStream originalPrintStream = System.out;
 		System.setOut(printStream);
 
 		Dschungel d1 = new Dschungel(10,10,"ABC",felder);
 		sjd.setDschungel(d1);
-		DschungelGenerator.checkProbleminszanz(sjd);
+		DschungelGenerator.problemInstanz = sjd;
+		DschungelGenerator.checkProbleminszanz();
 		assertEquals("keine zulässige Schlangenarten werden für den Dschungel angegeben.", outputStream.toString().trim());
-		assertFalse(DschungelGenerator.checkProbleminszanz(sjd));
+		assertFalse(DschungelGenerator.checkProbleminszanz());
 
 		outputStream.reset();
 
 		sjd.setSchlangenarten(sl1);
-		DschungelGenerator.checkProbleminszanz(sjd);
+		DschungelGenerator.checkProbleminszanz();
 		assertEquals("keine erwünschte Anzahl von Schlangen wird für Schlangenart " + schart1.getId() + " angegeben.", outputStream.toString().trim());
-		assertFalse(DschungelGenerator.checkProbleminszanz(sjd));	
+		assertFalse(DschungelGenerator.checkProbleminszanz());	
 
 	}
 	/**

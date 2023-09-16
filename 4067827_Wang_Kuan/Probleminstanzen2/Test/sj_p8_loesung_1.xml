@@ -3,7 +3,7 @@
 <Schlangenjagd>
   <Zeit einheit="min">
     <Vorgabe>0.2</Vorgabe>
-    <Abgabe>0.0</Abgabe>
+    <Abgabe>0.2</Abgabe>
   </Zeit>
   <Dschungel zeilen="8" spalten="8" zeichen="☀☁☂☃☄★☆☇☔☕☼☽☾♨♫⚘⚽⛄⛅⛆⛈⛐⛰⛵⛷⛸⛹⛺">
     <Feld id="F0" zeile="0" spalte="0" verwendbarkeit="1" punkte="5">☻</Feld>
@@ -104,26 +104,69 @@
     </Schlangenart>
   </Schlangenarten>
   <Schlangen>
-    <Schlange art="A0">
-      <Schlangenglied feld="F57" />
-      <Schlangenglied feld="F57" />
-      <Schlangenglied feld="F57" />
-      <Schlangenglied feld="F57" />
-      <Schlangenglied feld="F57" />
+    <Schlange art="A4">
+      <Schlangenglied feld="F10" />
+      <Schlangenglied feld="F9" />
+      <Schlangenglied feld="F1" />
+      <Schlangenglied feld="F2" />
+      <Schlangenglied feld="F11" />
+      <Schlangenglied feld="F12" />
+    </Schlange>
+    <Schlange art="A4">
+      <Schlangenglied feld="F23" />
+      <Schlangenglied feld="F15" />
+      <Schlangenglied feld="F7" />
+      <Schlangenglied feld="F6" />
+      <Schlangenglied feld="F5" />
+      <Schlangenglied feld="F13" />
     </Schlange>
     <Schlange art="A0">
-      <Schlangenglied feld="F57" />
-      <Schlangenglied feld="F57" />
-      <Schlangenglied feld="F57" />
-      <Schlangenglied feld="F57" />
-      <Schlangenglied feld="F57" />
+      <Schlangenglied feld="F36" />
+      <Schlangenglied feld="F45" />
+      <Schlangenglied feld="F54" />
+      <Schlangenglied feld="F53" />
+      <Schlangenglied feld="F60" />
+      <Schlangenglied feld="F59" />
     </Schlange>
-    <Schlange art="A0">
-      <Schlangenglied feld="F57" />
-      <Schlangenglied feld="F57" />
-      <Schlangenglied feld="F57" />
-      <Schlangenglied feld="F57" />
-      <Schlangenglied feld="F57" />
+    <Schlange art="A2">
+      <Schlangenglied feld="F8" />
+      <Schlangenglied feld="F0" />
+    </Schlange>
+    <Schlange art="A4">
+      <Schlangenglied feld="F26" />
+      <Schlangenglied feld="F33" />
+      <Schlangenglied feld="F42" />
+      <Schlangenglied feld="F43" />
+      <Schlangenglied feld="F52" />
+      <Schlangenglied feld="F61" />
+    </Schlange>
+    <Schlange art="A4">
+      <Schlangenglied feld="F47" />
+      <Schlangenglied feld="F39" />
+      <Schlangenglied feld="F30" />
+      <Schlangenglied feld="F31" />
+      <Schlangenglied feld="F38" />
+      <Schlangenglied feld="F46" />
+    </Schlange>
+    <Schlange art="A4">
+      <Schlangenglied feld="F40" />
+      <Schlangenglied feld="F32" />
+      <Schlangenglied feld="F41" />
+      <Schlangenglied feld="F50" />
+      <Schlangenglied feld="F49" />
+      <Schlangenglied feld="F56" />
+    </Schlange>
+    <Schlange art="A4">
+      <Schlangenglied feld="F34" />
+      <Schlangenglied feld="F35" />
+      <Schlangenglied feld="F28" />
+      <Schlangenglied feld="F20" />
+      <Schlangenglied feld="F29" />
+      <Schlangenglied feld="F37" />
+    </Schlange>
+    <Schlange art="A2">
+      <Schlangenglied feld="F17" />
+      <Schlangenglied feld="F24" />
     </Schlange>
   </Schlangen>
 </Schlangenjagd>
