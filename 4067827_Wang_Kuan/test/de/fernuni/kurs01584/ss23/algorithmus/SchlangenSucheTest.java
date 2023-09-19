@@ -18,6 +18,7 @@ public class SchlangenSucheTest {
 	@DisplayName("Test erzeugen Startfelder")
 	@Test
 	void erzeugZulaessigeStartFelderTest() {
+	    
 		Feld feld1 = new Feld("F0", 0, 0, 1, 1, "P");
 		Feld feld2 = new Feld("F1", 0, 1, 0, 1, "R");
 		Feld feld3 = new Feld("F2", 0, 2, 1, 0, "☻");
@@ -29,7 +30,6 @@ public class SchlangenSucheTest {
 	    String zeichenkette = "PR";
 		schlanart.setZeichenkette(zeichenkette);
 
-		
 		felder.add(feld1);
 		felder.add(feld2);
 		felder.add(feld3);
@@ -37,7 +37,9 @@ public class SchlangenSucheTest {
 		felder.add(feld5);
 		felder.add(feld6);
 		
-		List <Feld> startFelder = SchlangenSuche.erzeugZulaessigeStartFelder(felder, zeichenkette);
+		SchlangenSuche s1 = new SchlangenSuche();
+		
+		List <Feld> startFelder = s1.erzeugZulaessigeStartFelder(felder, zeichenkette);
 		for (Feld feld : startFelder) {
 			assertTrue(feld.getVerwendbarkeit()> 0);
 			assertTrue(zeichenkette.contains(feld.getZeichen()));
@@ -64,7 +66,9 @@ public class SchlangenSucheTest {
 		felder.add(feld5);
 		felder.add(feld6);
 		
-		SchlangenSuche.priorisieren(felder);
+		SchlangenSuche s2 = new SchlangenSuche();
+		
+		s2.priorisieren(felder);
 		
 		assertEquals(8, felder.get(0).getPunkte());
 		assertEquals(5, felder.get(1).getPunkte());
@@ -121,7 +125,9 @@ public class SchlangenSucheTest {
 		schlange.setSchlangenart(schlangenart1);
 		schlange.setSchlangengliedmenge(schlangengliedList);
 		
-		List <Feld> nachbarFelder = SchlangenSuche.erzeugZulaessigeNachbarFelder(glied);
+		SchlangenSuche s3 = new SchlangenSuche();
+		
+		List <Feld> nachbarFelder = s3.erzeugZulaessigeNachbarFelder(glied);
 		
 		assertEquals(2, nachbarFelder.size());
 		assertEquals("F1",nachbarFelder.get(0).getId());

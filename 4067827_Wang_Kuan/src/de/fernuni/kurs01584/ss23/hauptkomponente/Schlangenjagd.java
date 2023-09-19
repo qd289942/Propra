@@ -105,31 +105,33 @@ public class Schlangenjagd implements SchlangenjagdAPI {
             // TODO Auto-generated catch block
             e2.printStackTrace();
         }
-
+        
+        SchlangenSuche s1 = new SchlangenSuche();
+        
         try {
-            SchlangenSuche.outputFilePath = xmlAusgabeDatei;
-            SchlangenSuche.problemInstanz = probleminstanz;
-            SchlangenSuche.schlangenjagd = schlangenjagd;
-            SchlangenSuche.sucheSchlange();
+            s1.setProblemInstanz(probleminstanz);
+            s1.setSchlangenjagd(schlangenjagd);
+            s1.sucheSchlange();
+            
         } catch (Exception e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
 
         // Wenn die Zeitabgabe noch unbekannt ist
-        if (SchlangenSuche.problemInstanz.getZeit().getAbgabe() == 0.0) {
-            double zeitinterval = System.currentTimeMillis() - SchlangenSuche.getStartZeit();
+        if (s1.getProblemInstanz().getZeit().getAbgabe() == 0.0) {
+            double zeitinterval = System.currentTimeMillis() - s1.getStartZeit();
             double zeitintervalUmgerechnet = SchlangenSuche.zeitUmrechunung(probleminstanz.getZeit().getEinheit(), zeitinterval);
-            SchlangenSuche.problemInstanz.getZeit().setAbgabe(zeitintervalUmgerechnet);
+            s1.getProblemInstanz().getZeit().setAbgabe(zeitintervalUmgerechnet);
         }
         try {
-            DatenausgabeXML.writeXML(probleminstanz,SchlangenSuche.loesungSchlangen,xmlAusgabeDatei);
+            DatenausgabeXML.writeXML(probleminstanz,s1.getLoesungSchlangen(),xmlAusgabeDatei);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-        if (SchlangenSuche.loesungSchlangen != null) {
+        if (s1.getLoesungSchlangen() != null) {
             System.out.println("Rueckgabe erfolgt, Loesungen sind in XML gespeichert.");
             return true;
         }
@@ -144,9 +146,11 @@ public class Schlangenjagd implements SchlangenjagdAPI {
     public boolean erzeugeProbleminstanz(String xmlEingabeDatei, String xmlAusgabeDatei) {
 
         validateDTD(xmlEingabeDatei);
-
+        
+        DschungelGenerator dg1 = new DschungelGenerator();
+        
         try {
-            DschungelGenerator.erzeugProbleminstanzen(xmlEingabeDatei, xmlAusgabeDatei);
+            dg1.erzeugProbleminstanzen(xmlEingabeDatei, xmlAusgabeDatei);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

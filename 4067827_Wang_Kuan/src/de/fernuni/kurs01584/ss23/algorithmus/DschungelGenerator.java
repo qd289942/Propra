@@ -21,12 +21,12 @@ public class DschungelGenerator {
      *         eines Fehlers wird ebenfalls <tt>false</tt> zurückgegeben.
      * @throws Exception
      */
-    public static Schlangenjagd problemInstanz;
-    private static long startZeit;
+    private Schlangenjagd problemInstanz;
+    private long startZeit;
     // flag zur Beendung der SchlangenartAnlegen
-    private static boolean flag = false;
+    private boolean flag = false;
 
-    public static boolean erzeugProbleminstanzen(String xmlEingabedatei, String xmlAusgabedatei) throws Exception {
+    public boolean erzeugProbleminstanzen(String xmlEingabedatei, String xmlAusgabedatei) throws Exception {
         // Startzeit definieren
         startZeit = System.currentTimeMillis();
         // laden der vorgegebenen Probleminstanz
@@ -114,7 +114,7 @@ public class DschungelGenerator {
     /**
      * Anlegen der Schlangenarten mit der entsprechenden Anzahl
      */
-    private static void SchlangenartAnlegen() {
+    private void SchlangenartAnlegen() {
         // Zeitvorgabe überprüfen
         long aktuelleZeit = System.currentTimeMillis();           
         if (aktuelleZeit - startZeit >= 20000) {
@@ -169,7 +169,7 @@ public class DschungelGenerator {
      * @param schlangengliedList List von bisherigen gefundenen Schlangenglied nach Schlangenart
      * @param vorherigesGlied letzte Schlangenglied in schlangengliedList
      */
-    private static void sucheGliednachSchlangenart(Schlangenglied vorherigesGlied) {
+    private void sucheGliednachSchlangenart(Schlangenglied vorherigesGlied) {
         // schlangenart zulässige Schlangenart für vorherigesGlied
         // newFelder zulässige(leere) Felder aus Dschungel
         // schlangengliedList List von bisherigen gefundenen Schlangenglied nach Schlangenart
@@ -219,7 +219,7 @@ public class DschungelGenerator {
      * @param startfelder
      * @return zulässige felder
      */
-    public static List<Feld> erzeugZulaessigeFelder(List<Feld> felder) {
+    public List<Feld> erzeugZulaessigeFelder(List<Feld> felder) {
         List<Feld> freiFeld = new ArrayList<>();
         for (Feld feld: felder) {
             if (feld.getZeichen() == null) {
@@ -237,7 +237,7 @@ public class DschungelGenerator {
      * @param felder zulässige felder
      * @param schlangenGlied leere Schlangenglied 
      */
-    private static void setZufaelligFeldmitZeichen(char zeichen, List<Feld>felder, Schlangenglied schlangenGlied) {
+    private void setZufaelligFeldmitZeichen(char zeichen, List<Feld>felder, Schlangenglied schlangenGlied) {
         String zeichenStr = String.valueOf(zeichen);
         // Erstellung eine randomgenerator
         Random random = new Random();
@@ -253,7 +253,7 @@ public class DschungelGenerator {
      * @param schlangenart aktuelle verwendete Schlangenart
      * @return zulässige NachbarFelder
      */
-    public static List<Feld> erzeugNachbarFeld(List<Feld> felder, Schlangenglied vorherigesGlied, Schlangenart schlangenart){
+    public List<Feld> erzeugNachbarFeld(List<Feld> felder, Schlangenglied vorherigesGlied, Schlangenart schlangenart){
         List<Feld> nachbarFeld = new ArrayList<>();
         Feld vorherigesGliedFeld = vorherigesGlied.getFeld();
         for (Feld schlangenGliedFeld: felder) {
@@ -273,7 +273,7 @@ public class DschungelGenerator {
      * @return <tt>true</tt>, Wenn aktellesFeld tatsächlich NachbarFeld von VorherigesFeld ist, ansonsten <tt>false</tt>. Beim Auftreten
      * eines Fehlers wird ebenfalls <tt>false</tt> zurückgegeben.
      */
-    private static boolean checkNachbarfeld(Feld vorherigesFeld, Feld aktuellesFeld, Schlangenart schlangenart){
+    private boolean checkNachbarfeld(Feld vorherigesFeld, Feld aktuellesFeld, Schlangenart schlangenart){
         String nachbarTyp = schlangenart.getNachStr().getTyp();
         List<Parameter> parameters = schlangenart.getNachStr().getParameters();
         if (nachbarTyp.equals("Distanz")) {
@@ -305,7 +305,7 @@ public class DschungelGenerator {
      * @param <T> Element in Nachbarfelder
      * @param felder gemischte felder
      */
-    private static <T> void mischenFeldRandom(List<T> felder){
+    private <T> void mischenFeldRandom(List<T> felder){
         Collections.shuffle(felder);
     }
 
@@ -315,7 +315,7 @@ public class DschungelGenerator {
      * @return <tt>true</tt>, bei Erfolg, ansonsten <tt>false</tt>. Beim Auftreten
      *         eines Fehlers wird ebenfalls <tt>false</tt> zurückgegeben.
      */
-    public static boolean checkProbleminszanz() {
+    public boolean checkProbleminszanz() {
         if (problemInstanz.getDschungel().getZeilen() == 0 || problemInstanz.getDschungel().getSpalten() == 0) {
             // Zeilen oder Spalten Anzahlen sind nicht definiert oder initialisiert
             System.out.println("Anzahl der Zeilen und Spalten des Dschungels sind nicht vollständig in Eingabedatei angegeben.");
@@ -342,5 +342,24 @@ public class DschungelGenerator {
 
         return true;
     }
+
+
+
+    public Schlangenjagd getProblemInstanz() {
+        return problemInstanz;
+    }
+
+    public void setProblemInstanz(Schlangenjagd problemInstanz) {
+        this.problemInstanz = problemInstanz;
+    }
+
+    public long getStartZeit() {
+        return startZeit;
+    }
+
+    public void setStartZeit(long startZeit) {
+        this.startZeit = startZeit;
+    }
+    
 
 }

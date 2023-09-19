@@ -4,32 +4,28 @@ import java.util.*;
 import de.fernuni.kurs01584.ss23.modell.*;
 
 public class SchlangenSuche {
+
+    // Attribute definieren
+    private int aktuellePunkte = 0;
+    private int bisherMaxPunkte = 0;
+    private List<Schlange> schlangeList = new ArrayList<>();
+    private List<Schlange> loesungSchlangen = new ArrayList<>();
+    // trenne problemInstanz von schlangenjagd, um die Ausgangszustand zu speichern
+    private Schlangenjagd problemInstanz;
+    private Schlangenjagd schlangenjagd;
+    // flag dient zur beende der Suche
+    private boolean flag = false;
+    private long startZeit = 0;
+
+
     /**
      * Liest die vorgegebene Eingabedatei mit einer vollstaendigen Probleminstanz und startet das 
      * Loesungverfahren für die Schlangensuche. Suche mögliche Schlangen Analog zum Backtracking Algorithmus.
      * Die gefundene Loesung wird zusammen mit der Probleminstanz in der Ausgabedatei gespeichert.
      * 
-     * @param inputFilePath Dateipfad zu einer XML-Datei mit Parametern fuer eine Probleminstanz, 
-     * die erzeugt werden soll.
-     * @param outputFilePath Dateipfad zu einer XML-Datei fuer die erzeugte Probleminstanz.
      * @throws Exception
      */
-    // Attribute definieren
-    private static int aktuellePunkte = 0;
-    private static int bisherMaxPunkte = 0;
-    private static List<Schlange> schlangeList = new ArrayList<>();
-    public static List<Schlange> loesungSchlangen = new ArrayList<>();
-    public static String outputFilePath;
-    // trenne problemInstanz von schlangenjagd, um die Anfangszustand zu speichern
-    public static Schlangenjagd problemInstanz;
-    public static Schlangenjagd schlangenjagd;
-    // flag dient zur beende der Suche
-    private static boolean flag = false;
-    private static long startZeit = 0;
-
-
-
-    public static void sucheSchlange() throws Exception {
+    public void sucheSchlange() throws Exception {
 
         // Rechne aktuelle gesamte Punktzahl aus Schlangen
         if (schlangeList != null) {
@@ -141,7 +137,7 @@ public class SchlangenSuche {
      * @param priorisierteFelder Felder nach Priorisierung
      * @throws Exception
      */
-    public static void sucheSchlangenglied (Schlangenglied vorherigesGlied) throws Exception {
+    public void sucheSchlangenglied (Schlangenglied vorherigesGlied) throws Exception {
 
         // Wenn vorherigesGlied letztes Schlangenglied ist
         if (vorherigesGlied.getSchlange().getSchlangengliedmenge().size() == vorherigesGlied.getSchlange().getSchlangenart().getZeichenkette().length()) {
@@ -182,7 +178,7 @@ public class SchlangenSuche {
      * @param felder ursprüngliche Felder aus Duschungel
      * @return Startfelder zulässige Startfelder zur Schlangen Suchen
      */
-    public static List<Feld> erzeugZulaessigeStartFelder (List<Feld> felder, String zeichenkette) {
+    public List<Feld> erzeugZulaessigeStartFelder (List<Feld> felder, String zeichenkette) {
 
         List<Feld> Startfelder = new ArrayList<>();
         for (Feld feld : felder) {
@@ -200,7 +196,7 @@ public class SchlangenSuche {
      * @return List von zulässigen Schlangenarten
      */
 
-    public static List<Schlangenart> erzeugZulassigeSchlangenart (List<Schlangenart> schlangenarten, Feld feld){
+    public List<Schlangenart> erzeugZulassigeSchlangenart (List<Schlangenart> schlangenarten, Feld feld){
         List<Schlangenart> startSchlangenarten = new ArrayList<>();
         boolean flag_1 = true;
         String str = new String();
@@ -234,7 +230,7 @@ public class SchlangenSuche {
      * @return zulässige NachbarschaftFelder
      */
 
-    public static List<Feld> erzeugZulaessigeNachbarFelder (Schlangenglied vorherigesGlied) {
+    public List<Feld> erzeugZulaessigeNachbarFelder (Schlangenglied vorherigesGlied) {
 
         int feldSpalte = vorherigesGlied.getFeld().getSpalte();
         int feldZeile = vorherigesGlied.getFeld().getZeile();
@@ -286,7 +282,7 @@ public class SchlangenSuche {
      * @param <T> Element in List
      * @param list priorisierte List
      */
-    public static <T extends Priorisierbar> void priorisieren(List<T> list) {
+    public <T extends Priorisierbar> void priorisieren(List<T> list) {
         Comparator<T> comparator_1 = new Comparator<T>() {
             @Override
             public int compare(T o1, T o2) {
@@ -350,11 +346,29 @@ public class SchlangenSuche {
 
         return Punktzahl;
     }
-    public static long getStartZeit() {
+    public long getStartZeit() {
         return startZeit;
     }
-    public static void setStartZeit(long startZeit) {
-        SchlangenSuche.startZeit = startZeit;
+    public void setStartZeit(long startZeit) {
+        this.startZeit = startZeit;
+    }
+    public List<Schlange> getLoesungSchlangen() {
+        return loesungSchlangen;
+    }
+    public void setLoesungSchlangen(List<Schlange> loesungSchlangen) {
+        this.loesungSchlangen = loesungSchlangen;
+    }
+    public Schlangenjagd getProblemInstanz() {
+        return problemInstanz;
+    }
+    public void setProblemInstanz(Schlangenjagd problemInstanz) {
+        this.problemInstanz = problemInstanz;
+    }
+    public Schlangenjagd getSchlangenjagd() {
+        return schlangenjagd;
+    }
+    public void setSchlangenjagd(Schlangenjagd schlangenjagd) {
+        this.schlangenjagd = schlangenjagd;
     }
 
 }
