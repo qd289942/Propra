@@ -128,13 +128,7 @@ public class SchlangenSuche {
     }
     /**
      * Suche nach nächstes Schlangenglied anhand vorherigesGlied und Schlangenart
-     * @param flag flag ist Wahr, wenn ein vollständige Schlange nach Schlangenart gefunden ist. sonst Falsch 
-     * @param schlangenjagd aktuelle Schlangenjagd Modelle
-     * @param schlangengliedList aktuelle List von gefundenen Schlangenglied
      * @param voherigesGlied letztes Schlangenglied aus schlangengliedList
-     * @param schlangeList List zur Speichern bisher gefundene Schlangen
-     * @param schlangenart aktueller Schlangenart
-     * @param priorisierteFelder Felder nach Priorisierung
      * @throws Exception
      */
     public void sucheSchlangenglied (Schlangenglied vorherigesGlied) throws Exception {
@@ -176,6 +170,7 @@ public class SchlangenSuche {
     /**
      * Erzeugen zulässige Startfelder nach Kriterien: Verwendbarkeit > 0
      * @param felder ursprüngliche Felder aus Duschungel
+     * @param zulässige zeichenkette
      * @return Startfelder zulässige Startfelder zur Schlangen Suchen
      */
     public List<Feld> erzeugZulaessigeStartFelder (List<Feld> felder, String zeichenkette) {

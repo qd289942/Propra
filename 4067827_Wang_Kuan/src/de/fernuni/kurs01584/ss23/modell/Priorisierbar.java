@@ -1,7 +1,7 @@
 package de.fernuni.kurs01584.ss23.modell;
 
 /**
- *  Interface zur Erreichen der Funktion zur Priorisierung in sucheSchlange
+ *  Interface zur Realisieren der Funktion zur Priorisierung in sucheSchlange
  */
 public interface Priorisierbar {
     

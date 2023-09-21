@@ -51,7 +51,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                 break;
                 // Eine neue Probleminstanz wird auf Basis der gegebenen Parameter erzeugt und bei Angabe einer Ausgabedatei gespeichert.    
             case 'e':
-                boolean flag_1 =schlangenjagd.erzeugeProbleminstanz(eingabe, ausgabe);
+                boolean flag_1 = schlangenjagd.erzeugeProbleminstanz(eingabe, ausgabe);
                 if (flag_1 == true) {
                     System.out.println("Probleminstanz wird generiert.");
                 }
@@ -66,6 +66,7 @@ public class Schlangenjagd implements SchlangenjagdAPI {
                 System.out.println("\n\nFehlertyp und Anzahl: ");
                 if (fehlerTypList.isEmpty()) {
                     System.out.println("keine Fehlern gefunden");
+                    break;
                 }
                 // Bei Unzulässigkeit werden die Art und Anzahl der verletzten Bedingungen in der Konsole ausgegeben
                 Map<Fehlertyp, Long> countMap = fehlerTypList.stream()

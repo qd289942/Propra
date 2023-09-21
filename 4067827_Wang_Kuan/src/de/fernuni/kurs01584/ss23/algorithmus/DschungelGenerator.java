@@ -164,9 +164,7 @@ public class DschungelGenerator {
 
     /**
      * suche Schlangenglied nach StartGlied bzw. VorherigesGlied und Schlangenart
-     * @param schlangenart zulässige Schlangenart für vorherigesGlied
-     * @param newFelder zulässige(leere) Felder aus Dschungel
-     * @param schlangengliedList List von bisherigen gefundenen Schlangenglied nach Schlangenart
+
      * @param vorherigesGlied letzte Schlangenglied in schlangengliedList
      */
     private void sucheGliednachSchlangenart(Schlangenglied vorherigesGlied) {
@@ -195,7 +193,7 @@ public class DschungelGenerator {
             // Erzeugen des Nachbarfelders
             List<Feld> nachbarFelder = erzeugNachbarFeld(zulaessigesFelder, vorherigesGlied, schlangenart);
             mischenFeldRandom(nachbarFelder);
-            erzeugZulaessigeFelder(nachbarFelder);
+
             for (Feld feld: nachbarFelder) {
                 String zeichenStr = String.valueOf(aktuellezeichen);
                 feld.setZeichen(zeichenStr);
