@@ -108,13 +108,15 @@ public class SchlangenSuche {
                         schlangeList.add(schlange);
                         // Rekursive Suchen nach Schlangenglieden anhand Schlangenkopf
                         sucheSchlangenglied(schlangenkopf);
-                        // entferne Schlangenkopf und Schlange
-                        schlangenkopf.getFeld().setVerwendbarkeit(schlangenkopf.getFeld().getVerwendbarkeit() + 1);
-                        schlangeList.remove(schlange);
                         // Rückgabe wenn Zeitvorgabe erreicht ist
                         if (flag == true) {
                             return;
                         }
+
+                        // entferne Schlangenkopf und Schlange
+                        schlangenkopf.getFeld().setVerwendbarkeit(schlangenkopf.getFeld().getVerwendbarkeit() + 1);
+                        schlangeList.remove(schlange);
+
                     }
                 }
 
@@ -155,16 +157,15 @@ public class SchlangenSuche {
             nachbarSchlangenglied.setSchlange(vorherigesGlied.getSchlange());
             vorherigesGlied.getSchlange().getSchlangengliedmenge().add(nachbarSchlangenglied);
             sucheSchlangenglied(nachbarSchlangenglied);
-
+            // Rückgabe wenn Zeitvorgabe erreicht ist
+            if (flag == true) {
+                return;
+            }
             // Wenn Schleife in eine Sackgasse geraten ist, löscht aktuelle Schlangenglied und sucht weiter
 
             nachbarFeld.setVerwendbarkeit(nachbarFeld.getVerwendbarkeit() + 1);
             vorherigesGlied.getSchlange().getSchlangengliedmenge().remove(nachbarSchlangenglied);
 
-            // Rückgabe wenn Zeitvorgabe erreicht ist
-            if (flag == true) {
-                return;
-            }
         }
     }
     /**
@@ -193,28 +194,11 @@ public class SchlangenSuche {
 
     public List<Schlangenart> erzeugZulassigeSchlangenart (List<Schlangenart> schlangenarten, Feld feld){
         List<Schlangenart> startSchlangenarten = new ArrayList<>();
-        boolean flag_1 = true;
-        String str = new String();
-        for (Feld fd : feld.getDschungel().getFelder()) {
-            if (fd.getVerwendbarkeit() > 0) {
-                str += fd.getZeichen();
-            }
-        }
         for (Schlangenart schlangenart : schlangenarten) {
-            String firstZeichen = String.valueOf(schlangenart.getZeichenkette().charAt(0));
-
-            if (feld.getZeichen().equals(firstZeichen)) {
-                // prüft, ob es noch Felder vorhanden sind, die für Schlangenarten mit entsprechender Zeichenkette nutzbar sind.
-                for (int i = 0; i <schlangenart.getZeichenkette().length(); i++) {
-                    if (!str.contains(String.valueOf(schlangenart.getZeichenkette().charAt(i)))) {
-                        flag_1 = false;
-                        break;
-                    }
-                }
-                if (flag_1 == true) {
-                    startSchlangenarten.add(schlangenart);
-                }
-            }
+        	String firstZeichen = String.valueOf(schlangenart.getZeichenkette().charAt(0));
+        	if (feld.getZeichen().equals(firstZeichen)) {
+        		startSchlangenarten.add(schlangenart);
+        	}
         }
         return startSchlangenarten;
     }
