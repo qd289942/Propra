@@ -20,6 +20,12 @@ The idea is to search for **character snakes**—words or strings that appear as
 The **goal** is to automatically find the set of snakes that yields the **maximum total score** within a given time limit.  
 In short: it’s a **grid search optimization problem** where we let algorithms (instead of humans) hunt for hidden words under complex constraints.
 
+<p align="center">
+  <img src="res/Dschungel.png" alt="Snake Example" width="600"/>
+  <br/>
+  <em>Figure 1: Example of a character snake in the jungle</em>
+</p>
+
 This project implements the full toolchain for the *“Schlangenjagd”* programming practicum:
 
 - **Backtracking Solver**  
