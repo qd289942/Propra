@@ -10,6 +10,16 @@
 
 ## Overview
 
+This project was developed as part of a programming practicum called *“Schlangenjagd”* (literally *"snake hunt"*).  
+The idea is to search for **character snakes**—words or strings that appear as connected paths inside a grid of letters, called the *jungle*.  
+
+- A snake is defined by a specific word and a rule for how its letters can connect (neighbors in horizontal, vertical, diagonal, or custom patterns).  
+- Some snakes may overlap or share fields, depending on the grid’s configuration.  
+- To make the problem more challenging, each field has a usage limit and a point value, and each snake also has its own score.  
+
+The **goal** is to automatically find the set of snakes that yields the **maximum total score** within a given time limit.  
+In short: it’s a **grid search optimization problem** where we let algorithms (instead of humans) hunt for hidden words under complex constraints.
+
 This project implements the full toolchain for the *“Schlangenjagd”* programming practicum:
 
 - **Backtracking Solver**  
